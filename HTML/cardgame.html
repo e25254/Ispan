@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 200px;
+        }
+        .camera{
+            width: 200px;
+            perspective: 800px;
+            
+        }
+        .box{
+            width: 200px;
+            transform-style: preserve-3d;
+            position: relative;
+            /* backface-visibility: hidden; */
+            transition: .5s;
+            animation: rotateY 5s infinite;
+        }
+        .box img{
+            position: absolute;
+            width: 100%;
+            top:0;
+            left:0;
+            
+        }
+        .img1{
+            transform: translateZ(1px);
+        }
+        
+        .img2{
+            transform: rotateY(180deg)translateZ(1px);
+        }
+        .box:hover{
+            transform: rotateY(180deg);
+        }
+        @keyframes rotateY {
+            from{
+                transform: rotateY(0);
+            }
+            to{
+                transform: rotateY(180deg);
+            }            
+        }
+    </style>
+</head>
+<body>
+    <div class="camera">
+        <div class="box">
+            <img class="img1"src="images/cat-5414737_1280.jpg" alt="">
+            <img class="img2"src="images/city.jpg" alt="">
+        </div>
+    </div>
+</body>
+</html>

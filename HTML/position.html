@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+            /* *{
+                margin: 0px;
+                padding: 0px;
+            } */
+            div{
+            width: 100px;
+            height: 100px; 
+            border: 1px solid black;
+            margin: 30px;
+        }
+        .box-a{
+            background-color: rgba(255, 0, 0, 0.534);
+            position: absolute;/*絕對*/
+            top:100px;
+            left:100px;
+            z-index: 999;
+            height: 1000px;
+        }
+        .box-d{
+            background-color: rgba(252, 249, 67, 0.541);
+            position: relative;/*相對*/
+            top:100px;
+            left:100px;
+            z-index: 999;
+        }
+            
+        .box-b{
+            background-color: rgba(40, 137, 228, 0.534);
+            position: absolute;
+            top:120px;
+            right:20px;
+        }
+        .box-c{
+            background-color: rgba(46, 196, 32, 0.534);
+            position: fixed;
+            top:140px;
+            right:20px;
+        }
+        .box1{
+            position: relative;
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+        .box2{
+            height: 100%;
+            position:absolute;
+            bottom: 20px;
+            top:0px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="box-a"></div>
+    <div class="box-b"></div> 
+    <div class="box-c"></div>
+    <div class="box-d"></div> -->
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+</body>
+</html>

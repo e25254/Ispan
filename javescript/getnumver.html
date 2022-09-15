@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="guesstext">
+    <div id="show" ></divid>
+
+
+
+    <script>
+
+        //要猜的數字（變數）
+
+        let dotnumber = Math.random()
+        // console.log(dotnumber*100);
+        let fullnumber = Math.floor(dotnumber * 100)
+        console.log(fullnumber);
+        let show = document.getElementById('show')
+
+        //輸入的數字
+
+        let guesstext = document.getElementById('guesstext')
+
+        //事件(讀到 guesstext 裡的值)
+        window.alert('請輸入1-100的數字，按0離開遊戲')
+
+        guesstext.addEventListener('blur', function () {
+            guess = Number(guesstext.value);
+            console.log(guess);
+            if(guess === 0){
+                window.alert('掰掰')
+                history.go(0)
+            }
+            else if (guess > 100){
+                show.innerHTML = '就說是1-100!!'
+
+            }
+            else if (guess < 1){
+                show.innerHTML = '就說是1-100!!'
+
+            }
+            
+            else if (guess > fullnumber){
+                show.innerHTML = `小於${guess}`
+
+            }
+            else if (guess < fullnumber){
+                show.innerHTML = `大於${guess}`
+
+            }
+            else if (guess == fullnumber){
+                window.alert('答對了！')
+                history.go(0)
+            }
+            else{
+                show.innerHTML = '這是數字嗎？？？？'
+            }
+        })
+
+
+
+    </script>
+</body>
+
+</html>

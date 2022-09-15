@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* 外框 */
+        .shopeecart{
+            width: 100%;
+            height: 900px;
+            font-family: 'Noto Sans TC', sans-serif;;
+            font-weight: 300;
+            box-sizing: border-box;
+            background-color: rgba(239, 239, 239, 1);
+        }
+        .st{
+            width: 100%;
+            min-height: 60px;
+            border-bottom: rgba(232, 232, 232, 1) 2px solid;
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            padding: 0px 15px;
+            overflow: hidden;
+            box-sizing: border-box;
+            background-color: #FFF;
+        }
+        /* 卡片標題 */
+        
+        input{
+            width: 18px;
+            height: 18px;
+            color: rgb(255, 0, 0);
+        }
+        
+        .leftarrow{
+            width: 10%;
+            text-align: center;
+        }
+        .fa-solid{
+            font-size: 36px;
+            line-height: 50px;
+            color: rgba(238, 77, 45, 1);
+        }
+        
+        .titletext{
+            padding-left:20px;
+            font-size: 20px;
+        }
+
+        .cardtitle-checkbox{
+            text-align: center;
+            margin-right: 20px;
+        }
+
+        .cardtitle-text{
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            flex-grow: 1;
+        }
+        .cardtitle-a {
+            text-align: right;
+            width: 10%;
+            color: rgba(117, 117, 117, 1);
+            white-space: nowrap
+        }
+        .cardtitle-a a:visited{
+                color:rgba(117, 117, 117, 1)
+        }
+
+        /* 卡片物品 */
+        .card{
+            margin-bottom: 10px;
+        }
+        
+        .carditem-pic{
+            width: 80px;
+            height: 200px;
+            object-fit: contain;
+            box-sizing: border-box
+        }
+        .carditem-pic img{
+            width: 100%;
+            height: 100%;
+            
+            overflow: hidden;
+        }
+        .span-money{
+            color:rgba(189, 189, 189, 1);
+            text-decoration: line-through;
+
+        }
+        .carditem-text{
+            flex-grow: 1;
+            width: 50%;
+        }
+        .carditem-st{
+            height: 45px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            vertical-align: middle;
+            /* border: 1px solid pink; */
+            line-height: 45px;
+            box-sizing: border-box;
+            padding: 0px 10px;
+        }
+        .fa-ticket{
+            font-size: 24px;
+            margin-right: 20px;
+        }
+        .carddiscount-text{
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        .carddiscount-newdiscount{
+            padding: 5px 8px;
+            background-color: rgba(238, 77, 45, 1);
+            text-align: center;
+            color: rgba(255, 255, 255, 1);
+            font-weight: 200;
+        }
+        .fa-truck-fast{
+            color: rgba(0, 191, 165, 1);
+            font-size: 24px;
+            margin-right: 20px;
+        }
+        .carditem-text-option{
+            line-height: 40px;
+        }
+        .carditem-text-money{
+            color: rgba(238, 77, 45, 1);
+            font-weight: 400
+        }
+        .carditem-text-count{
+            display: flex;
+        }
+        .carditem-text-counter{
+            width: 160px;
+            height: 40px;
+            margin: auto 0px;
+            border: 1px rgba(232, 232, 232, 1) solid;
+            display: flex;
+            box-sizing: border-box;
+        }
+        .add{
+            width: 40px;
+            height: 40px;
+            box-sizing: border-box;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .count{
+            box-sizing: border-box;
+            height: 40px;
+            flex-grow: 1;
+            border: 1px rgba(232, 232, 232, 1) solid;
+            text-align: center;
+            font-size: 30px;
+            color: rgba(189, 189, 189, 1);
+        }
+        .grayadd{
+            color: rgba(97, 97, 97, 1);
+            font-size: 20px;
+            line-height: 0px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="shopeecart">
+
+        <!-- 購物車外框 -->
+        <div class="st shopeecart-title">
+            <div class="leftarrow">
+                <i class="fa-solid fa-arrow-left-long"></i>
+            </div>
+            <div class="titletext">購物車</div>
+        </div>
+
+        <!-- 物品卡片 -->
+        <div class="card">
+            <!-- 卡片標題 -->
+            <div class="st cardtitle">
+                <div class="cardtitle-checkbox">
+                    <input type="checkbox"class="checkbox">
+                </div>
+                <div class="cardtitle-text">
+                    和美生活-假日無休 時尚美妝
+                </div>
+                <div class="cardtitle-a">
+                    <a href="">編輯</a>
+                </div> 
+            </div>
+            <!-- 卡片物品 -->
+            <div class="st item">
+                <div class="cardtitle-checkbox">
+                    <input type="checkbox"class="checkbox">
+                </div>
+                <div class="carditem-pic">
+                    <img src="images/shopeeimage1.jpg" alt="">
+                </div>
+                <div class="carditem-text">
+                    <div class="carditem-text-name carditem-st">正品帶發票 日本laundrin朗德林</div>
+                    <div class="carditem-text-option carditem-st ">
+                        <select>
+                            <option value="">幸運NO.1(藍)擴香80ml</option>
+                            <option value="">經典花蕾香(粉)擴香80ml</option>
+                            <option value="">經典花香(白)擴香80ml</option>
+                            <option value="">佛手柑&雪松香氛 擴香80ml</option>
+                            <option value="">綠茶香氛 擴香80ml</option>
+                            <option value="">夏日莫希托 夏日限定擴香80ml</option>
+                        </select>
+                    </div>
+                    <div class="carditem-text-money carditem-st">
+                        <span class="span-money">$220</span>
+                        $169
+                    </div>
+                    <div class="carditem-text-count carditem-st">
+                        <div class="carditem-text-counter">
+                            <div class="add">
+                                <i class="fa-solid fa-minus grayadd"></i>
+                            </div>
+                            <input class="count"type="text"placeholder="1">
+                            <div class="add">
+                                <i class="fa-solid fa-plus grayadd"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- 卡片折扣 -->
+            <div class="st discount">
+                <i class="fa-solid fa-ticket"></i>
+                <div class="carddiscount-text">最高折$171元</div>
+                <div class="carddiscount-newdiscount">有新的折價卷!</div>
+            </div>
+            
+            <!-- 卡片運送-->
+            <div class="st transport">
+                <i class="fa-solid fa-truck-fast"></i>
+                <div class="cardtransport-text">滿$49，蝦皮店到店，免運費</div>
+            </div>
+        </div>
+        
+        <!-- 第二頁 -->
+        <div class="card">
+            <!-- 卡片標題 -->
+            <div class="st cardtitle">
+                <div class="cardtitle-checkbox">
+                    <input type="checkbox"class="checkbox">
+                </div>
+                <div class="cardtitle-text">
+                    和美生活-假日無休 時尚美妝
+                </div>
+                <div class="cardtitle-a">
+                    <a href="">編輯</a>
+                </div> 
+            </div>
+            <!-- 卡片物品 -->
+            <div class="st item">
+                <div class="cardtitle-checkbox">
+                    <input type="checkbox"class="checkbox">
+                </div>
+                <div class="carditem-pic">
+                    <img src="images/shopeeimage1.jpg" alt="">
+                </div>
+                <div class="carditem-text">
+                    <div class="carditem-text-name carditem-st">正品帶發票 日本laundrin朗德林</div>
+                    <div class="carditem-text-option carditem-st ">
+                        <select>
+                            <option value="">幸運NO.1(藍)擴香80ml</option>
+                            <option value="">經典花蕾香(粉)擴香80ml</option>
+                            <option value="">經典花香(白)擴香80ml</option>
+                            <option value="">佛手柑&雪松香氛 擴香80ml</option>
+                            <option value="">綠茶香氛 擴香80ml</option>
+                            <option value="">夏日莫希托 夏日限定擴香80ml</option>
+                        </select>
+                    </div>
+                    <div class="carditem-text-money carditem-st">
+                        <span class="span-money">$220</span>
+                        $169
+                    </div>
+                    <div class="carditem-text-count carditem-st">
+                        <div class="carditem-text-counter">
+                            <div class="add">
+                                <i class="fa-solid fa-minus grayadd"></i>
+                            </div>
+                            <input class="count"type="text"placeholder="1">
+                            <div class="add">
+                                <i class="fa-solid fa-plus grayadd"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- 卡片折扣 -->
+            <div class="st discount">
+                <i class="fa-solid fa-ticket"></i>
+                <div class="carddiscount-text">最高折$171元</div>
+                <div class="carddiscount-newdiscount">有新的折價卷!</div>
+            </div>
+            
+            <!-- 卡片運送-->
+            <div class="st transport">
+                <i class="fa-solid fa-truck-fast"></i>
+                <div class="cardtransport-text">滿$49，蝦皮店到店，免運費</div>
+            </div>
+        </div>
+
+        <!-- 第三頁 -->
+
+        <div class="card">
+            <!-- 卡片標題 -->
+            <div class="st cardtitle">
+                <div class="cardtitle-checkbox">
+                    <input type="checkbox"class="checkbox">
+                </div>
+                <div class="cardtitle-text">
+                    和美生活-假日無休 時尚美妝
+                </div>
+                <div class="cardtitle-a">
+                    <a href="">編輯</a>
+                </div> 
+            </div>
+            <!-- 卡片物品 -->
+            <div class="st item">
+                <div class="cardtitle-checkbox">
+                    <input type="checkbox"class="checkbox">
+                </div>
+                <div class="carditem-pic">
+                    <img src="images/shopeeimage1.jpg" alt="">
+                </div>
+                <div class="carditem-text">
+                    <div class="carditem-text-name carditem-st">正品帶發票 日本laundrin朗德林</div>
+                    <div class="carditem-text-option carditem-st ">
+                        <select>
+                            <option value="">幸運NO.1(藍)擴香80ml</option>
+                            <option value="">經典花蕾香(粉)擴香80ml</option>
+                            <option value="">經典花香(白)擴香80ml</option>
+                            <option value="">佛手柑&雪松香氛 擴香80ml</option>
+                            <option value="">綠茶香氛 擴香80ml</option>
+                            <option value="">夏日莫希托 夏日限定擴香80ml</option>
+                        </select>
+                    </div>
+                    <div class="carditem-text-money carditem-st">
+                        <span class="span-money">$220</span>
+                        $169
+                    </div>
+                    <div class="carditem-text-count carditem-st">
+                        <div class="carditem-text-counter">
+                            <div class="add">
+                                <i class="fa-solid fa-minus grayadd"></i>
+                            </div>
+                            <input class="count"type="text"placeholder="1">
+                            <div class="add">
+                                <i class="fa-solid fa-plus grayadd"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- 卡片折扣 -->
+            <div class="st discount">
+                <i class="fa-solid fa-ticket"></i>
+                <div class="carddiscount-text">最高折$171元</div>
+                <div class="carddiscount-newdiscount">有新的折價卷!</div>
+            </div>
+            
+            <!-- 卡片運送-->
+            <div class="st transport">
+                <i class="fa-solid fa-truck-fast"></i>
+                <div class="cardtransport-text">滿$49，蝦皮店到店，免運費</div>
+            </div>
+        </div>
+
+
+
+        
+
+    </div>
+</body>
+</html>

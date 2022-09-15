@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>moveDiv</title>
+    <style>
+        .box{
+            width: 180px;
+            height: 180px;
+            background-color: rgb(121, 155, 192);
+            position: absolute;
+            border-radius: 50%;
+            top:50px;
+            left:50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script>
+        let box = document.querySelector('.box')
+        let flag;
+        let startX;
+        let startY;
+        let boxleft;
+        let boxtop;
+        document.addEventListener('contextmenu',function(event){    //停止右鍵選單
+            event.preventDefault()
+        })
+        box.addEventListener('mousedown',function(event){
+            flag = true;
+            startX = event.clientX;
+            startY = event.clientY;
+            boxleft = box.offsetLeft;
+            boxtop = box.offsetTop;
+            
+        })
+        box.addEventListener('mouseup',function(){
+            flag = false;
+        })
+
+        document.addEventListener('mousemove',function(event){
+            if(flag == true){
+                box.style.left = boxleft + (event.clientX - startX) + 'px';
+                box.style.top = boxtop + (event.clientY - startY) + 'px';
+            }
+        })
+
+
+
+
+
+    </script>
+</body>
+</html>

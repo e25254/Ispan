@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>whoisSmaller</title>
+
+</head>
+<body>
+    <div>
+        <input type="text" id="numAtext" placeholder="數字A">
+        <input type="text" id="numBtext" placeholder="數字Ｂ">
+        <input type="button" id="btn" value="比較" >
+        <div id="mydiv"></div>
+    </div>
+
+
+
+    <script>
+        let numAtext = document.getElementById('numAtext')
+        let numBtext = document.getElementById('numBtext')
+        let mydiv = document.getElementById('mydiv')
+        let btn = document.getElementById('btn')
+        function whoSmaller(a,b){
+            if( a > b ){
+                return b;
+            }
+            else if(b > a){
+                return a;
+            }
+            else if(b == a){
+                return 'same'
+            }
+            else{
+                return 'notnumber'
+            }
+        }
+        btn.addEventListener('click',function(){
+            let numA = Number(numAtext.value);
+            let numB = Number(numBtext.value);
+            if(whoSmaller(numA,numB) == numA ){
+                mydiv.innerHTML = '數字Ａ比較小'
+            }
+            else if (whoSmaller(numA,numB) == numB ){
+                mydiv.innerHTML = '數字Ｂ比較小'
+            }
+            else if (whoSmaller(numA,numB) == 'same'){
+                mydiv.innerHTML = '一樣大'
+            }
+            else if (whoSmaller(numA,numB) == 'notnumber'){
+                mydiv.innerHTML = '請輸入數字'
+            }
+        })
+        
+        
+
+
+
+
+
+
+    </script>
+</body>
+</html>

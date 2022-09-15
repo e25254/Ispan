@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="inputmydiv" placeholder="輸入西元年">
+    <div id="mydiv" ></div>
+
+    <script>
+
+        function leap(year) {
+            if ((year % 4 == 0 && year % 100 !== 0)||(year % 400 == 0)) {
+                // console.log(true);
+                return true;
+            }
+            else{
+                // console.log(false);
+                return false;
+            }
+        }
+
+        let mydiv = document.getElementById('mydiv')
+        let inputmydiv = document.getElementById('inputmydiv')
+
+        inputmydiv.addEventListener('blur',function(){
+            let i = inputmydiv.value;
+            if(leap(i) == true){
+                    mydiv.innerHTML = '是閏年'
+                }
+                else{
+                    mydiv.innerHTML = '不是閏年'
+                }
+        })
+
+        // if(leap() == true){
+        //     document.write('是閏年')
+        // }
+        // else{
+        //     document.write('不是閏年')
+        // }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

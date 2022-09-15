@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addressSelecter</title>
+</head>
+<body>
+    <select name="" id="citysel"></select>
+    <select name="" id="areasel"></select>
+    <select name="" id="roadsel"></select>
+    <script src="/javescript/data.js"></script>
+    <script>
+        let citysel = document.querySelector('#citysel')
+        let areasel = document.querySelector('#areasel')
+        let roadsel = document.querySelector('#roadsel')
+        let city;
+        let area;
+        ADDRESS.forEach(function(value,index,array){
+            let { CityName, CityEngName } = value;
+            citysel[index] = new Option (CityName, CityName);
+        })
+        
+
+        citysel.addEventListener('change',function(){
+            areasel.options.length = 0;
+            city = citysel.options[citysel.selectedIndex].value     //選擇的城市名字
+            area = ADDRESS.filter(function(value, index ,array){    //地區篩選
+                return value.CityName === city
+                });
+                console.log(area);
+            // area[0].AreaList.forEach(function(value , index ,array){
+            //     let {ZipCode , AreaName} = value;
+            //     areasel[index] = new Option(AreaName , index)
+            // })
+        })
+        
+        
+        areasel.addEventListener('change',function(){
+            roadsel.options.length = 0;
+            areachoose = areasel.options[areasel.selectedIndex].value
+            roadlist = area[0].AreaList[areachoose].RoadList
+            console.log(roadlist);
+            roadlist.forEach(function(value , index , array){
+                let {RoadEngName,RoadName} = value;
+                roadsel[index] = new Option(RoadName ,RoadEngName )
+            })
+        })
+
+
+
+    </script>
+</body>
+</html>

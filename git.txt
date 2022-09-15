@@ -1,0 +1,21 @@
+
+GIT教學
+
+＊單一檔案不要超過 100 ＭＢ以上
+＊只記錄文字之間版本的差異 圖片不行
+＊ git init 初始化
+＊ git add . 全部加進git清單（還沒同步）
+＊ git commit -m "add new html"（加入檔案的評論）
+＊ 建立一個ＧＩＴＨＵＢ專案
+＊ gitignore 不想傳上去的檔名寫在裡面
+＊ .gitignore裡要放的
+.gitignore
+.DS_Store
+
+線上網頁空間：
+e25254.github.io/專案名/檔案名字
+
+＊ gitclone
+
+
+

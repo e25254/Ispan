@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 超連結css順序 link>visited>hover>active */
+         a:link, a:visited{
+            color:red;
+            text-decoration: none;
+        }
+        /* a:visited{
+            color:green;
+            text-decoration:dotted;
+        } */
+        a:hover, a:active{
+            color:orange;
+            text-decoration: underline;
+        }
+        /* a:active{
+            color:pink;
+            text-decoration: overline;
+        }  */
+        a.link2,a.link2:visited{
+            color:blueviolet;
+        }
+        a.link2:hover,a.link2:active{
+            color:azure
+        }
+    </style>
+</head>
+<body>
+    <a href="asd">Link1</a><br>
+    <a href="cc" class="link2">Link2</a><br>
+    <a href="gg">Link3</a><br>
+</body>
+</html>

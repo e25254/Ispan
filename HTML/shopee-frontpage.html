@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        div{
+            /* outline: 1px solid red; */
+        }
+        /* 大廣告欄 */
+        .frontpage{
+            width: 100%;
+            /* max-width: 600px; */
+            height: 1500px;
+        }
+        .bigad{
+            width: 100%;
+            height: 300px;
+            box-sizing: border-box;
+            background-image: url(shopee/FRONTPAGE-BG.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+        .bigad-title{
+            width: 100%;
+            height: 80px;
+            display: flex;
+            box-sizing: border-box;
+            align-items: center;
+        }
+        .searchbar{
+            height: 60px;
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            box-sizing: border-box;
+            padding: 10px 0px;
+        }
+        .shoppingcart{
+            width: 40px;
+            height: 40px;
+            margin: 0px 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .user{
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0px 5px;
+        }
+        ::placeholder{
+            color: rgba(238, 77, 45, 1);
+            font-size: 16px;
+            font-weight: 200;
+        }
+        .searchbar-box{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+            margin-left: 40px;
+            margin-right: 5px;
+            background-color: aliceblue;
+            border-radius: 3px;
+
+        }
+        .searchbar-text{
+            height: 80%;
+            width: 100%;
+            border: 0px solid rgba(74, 64, 64, 0);
+            background-color: transparent;
+
+        }
+        .fa-magnifying-glass{
+            font-size: 20px;
+            margin-right: 10px;
+            align-items: center;
+            margin-left: 10px;
+        }
+        .frontpage-icon{
+            font-size: 24px;
+            color:rgb(255, 255, 255);
+        }
+
+
+
+        /* 滑動視窗 */
+        .sliderbar{
+            width: 100%;
+            height: 200px;
+            flex-wrap: nowrap;
+            overflow: hidden;
+            overflow: auto;  
+        }
+        .sliderbar-long{
+            width: 1300px;
+            height: 200px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .sliderbar-box{
+            width: 100px;
+            height: 100px;
+
+        }
+        .sliderbar-box{
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            position: relative;
+        }
+        .sliderbar-box i {
+            font-size: 30px;
+            position: absolute;
+            top: 10px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 20px;
+        }
+        .sliderbar-box-text{
+            position: absolute;
+            top: 80px;
+            font-size: 12px;
+        }
+
+
+        /* 三個廣告 */
+        .threepic{
+            width: 100%;
+            height: 200px;
+            display: flex;
+
+            overflow:hidden;
+        }
+        .squarebox{
+            width: 30%;
+            display: flex;
+            box-sizing: border-box;
+            margin: 20px 5px;
+        }
+        .middle{
+            width: 40%;
+            margin: 10px 5px;
+        }
+        .squarebox img{
+            width: 100%;
+            object-fit: contain;
+        }
+
+        /* 大廣告欄 */
+        .orange{
+            width: 100%;
+        }
+        .orange img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="frontpage">
+        <!-- 大廣告欄 -->
+        <div class="bigad">
+            <div class="bigad-title">
+                <div class="searchbar">
+                    <div class="searchbar-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input class="searchbar-text"type="text"placeholder="看更多免運熱銷商品">
+                    </div>
+                </div>
+                <div class="shoppingcart">
+                    <i class="frontpage-icon fa-solid fa-cart-shopping"></i>
+                </div>
+                <div class="user">
+                    <i class="frontpage-icon fa-regular fa-circle-user"></i>
+                </div>
+            </div>
+        </div>
+        <!-- 滑動視窗 -->
+        <div class="sliderbar">
+            <div class="sliderbar-long">
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-cart-shopping"
+                       style="color:rgba(214, 44, 60, 1)"></i>
+                    <div class="sliderbar-box-text">免運！！蝦皮直送</div> 
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-truck-fast"
+                       style="color:rgba(36, 170, 153, 1)"></i>
+                    <div class="sliderbar-box-text">領三張全站免運</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-coins"
+                       style="color:rgba(231, 154, 20, 1)"></i>
+                    <div class="sliderbar-box-text">領全站9折</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-tv"
+                       style="color:rgba(39, 96, 175, 1)"></i>
+                    <div class="sliderbar-box-text">蝦皮3C家電</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-9"
+                       style="color:rgba(239, 75, 43, 1)"></i>
+                    <div class="sliderbar-box-text">蝦皮超便宜</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-heart-pulse"
+                    style="color:rgba(79, 151, 136, 1)"></i>
+                    <div class="sliderbar-box-text">保健館</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-house"
+                    style="color:rgba(83, 166, 152, 1)"></i>
+                    <div class="sliderbar-box-text">蝦皮家居</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-ticket"
+                    style="color:rgba(219, 89, 58, 1)"></i>
+                    <div class="sliderbar-box-text">電子票卷與繳費</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-earth-americas"
+                    style="color:rgba(83, 167, 154, 1)"></i>
+                    <div class="sliderbar-box-text">蝦皮海外直送</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-credit-card"
+                    style="color:rgba(220, 89, 59, 1)"></i>
+                    <div class="sliderbar-box-text">刷卡＆銀行優惠</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-crown"
+                    style="color:rgba(175, 62, 65, 1)"></i>
+                    <div class="sliderbar-box-text">口碑賣家</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-gift"
+                    style="color:rgba(42, 84, 163, 1)"></i>
+                    <div class="sliderbar-box-text">蝦皮消消樂</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-bag-shopping"
+                    style="color:rgba(220, 89, 59, 1)"></i>
+                    <div class="sliderbar-box-text">月餅轉捐免運費</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-brands fa-shopify"
+                       style="color:rgba(208, 1, 28, 1)"></i>
+                    <div class="sliderbar-box-text">蝦皮商城</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-cart-plus"
+                       style="color:rgba(23, 85, 169, 1)"></i>
+                    <div class="sliderbar-box-text">蝦皮超市</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-shop"
+                       style="color:rgba(238, 77, 45, 1)"></i>
+                    <div class="sliderbar-box-text">店到店$99免運</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-ghost"
+                       style="color:rgba(238, 77, 45, 1)"></i>
+                    <div class="sliderbar-box-text">台灣文創館</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-calendar"
+                       style="color:rgba(214, 48, 63, 1)"></i>
+                    <div class="sliderbar-box-text">蝦皮團購</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-shirt"
+                    style="color:rgba(220, 156, 58, 1)"></i>
+                    <div class="sliderbar-box-text">輕奢時尚館</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-box-open"
+                       style="color:rgba(83, 166, 152, 1)"></i>
+                    <div class="sliderbar-box-text">限時搶5折卷</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-recycle"
+                    style="color:rgba(219, 90, 57, 1)"></i>
+                    <div class="sliderbar-box-text">蝦幣10倍送</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-book-open"
+                    style="color:rgba(198, 64, 69, 1)"></i>
+                    <div class="sliderbar-box-text">蝦皮書城</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-baby-carriage"
+                    style="color:rgba(229, 129, 102, 1)"></i>
+                    <div class="sliderbar-box-text">蝦皮媽咪會員</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-ankh"
+                    style="color:rgba(83, 168, 153, 1)"></i>
+                    <div class="sliderbar-box-text">最強活動合集</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-utensils"
+                    style="color:rgba(197, 64, 69, 1)"></i>
+                    <div class="sliderbar-box-text">美食外送</div>
+                </div>
+                <div class="sliderbar-box">
+                    <i class="fa-solid fa-user-check"
+                    style="color:rgba(220, 89, 59, 1)"></i>
+                    <div class="sliderbar-box-text">蝦皮實名認證</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 三個廣告 -->
+        <div class="threepic">
+            <div class="squarebox">
+                <img src="/HTML/images/messageImage_1660627081619.jpg" alt="">
+            </div>
+            <div class="squarebox middle">
+                <img src="/HTML/images/messageImage_1660627103282.jpg" alt="">
+
+            </div>
+            <div class="squarebox">
+                <img src="/HTML/images/messageImage_1660627118256.jpg" alt="">
+            </div>
+        </div>
+        <!-- 大廣告欄 -->
+        <div class="orange">
+            <img src="/HTML/mywork/shopee-orange.png" alt="">
+        </div>
+    </div>
+</body>
+</html>

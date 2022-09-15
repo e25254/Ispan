@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mynote-pratice</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        .allnote{
+            border: 1px solid #ccc;
+            height: 100%;
+            margin: 40px auto;
+            width: 80%;
+        }
+        .btngroup{
+            display: flex;
+            flex-direction: column;
+        }   
+        .showall-b{
+            border-bottom: 1px solid black;
+        }
+        .todaylabel{
+            text-align: center;
+        }
+        .todayclass{
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container allnote">
+        <div class="my-3">
+            <h1>備忘錄</h1>
+        </div>
+        <div>
+            <p>記事：</p>
+        </div>
+        <div class="my-3">
+            <input type="text" name="" id="noteinput">
+        </div>
+        <div class="my-3">
+            <p>日期：</p>
+        </div>
+        <div class="d-flex">
+            <input type="date" id="dateinput" class="mr-5" >
+            <div class="d-flex todayclass">
+                <input type="checkbox" name="" id="today" class="mr-2" onclick="disableDate()">
+                <label for="today" class="todaylabel mb-0">今天日期</label>
+            </div>
+        </div>
+        <div class="my-3">
+            <p>時間：</p>
+        </div>
+        <div class="d-flex">
+            <input type="time" name="" id="timeinput" class="mr-5">
+            <div class="d-flex todayclass">
+                <input type="checkbox" name="" class="mr-2" id="now" onclick="disableTime()">
+                <label for="now"  class="todaylabel mb-0">現在時間</label>
+            </div>
+        </div>
+        <div class="btngroup my-3">
+            <input class="my-3" id="addbtn" type="button" value="新增">
+            <input class="my-3" id="delbtn" type="button" value="刪除最後一個">
+        </div>
+        <div class="list my-3">
+            <div class ="showall my-3 ">
+                <p>記事：</p>
+                <p>時間：</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let noteinput = document.getElementById('noteinput')
+        let dateinput = document.getElementById('dateinput')
+        let timeinput = document.getElementById('timeinput')
+        let addbtnbox = document.getElementById('addbtn')
+        let delbtnbox = document.getElementById('delbtn')
+        let allnote = []
+        let showall = document.querySelector('.showall')
+        let today = document.querySelector('#today')
+        let now = document.querySelector('#now')
+
+
+
+        addbtnbox.addEventListener('click',function(){
+            let note = noteinput.value;
+            let time;
+            let date;
+            if ((dateinput.value == "")&&(!today.checked)){
+                date = todayIsBirthday();
+            }else if (!today.checked){
+                date = dateinput.value
+            }else if (today.checked){
+                date = todayIsBirthday()
+            }
+      
+            if ((timeinput.value == "") && (!now.checked)){
+                time = rightNow();
+            }else if (!now.checked){
+                time = timeinput.value
+            }else if (now.checked){
+                time = rightNow()
+            }
+
+            allnote.unshift({note,date,time})
+            showList();
+        })
+
+
+
+        delbtnbox.addEventListener('click',function(){
+            let note = noteinput.value;
+            let date;
+            let time = timeinput.value;
+            allnote.shift({note,date,time})
+            showList();
+        })
+        function showList(){
+            let show = ""
+            allnote.forEach(function(value){
+                show = show + `
+                <div class = "showall my-3 showall-b">
+                    <p>記事：${value.note}</p>
+                    <p>時間：${value.date}&nbsp&nbsp&nbsp&nbsp${value.time}</p>
+                </div>
+                `
+            })
+            showall.innerHTML = show
+        }
+        
+        // console.log(today.checked);
+
+        function disableDate(){
+            if (today.checked){
+                dateinput.disabled = true
+
+            }
+            else{
+                dateinput.disabled = false
+            }
+        }
+
+        function disableTime(){
+            if (now.checked){
+                timeinput.disabled = true;
+            }
+            else{
+                timeinput.disabled = false;
+            }
+        }
+        
+        function todayIsBirthday(){
+            let fulldate = new Date()
+            let yyy = fulldate.getFullYear()
+            let mmm = (fulldate.getMonth() + 1) >= 10 ? (fulldate.getMonth() + 1) : ('0' + (fulldate.getMonth() + 1))
+            let ddd = fulldate.getDate() >= 10 ? fulldate.getDate() : '0' +  (fulldate.getDate())
+            let todayisbirthday = `${yyy}-${mmm}-${ddd}`
+            return todayisbirthday;
+        }
+
+        function rightNow(){
+            let fulltime = new Date()
+            let hour = (fulltime.getHours()) >= 10 ? (fulltime.getHours()) : ('0'+fulltime.getHours())
+            let min = (fulltime.getMinutes()) >= 10 ? (fulltime.getMinutes()) : ('0'+fulltime.getMinutes())
+            let rightnow = `${hour}:${min}`
+            return rightnow;
+        }
+
+
+
+
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DynamicStyle</title>
+    <style>
+        h1{
+            color: red;
+        }
+        .s1{
+            color : green
+        }
+        .s2{
+            color : red
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Style Change</h1>
+    <script>
+        let theh = document.querySelector('h1');
+        // theh.addEventListener('mouseover',function(){
+        //     theh.className = 's1'
+        // })
+        // theh.addEventListener('mouseout',function(){
+        //     theh.className = 's2'
+        // })
+        theh.insertAdjacentHTML('AfterBegin','11')  //文字前
+        theh.insertAdjacentHTML('BeforeEnd','22')   //文字後
+        theh.insertAdjacentHTML('BeforeBegin','33') //h1標籤前
+        theh.insertAdjacentHTML('AfterEnd','44')    //h1標間後
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 300px;
+        }
+        .camera{
+            width: 320px;
+            height: 320px;
+            perspective: 6000px;
+            perspective-origin: center -500px;
+            /* overflow:hidden */
+        }
+        .box{
+            transform-style: preserve-3d;
+            transition: 1s;
+            animation: six 15s infinite linear;
+        }
+        .box:hover{
+            transform: rotateY(-60deg);
+
+        }
+        .card{
+            width: 320px;
+            height: 320px;
+            position: absolute;
+            background-size: cover;
+            background-position: center center;
+            backface-visibility: hidden;
+           
+        }
+        .one{
+            background-image:url(640x640/seafood640.jpg);
+            transform: rotateY(0deg)translateZ(280px);
+        }
+        .two{
+            background-image:url(640x640/steak640.jpg);
+            transform: rotateY(60deg)translateZ(280px);
+        }
+        .three{
+            background-image:url(640x640/pasta640.jpg);
+            transform: rotateY(120deg)translateZ(280px);
+        }
+        .four{
+            background-image:url(640x640/drink640.jpg);
+            transform: rotateY(180deg)translateZ(280px);
+        }
+        .five{
+            background-image:url(640x640/soup640.jpg);
+            transform: rotateY(240deg)translateZ(280px);
+        }
+        .six{
+            background-image:url(640x640/dessert640.jpg);
+            transform: rotateY(300deg)translateZ(280px);
+        }
+
+
+        @keyframes six {
+            from{
+                transform: rotateY(0);
+            }
+            to{
+                transform: rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="camera">
+        <div class="box">
+            <div class="card one"></div>
+            <div class="card two"></div>
+            <div class="card three"></div>
+            <div class="card four"></div>
+            <div class="card five"></div>
+            <div class="card six"></div>
+        </div>
+    </div>
+</body>
+</html>

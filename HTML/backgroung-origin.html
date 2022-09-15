@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .box{
+                max-width: 300px;
+                min-height: 300px;
+                margin: 10px;
+                padding: 20px;
+                background: url(/css/images/nook.jpg) no-repeat;
+                background-size: contain;
+                
+                border: 10px red dashed;
+            }
+            .border-box{
+                background-origin: border-box;
+            }
+
+            .content-box{
+                background-origin: content-box;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box"></div>
+        <div class="box border-box"></div>
+        <div class="box content-box"></div>
+    </body>
+    </html>
+</body>
+</html>

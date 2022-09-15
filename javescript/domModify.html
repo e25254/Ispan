@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>domModify</title>
+</head>
+<body>
+    <input type="button" value="新增" id="btncreate">
+    <input type="button" value="新增圖片" id="btnaddimg">
+    <input type="button" value="刪除" id="btndelete" disabled>
+    <input type="button" value="刪除所有" id="btndeleteall" disabled>
+    <div id="mydiv"></div>
+    <!-- <img src="/HTML/images/1.png" alt=""> -->
+
+    <script>
+        let mydiv = document.querySelector('#mydiv')
+
+        // 新增
+
+        document.querySelector('#btncreate').addEventListener('click',function(){
+
+            let eleH3 = document.createElement('h3')             //建立一個 h3 的元素
+
+            let txtH3 = document.createTextNode('Hello Dom')     //建立一個文字的元素
+
+            eleH3.appendChild(txtH3)                             //把文字元素塞進 h3 元素裡
+
+            mydiv.appendChild(eleH3)                             //把 h3 元素塞進div裏
+
+            document.querySelector('#btndelete').removeAttribute('disabled') //刪除掉 btndelete裡的disabled屬性
+        })
+
+        //新增一個圖片
+
+        document.querySelector('#btnaddimg').addEventListener('click',function(){
+            
+            let eleImg = document.createElement('img')          //建立一個 img 的元素
+
+            eleImg.setAttribute('src' , '/HTML/images/1.png')   //設定 img 元素的屬性質 （src , '路徑'）
+
+            mydiv.appendChild(eleImg)                           //把 eleImg 元素塞進div裏
+
+            document.querySelector('#btndelete').removeAttribute('disabled') //刪除掉 btndelete裡的disabled屬性
+        })
+
+        // 刪除文字
+
+        document.querySelector('#btndelete').addEventListener('click',function(){
+
+            let delH3 = document.querySelector('h3')            //選擇要刪除的 h3 標籤
+
+            let delImg = document.querySelector('img')          //選擇要刪除的 img標籤
+
+            // delH3.parentNode.removeChild(delH3)                 //叫父層去刪除子層 delh3
+
+            if(mydiv.hasChildNodes()){
+                (delImg.parentNode.removeChild(delImg)) || (delH3.parentNode.removeChild(delH3))
+            }
+        })
+    
+
+        //刪除所有子節點
+
+        document.querySelector('#btndeleteall').addEventListener('click',function(){
+
+            while( mydiv.hasChildNodes()){                      //當 mydiv裏有偵測到子層節點的時候
+
+                mydiv.removeChild(mydiv.lastChild)              //移除所有mydiv裡的最後一個節點
+
+            }
+        })
+
+
+
+
+        
+    </script>
+</body>
+</html>

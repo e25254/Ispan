@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            outline: 1px solid #ccc;
+        }
+        .wrap{
+            display: grid;
+            grid-template-columns: 100px 1fr 300px;
+            grid-template-rows: 100px 400px 200px;
+            grid-template-areas: 
+            "header header header"
+            "menu content content2"
+            "menu footer footer";
+        }
+        .header{
+            grid-area: header;
+        }
+        .menu{
+            grid-area: menu;
+        }
+        .content{
+            grid-area: content;
+        }
+        .content2{
+            grid-area: content2;
+        }
+        .footer{
+            grid-area: footer;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="header autobg">header</div>
+        <div class="menu autobg">menu</div>
+        <div class="content autobg">content</div>
+        <div class="content2 autobg">content2</div>
+        <div class="footer autobg">footer</div>
+    </div>
+
+
+
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script>
+     function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max - 50) + 100);
+    }
+    
+    function getRBGA() {
+        return `linear-gradient(135deg, rgba(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)},.5), rgba(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)},.8)`
+    }
+    
+    const elements = document.querySelectorAll('.autobg');
+    
+    Array.from(elements).forEach((element, index) => {
+        element.style.backgroundImage = getRBGA();
+    });
+    
+    // $('.autobg').each(function (index, currentElement) {
+    //     currentElement.style.backgroundImage = getRBGA();
+    // });
+    </script>
+</body>
+</html>

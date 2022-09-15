@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        ul{
+            list-style: none;
+            list-style-image: url(icon/16x16.jpg);
+            list-style-position: inside;
+        }
+        ol li{
+            list-style: none;
+            line-height: 26px;
+            padding-left: 30px;
+            background: url(icon/key_FILL0_wght100_GRAD-25_opsz20.png) no-repeat 0;
+            list-style-position: inside;
+        }
+        .btn a {
+            background-color: rgb(50, 206, 206);
+            margin: 10px;
+            padding: 10px 32px;
+            border-radius: 10px;
+            color: aliceblue;
+        }
+        .btn a:hover{
+            background-color: rgb(25, 129, 129);
+            color: rgb(179, 255, 0);
+        }
+        .more .btn {
+            margin:40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- ul>li{Item$$}*3 -->
+    <ul class="s1">
+        <li>Item</li>
+        <li>Item</li>
+        <li>Item</li>
+    </ul>
+    <!-- ol>li{Item$$}*3 -->
+    <ol>
+        <li>Item01</li>
+        <li>Item02</li>
+        <li>Item03</li>
+    </ol>
+    <!-- dl>(dt+dd*2)+(dt+dd*2) -->
+    <dl>
+        <dt>咖啡</dt>
+           <dd>美式咖啡</dd>
+           <dd>拿鐵咖啡</dd>
+        <dt>茶</dt>
+           <dd>水果茶</dd>
+           <dd>黑醋栗茶</dd>
+    </dl>
+    <ol>
+        <li class="btn">
+            <a href="">Btn</a>
+            <a href="">Btn</a>
+            <a href="">Btn</a>
+            <a href="">Btn</a>
+        </li>
+    </ol>  
+    <ol class="more">
+        <li class="btn"><a href="">btn</a></li>
+        <li class="btn"><a href="">btn</a></li>
+        <li class="btn"><a href="">btn</a></li>
+        <li class="btn"><a href="">btn</a></li>
+        <li class="btn"><a href="">btn</a></li>        
+    </ol>
+</body>
+</html>

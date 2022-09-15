@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+</head>
+<body>
+    <h1>aaaa</h1>
+    <ul>
+        <li>aaaa</li>
+        <li>bbbb</li>
+        <li>cccc</li>
+        <li>dddd</li>
+        <li>eeee</li>
+    </ul>
+    <script>
+        let theh = document.querySelector('h1')
+        let theul = document.querySelector('ul')
+        //元素節點
+
+        console.log(theh.nodeType);     //1
+        console.log(theh.nodeName);     //h1
+        console.log(theh.nodeValue);    //? null
+
+        //文字節點
+
+        console.log(theh.firstChild.nodeType);    //3
+        console.log(theh.firstChild.nodeName);    //? #text
+        console.log(theh.firstChild.nodeValue);   //aaaa
+        console.log(theh.textContent);            //aaaa
+        console.log(theh.innerHTML);              //aaaa
+
+        //選擇子層關係
+
+        // for( let i = 0 , max = theul.childNodes.length ; i < max ; i ++){
+        //     if( theul.childNodes[i].nodeType === 1 ){
+        //         console.log(theul.childNodes[i].nodeName);
+        //         console.log(theul.childNodes[i].firstChild.nodeValue);
+        //     }
+        // }
+
+        console.log(theul.childNodes[5].firstChild.nodeValue);                                  //cccc
+        console.log(theul.childNodes[5].previousSibling.previousSibling.firstChild.nodeValue);  //bbbb
+        console.log(theul.childNodes[5].nextSibling.nextSibling.firstChild.nodeValue);          //dddd
+
+
+
+
+
+    </script>
+</body>
+</html>

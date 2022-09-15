@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>showarray</title>
+</head>
+<body>
+    <div id="mydiv"></div>
+    <ul id="myul"></ul>
+    <script>
+
+        //陣列
+
+        let arr1 = [{ "name": "Tom", "workYears": 3, "salary": 35000 },
+                    { "name": "Jack", "workYears": 5, "salary": 40000 },
+                    { "name": "Fiona", "workYears": 3, "salary": 37000 },
+                    { "name": "Mary", "workYears": 7, "salary": 45000 }]
+
+        //排序（按照薪資排）
+
+        arr1.sort(function(a,b){
+            if(a.salary > b.salary){
+                return 1
+            }
+            else if (b.salary > a.salary){
+                return -1
+            }
+        })
+
+        //篩選（篩選年薪四萬以上）
+
+        let arr1fliter = arr1.filter(function(value,index,array){
+            if(value.salary >= 40000){
+                return value;
+            }
+        })
+
+        //將篩選後的一列一列印在html上
+
+        let showarr1fliter = arr1fliter.map(function(value , index , array){
+            let {name , workYears , salary} = value
+            return(
+                `<li>${name} - ${workYears}y - ${salary}$</li>`
+            )
+        })
+        document.getElementById('myul').innerHTML = showarr1fliter.join('')
+
+
+        // console.log(arr1fliter);
+    </script>
+</body>
+</html>

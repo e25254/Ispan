@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="degreetext">
+
+    <script>
+        function temperatureConvert(degree, type) {
+            let degreeChange = 0;
+            if (type === 'c') {
+                degreeChange = degree * (9 / 5) + 32;
+            } else if (type === 'f') {
+                degreeChange = (degree - 32) * 5 / 9;
+            }
+            return degreeChange;
+        }
+
+        let degreetext = document.getElementById('degreetext');
+
+        degreetext.addEventListener('blur', function () {
+            let x = degreetext.value;
+            let degree = temperatureConvert( x , 'f');
+            if (degree > 35) {
+                alert('開冷氣');
+            }
+            else {
+                alert('開風扇')
+            }
+
+        })
+
+        // let x = 123
+        // let degree = temperatureConvert(x , 'f');
+        // if ( degree > 35){
+        //     alert('開冷氣');
+        // }
+        // else{
+        //     alert('開風扇')
+        // }
+
+    </script>
+
+</body>
+
+</html>

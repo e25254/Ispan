@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>travelSearch-pratice</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-3"></div>
+            <div class="col ">
+                <input type="text" class="form-control mb-3" id="travelSearch" placeholder="Where you want to go?">
+                <div class="list-group" id="datalist">
+                    <!-- <button type="button" class="list-group-item list-group-item-action ">
+                      Cras justo odio
+                    </button>
+                    <button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
+                    <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
+                    <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
+                    <button type="button" class="list-group-item list-group-item-action" disabled>Vestibulum at eros</button> -->
+                  </div>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+    <script src="/javescript/travel.js"></script>
+
+    <script>
+
+        let search = document.querySelector('#travelSearch')
+        let list = document.querySelector('#datalist')
+
+
+        search.addEventListener('input',function(event){
+            while(list.hasChildNodes()){
+                list.removeChild(list.lastChild)
+            }
+            let keyword = event.target.value
+            let travelfilter = travel.filter(function(value,index,array){
+                return value.Name.indexOf(keyword) !== -1
+            })
+            // console.log(travelfilter);
+            let frag = document.createDocumentFragment()
+            travelfilter.forEach(function(value,index,array){
+                let {Name} = value
+                // console.log(Name);
+                let btn = document.createElement('button')
+                btn.setAttribute('type','button')
+                btn.classList.add('list-group-item','list-group-item-action')
+                let btntxt = document.createTextNode(Name)
+                btn.appendChild(btntxt)
+                frag.appendChild(btn)
+            })
+            list.appendChild(frag)
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+        // let search = document.querySelector('#travelSearch')
+        // let list = document.querySelector('#datalist')
+
+        // search.addEventListener('input',function(event){
+        //     while( list.hasChildNodes()){
+        //         list.removeChild(list.lastChild);
+        //     }
+        //     let keyword = event.target.value;
+        //     let travelChoose = travel.filter(function(value,index,array){
+        //         return value.Name.indexOf(keyword) !== -1;
+        //     })
+        //     let docFrag = document.createDocumentFragment();
+        //     travelChoose.forEach(function(value,index,array){
+        //         let {Name} = value;
+        //         let btn = document.createElement('button')
+        //         btn.setAttribute('type','button');
+        //         btn.classList.add('list-group-item','list-group-item-action')
+        //         let btntxt = document.createTextNode(Name);
+        //         btn.appendChild(btntxt)
+        //         docFrag.append(btn)
+                
+        //     })
+        //     list.appendChild(docFrag)
+        // })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>

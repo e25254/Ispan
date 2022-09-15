@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            margin-top: 50px;
+            border: 1px solid rgb(0, 169, 211);
+            height: 200px;
+            width: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="heighttext" placeholder="身高(cm)">
+
+    <input type="text" id="weighttext" placeholder="體重(kg)">
+    
+    <input type="button" id="btn" value="BMI計算">
+    <div class='box'>
+        <span id="bmi" style="color: #0ac4f7;font-size: 36px;"></span>
+        <span id="bmitext" style="color: #b80af7;font-size: 36px;"></span>
+
+    </div>
+
+    <script defer>
+        let heighttext = document.getElementById('heighttext');
+        let weighttext = document.getElementById('weighttext');
+        let btn = document.getElementById('btn');
+        let bmi = document.getElementById('bmi');
+        let bmitext = document.getElementById('bmitext');
+    //     let bmilog = 0;
+    //     a = 0
+    //   function b(){
+    //         bmilog = Number(weighttext.value / (heighttext.value/100 * heighttext.value/100));
+    //         console.log(bmilog);
+    //         bmi.innerHTML = bmilog;
+    //         return bmilog.value
+    //     }
+    //     a = btn.addEventListener('click', b());
+    //     console.log(a)
+
+
+        btn.addEventListener('click',function(){
+
+            //計算bmi
+
+            bmilog = Number(weighttext.value / (heighttext.value/100 * heighttext.value/100));
+            console.log(bmilog);
+            bmi.innerHTML = bmilog;
+
+            //比較
+
+            if(bmilog < 18.5){
+                bmitext.innerHTML = 'BMI ＜ 18.5：過輕'
+            }
+            else if(bmilog < 24 ){
+                bmitext.innerHTML = '18.5≦BMI＜24：正常'
+            }
+            else if(bmilog < 27 ){
+                bmitext.innerHTML = '24≦BMI＜27：過重'
+            }
+            else if(bmilog < 30 ){
+                bmitext.innerHTML = '27≦BMI＜30：輕度肥胖'
+            }
+            else if(bmilog < 35 ){
+                bmitext.innerHTML = '30≦BMI＜35：中度肥胖'
+            }
+            else if(bmilog >= 35){
+                bmitext.innerHTML = 'BMI≧35：重度肥胖'
+            }
+            else {
+                bmitext.innerHTML = '請輸入正確數值'
+            }
+            console.log(bmitext.innerHTML);
+        })
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <!-- <script src="imgopacity.js" defer></script> -->
+    <style>
+        .box{
+            position: relative;
+            top: 100px;
+            left: 300px;
+            height: 180px;
+            background-color: #ccc;
+            width: 180px;
+        }
+        #inputname{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <h1 id="myh"></h1>
+    <div id="mydiv"></div> -->
+
+    <!-- <label>姓名：<input id="inputname" type="text" placeholder="guest"></label>
+    <div id="mydiv"></div>
+    <div id="mydivblur" ></div> -->
+
+    <!-- <h1 id="myh">First JavaScript Demo</h1> -->
+
+    <!-- <img id="imgopacity" src="/HTML/600x400/Blue-Flower.jpg" alt=""> -->
+
+
+    <!-- <div>
+        <input type="text" id="boxinput">
+        <input type="button" id="boxbutton" value="按鈕">
+        <span style="color: red;" id="box"></span>
+    </div> -->
+
+
+
+    <!-- <div>請輸入美金
+        <input type="text" id="inputtext">
+    </div>
+    <div id="divtnd"> -->
+
+    <h1 id="myh"></h1>
+    <div id="mydiv">
+        <input type="text" id='inputname' placeholder="inputname">
+        <input type="button" value="button1" id="button1">
+    </div>
+    <div class="box"></div>
+    <ul id="empUl"></ul>
+    <script>
+        // const box = document.getElementById('box')
+        // const boxinput = document.getElementById('boxinput')
+        // const boxbutton = document.getElementById('boxbutton')
+
+        // ---------------------------------------------
+
+        // boxbutton.addEventListener('click',function(){
+        //     box.innerText = boxinput.value;
+        //     console.log(boxinput.value);
+        // })
+        // console.log(boxinput.value)
+
+        // ---------------------------------------------
+
+        // let number = 1;
+        // let score = 30.5;
+
+        // console.log(number * score);
+        // inputtext.addEventListener('blur',function(){
+        //     let usd = inputtext.value;
+        //     divtnd.innerText= usd*score;
+        // });
+
+        // let number2 = 2;
+        // let pi = 3.14159;
+        // let score2 = 10;
+
+        // console.log(number2 * pi * score2);
+
+        // ---------------------------------------------
+
+        // let name = 'Jack';
+        // let age = 30;
+        // console.log('Hello '+name+' ,you are '+age+' years old');
+
+        // console.log(`Hello ${name} ,you are ${age} years old.`);
+
+        // console.log('kwqerjiqwejr\\\roekroqer');   
+
+
+        // console.log('-----------------------------------')
+
+        // let balls = ["basketball","valleyball","baseball","football"];
+        // console.log(balls[0]);
+        // console.log(balls[1]);
+        // console.log(balls[2]);
+        // console.log(balls[3]);
+
+        // console.log('-----------------------------------')
+
+        // let employee = {
+        //     'name' : 'Jack' , 'age':30 , 'email' : 'jack@company.com'
+        // };
+        // console.log(employee.name);
+        // console.log(employee.age);
+        // console.log(employee.email);
+        // console.log(employee);
+
+        // console.log('-----------------------------------')
+
+        // let emps = [
+        //     {'name' : 'Jack' , 'age':30 , 'email' : 'jack@company.com'},
+        //     {'name' : 'mary' , 'age':20 , 'email' : 'mary@company.com'},
+        //     {'name' : 'allen' , 'age':29 , 'email' : 'allen@company.com'}
+        // ]
+        // console.log(emps[1].email);
+
+        // let empsl = {
+        //     'name': 'Jack' , 'age':10 , 'skill':['html' , 'css' , 'javascript']
+        // }
+        // console.log(empsl.skill[2])
+
+        // console.log('-----------------------------------')
+
+        // let employee = {"name" : "Jack", "age" : 30, "email":"jack@company.com" };
+        // let {name, email} = employee; //會將 Jack 放入 name,名稱只要有對應到
+        // console.log(name);
+        // console.log(email);
+
+        // console.log('-----------------------------------')
+
+        // let a ;
+        // console.log(typeof a);
+        // a = 1 ;
+        // console.log(typeof a);
+        // a = '1' ;
+        // console.log(typeof a);
+        // a = true ;
+        // console.log(typeof a);
+        // a = [] ;
+        // console.log(typeof a);
+        // a = {} ;
+        // console.log(typeof a);
+        // a = function() {};
+        // console.log(typeof a);
+
+        // console.log('-----------------------------------')
+
+        // let x = Number(window.prompt('請輸入數字',10));
+        // let y = Number(window.prompt('請輸入數字',10));
+        // console.log(x+y);
+
+
+
+        // console.log(parseInt("10",10));
+        // console.log(parseInt("1A",10));
+        // console.log(parseInt("1A",16));  //16+10
+        // console.log(parseInt("15.6",10));
+        // console.log(parseInt("A1",10));
+
+        // console.log('-----------------------------------')
+
+        // let a = 10;
+        // let b = 10 * a++;
+        // console.log(a);//11
+        // console.log(b);//100
+
+
+        // let a1 = 10;
+        // let b1 = 10 * ++a1;
+        // console.log(a1);//11
+        // console.log(b1);//110
+
+        // console.log('-----------------------------------')
+
+        // console.log(0.1 + 0.1 + 0.1) //0.30000000000000004
+
+        // console.log(0.2 * 3) //0.6000000000000001
+
+        // //小數點運算會不準 可以用第三方函式庫 ex:bignumber.js
+
+        // console.log('-----------------------------------')
+
+        // console.log(10 == "10") //true 
+        // console.log(10 === "10") //false
+        // console.log('a' > 'b') //false(unicode)
+        // console.log('a' > '5') //true(unicode)
+        // console.log('a' >  5) //false ”a”強制轉換為 NaN
+        // console.log(undefined == null) //true
+
+        // console.log('-----------------------------------')
+
+        // =    指定            
+        // ==   比較            10 =='10' true
+        // ===  嚴格比較         10 === '10' false
+
+        // console.log('-----------------------------------')
+
+        // let a = 5;
+        // a += 3; // a = a + 3
+        // console.log(a); //a = 8
+
+        // console.log('-----------------------------------')
+
+
+        // console.log('')  //   =>false
+        // console.log(!'') //   =>true
+        // console.log(!(2 > 1)) // =>false
+
+        // console.log('-----------------------------------')
+
+        // console.log(false && "abc"); //不會執行&&之後的程式
+        // console.log(true && "abc");
+        // console.log(false || "xyz");
+        // console.log(true || "xyz"); //不會執行||之後的程式
+
+        // let 有錢 = true
+        // let 夠帥 = false
+
+        // console.log(夠帥 && '有錢') //false
+        // 夠帥 = true
+        // console.log(夠帥 && '有錢') // 有錢
+        // 夠帥 = false
+        // console.log (夠帥 || '有錢') // 有錢
+        // 夠帥 = true
+        // console.log (夠帥 || '有錢') // true
+
+        // console.log('-----------------------------------')
+
+        // let name = ''
+        // console.log(name || 'guest') // =>  guest
+
+        // name = 'jack'
+        // console.log(name || 'guest') // =>  jack
+
+        // console.log('-----------------------------------')
+
+        // let age = 19 ;
+        // console.log( age > 18 ? '有投票權' : '還不行投票' );    //有投票權
+        // age = 15;
+        // console.log( age > 18 ? '有投票權' : '還不行投票' );    //還不行投票
+
+
+
+        // let isLogin = false ;
+        // console.log( isLogin ? '登出' : '請先登入');    //請先登入
+        // isLogin = true;
+        // console.log( isLogin ? '登出' : '請先登入');    //登出
+
+        // console.log('-----------------------------------')
+
+        // console.log(new Date().getHours()); //可以抓到現在幾點
+        // let hours = 13;
+        // if(hours <= 11){
+        //     console.log('早場票價為250');
+        // }
+        // else{
+        //     console.log('票價為300')
+        //     console.log('快賣完了');;
+        // }
+
+        // console.log('-----------------------------------')
+
+        // let num1 = Number(window.prompt('輸入數字１', 0));
+        // let num2 = Number(window.prompt('輸入數字2', 0));
+        // let num3 = Number(window.prompt('輸入數字3', 0));
+
+        // console.log('num1', num1);
+        // console.log('num2', num2);
+        // console.log('num3', num3);
+        // if (num1 > num2) {
+        //     if (num1 > num3) {
+        //         window.alert('num1最大');
+        //         console.log('num1最大');
+        //     }
+        // }
+        // else {
+        //     if (num2 > num3) {
+        //         console.log('num2最大');
+        //         window.alert('num2最大');
+        //     }
+        //     else {
+        //         if(num3 > num2){
+        //             console.log('num3最大');
+        //             window.alert('num3最大');
+        //         }
+        //         else{
+        //             console.log('一樣大');
+        //             window.alert('一樣大');
+        //         }
+        //     }
+        // }
+
+        //用else if 寫法
+
+        // if (num1 > num2 && num > num3) {
+        //     window.alert('num1最大');
+        // } else if (num2 > num1 && num2 > num3) {
+        //     window.alert('num2最大');
+        // } else if (num3 > num2 && num3 > num1) {
+        //     window.alert('num3最大');
+        // } else if (num1 == num2 && num2 == num3) {
+        //     window.alert('一樣大')
+        // } else {
+        //     window.alert('錯誤')
+        // }
+
+        //console.log('-----------------------------------')
+
+        // console.log(new Date().getDay()); // 0日-6六
+
+        // let theday = 2;
+        // let aday = '';
+        // switch (theday){
+        //     case 0 :
+        //         aday = '日';
+        //         break;
+        //     case 1 :
+        //         aday = '一';
+        //         break;
+        //     case 2 :
+        //         aday = '二';
+        //         break;
+        //     case 3 :
+        //         aday = '三';
+        //         break;
+        //     case 4 :
+        //         aday = '四';
+        //         break;
+        //     case 5 :
+        //         aday = '五';
+        //         break;
+        //     case 6 :
+        //         aday = '六';
+        //         break;    
+        //     default:
+        //         aday = '不知道一個禮拜只有七天嗎'
+        // }    
+        // console.log(`今天是星期${aday}`);
+
+        // console.log('-----------------------------------')
+
+        // for (let i = 0; i < 5; i++) {
+        //     //i < 5 會執行這裡的程式碼
+        //     console.log(i+'i love javascript');
+        // }
+
+
+
+        // let total = 0 ;
+        // for (let i = 1 ; i <= 123456 ; i++){
+        //     total +=i; //total = total + i
+        // }
+        // console.log(`1+2+3+.....+99+100 = ${total}`);
+
+        //console.log('-----------------------------------')
+
+        // 列出1-1000 不能被2整除也不能被3整除的數字
+        // for (let i = 1; i <= 1000; i++) {
+        //     if (i % 2 !== 0 && i % 3 !== 0) {
+        //         console.log(i);
+        //     }
+        // }
+
+        //console.log('-----------------------------------')
+
+        //九九乘法表
+
+        // for(let i = 1 ; i<=9 ;i++){
+        //     for(let j = 1 ; j<=10 ;j++){
+        //         document.write(`${i} * ${j} = ${i*j}<br>`)
+        //     }
+        // }
+
+        //console.log('-----------------------------------')
+
+        // let i = 1;
+        // let total = 0;
+        // while(i<=1000){
+        //     total+=i; //total = total + i 
+        //     i++;
+        // }
+        // console.log(`${total}`);
+
+        //console.log('-----------------------------------')
+
+        // for (let i = 5 ; i > 0 ; i--){
+        //     if (i === 3) {
+        //         continue;
+        //     }console.log(i);
+        // }
+
+        //console.log('-----------------------------------')
+
+        // while(true){
+        //     text = prompt('請輸入quit指令中斷程式');
+        //     if(text === 'quit'){
+        //         window.alert('再見');
+        //         break;
+        //     }
+        //     console.log(text);
+        // }
+
+        //console.log('-----------------------------------')
+
+        // let num = Math.random()
+        // console.log(num);   //亂數 0-1之間的值
+        // console.log(num*100);   //亂數 0-100之間的值
+        // let floornum = Math.floor(num*100);   //floor=無條件捨去
+        // console.log(floornum);
+
+        //console.log('-----------------------------------')
+
+        //陣列＋回圈
+
+        // let balls = ["basketball","valleyball","baseball","football","soccer","noball"];
+        // for (i = 0 , max = balls.length ; i < max ; i++ ) {
+        //     console.log(balls[i]);
+        // }
+
+        //console.log('-----------------------------------')
+
+        // let emps = [
+        //     {'name' : 'Jack' , 'age':30 , 'email' : 'jack@company.com'},
+        //     {'name' : 'mary' , 'age':20 , 'email' : 'mary@company.com'},
+        //     {'name' : 'allen' , 'age':29 , 'email' : 'allen@company.com'}
+        // ]
+
+        // for (let i = 0 , max = emps.length ; i < max ; i++){
+        //     let {name , age, email} = emps[i];
+        //     console.log('name',name);
+        //     console.log('age', age);
+        //     console.log('email',email);
+        // }
+
+        //console.log('-----------------------------------')
+
+        //for of
+
+        // let balls = ["basketball","valleyball","baseball","football","soccer","noball"];
+
+        // for( let ball of balls){
+        //     console.log(ball);
+        // }
+
+        //console.log('-----------------------------------')
+
+        //for in
+
+        // let balls = ["basketball","valleyball","baseball","football","soccer","noball"];
+
+        // for( let i in balls){
+        //     console.log(i);
+        //     console.log(balls[i]);
+        // }
+
+        // let emp = { "name": "Tom", "age": 30, "isSingle": true };
+        //         for (let key in emp) {
+        //             console.log(key); //name、age、isSingle
+        //             console.log(emp[key]);// Tom、30、true
+        //         }
+
+        //console.log('-----------------------------------')
+
+        //function
+
+        // function sayHi(){
+        //     console.log('Hello Function');
+        // }
+
+        // sayHi();
+        // sayHi();
+
+        // function celsiustoFahrenheit(degreeC){
+        //     let degreeF = degreeC * (9/5) + 32;
+        //     document.write(`攝氏 ${degreeC}°C 可以轉化成華式 ${degreeF}°F`)
+        // }
+        // celsiustoFahrenheit(20)
+
+        //console.log('-----------------------------------')
+
+        // let myh = document.getElementById('myh')
+        // let mydiv = document.getElementById('mydiv')
+        // let inputname = document.getElementById('inputname')
+        // let btn = document.getElementById('button1')
+
+        // function checkEmpty(item){
+        //     let name = item.trim();
+        //     if(name === ''|| name.length === 0){
+        //         return false
+        //     }
+        //     else{
+        //         return true
+        //     }
+        // }
+
+        // btn.addEventListener('click',function(){
+
+
+        //     let name = inputname.value;
+
+        //     ;
+
+        //     if(checkEmpty(name)){
+        //         alert(`Hello , ${name}`)
+        //     }
+        //     else{
+        //         alert('請輸入姓名')
+        //     }
+        // })
+
+        //console.log('-----------------------------------')
+
+        // let area =( w ,h ) => w * h;
+        // let dosomething = job => `do you ${job}` ;
+
+        // console.log(area(30,10));
+        // console.log(dosomething('love'));
+
+        //console.log('-----------------------------------')
+
+        //立即執行函示
+
+        // (function(width, height){
+        //     console.log(width * height);
+        // }(5, 6));
+
+        //console.log('-----------------------------------')
+
+        // function factorial(n){
+        //     if(n != 0){
+        //     return (n * factorial(n - 1));
+        //     }
+        //     return 1;
+        // }
+
+        // console.log(factorial(9));// 9 * 8 * 7 * 6 * 5 * 4 * 3 * 2 * 1 * 1 = 362880
+
+        //console.log('-----------------------------------')
+
+        // const inpName = document.getElementById("inputname");
+        // const btn = document.getElementById("button1");
+
+        // function checkEmpty(item){
+        //     let name = item.trim();
+        //     if(name === ''|| name.length === 0){
+        //         return false
+        //     }
+        //     else{
+        //         return true
+        //     }
+        // }
+
+
+        // function ccbbb() {
+        //     let name = inputname.value;
+
+
+        //     if (checkEmpty(name)) {
+        //         alert(`Hello ${name}`);
+        //     } else {
+        //         alert("請輸入姓名");
+        //     }
+
+
+        //     // // console.log(name.length);
+        //     // // console.log(name.length !== 0);
+        //     // if (name === "" || name.length === 0) {
+        //     //     alert("請輸入姓名");
+        //     // } else {
+        //     //     alert(`Hello ${name}`);
+        //     // }
+        // }
+        // btn.addEventListener("click", ccbbb);
+
+        //console.log('-----------------------------------')
+
+        // function fun1() {
+        //     console.log("登入成功相關事宜")
+        // }
+        // function fun2() {
+        //     console.log("尚未登入相關事宜")
+        // }
+
+        // function fun(f1, f2) {
+        //     let isLogin = true;
+        //     if (isLogin) {
+        //         f1();
+        //     } else {
+        //         f2();
+        //     }
+        // }
+        // function ccbbbF() {
+        //             console.log("fun...");
+        //         }
+
+        // fun(fun1, fun2);
+        // window.setTimeout(ccbbbF, 1000);
+
+        //console.log('-----------------------------------')
+
+        // function fun1(ccbbb) {
+        //     window.setTimeout(function () {
+        //         console.log("fun1");
+        //         ccbbb(fun5); //下下個function => fun5
+        //     }, 1000);
+
+        //     //檔案讀(FileReader)寫(x) => 效能不好
+        //     //透過Internet去要資料
+        // }
+        // function fun2(ccbbb) {
+        //     window.setTimeout(function () {
+        //         console.log("fun2");
+        //         ccbbb(fun1);
+        //     }, 1000);
+        // }
+        // function fun3(ccbbb) {
+        //     window.setTimeout(function () {
+        //         console.log("fun3");
+        //         ccbbb(fun2)
+        //     }, 1000);
+        // }
+        // function fun4(ccbbb) {
+        //     window.setTimeout(function () {
+        //         console.log("fun4");
+        //         ccbbb(fun3)
+        //     }, 1000);
+        // }
+        // function fun5(ccbbb) {
+        //     window.setTimeout(function () {
+        //         console.log("fun5");
+        //         ccbbb(fun4)
+        //     }, 1000);
+        // }
+
+
+        // fun1(fun3);
+
+        //console.log('-----------------------------------')
+
+        //argument
+
+        // function sayHi(name , age){
+        //     for ( let i = 0 , max = arguments.length ; i <max ; i ++)
+        //     console.log(arguments[i]);          //所有資料列出來
+        //     console.log(`Hello ${name}`,`u are ${age}`);    //照順序放資料進去
+        // }
+        // sayHi('Tom',30,'Tom@gmail.com','apple')
+
+        //console.log('-----------------------------------')
+
+        // 其餘運算子（...）
+
+        // function getSum(...vals){
+        //     let sum = 0 ; 
+        //     for (let i = 0 , max = vals.length ; i < max ; i++ ){
+        //         sum = sum + vals[i]; // sum += vals[i]
+        //     }
+        //     console.log(sum);
+        // }
+        // getSum( 1, 2, 3); //=6
+        // getSum( 1, 2, 3, 4); //=10
+
+        //console.log('-----------------------------------')
+
+        //展開運算子
+
+
+
+        //console.log('-----------------------------------')
+
+        // //具名參數
+
+        // function user ({name , email ,age}){
+        //     console.log(name , age , email);
+        // }
+        // user({
+        //     name:'mary' , email:'mary@gamil.com' , age:'30'
+        // })
+
+        //console.log('-----------------------------------')
+
+        // // 深淺拷貝
+
+        // let itemA = [ 'a' , 'b' , 'c' , {name:'Tom'}];
+        // let itemB = JSON.parse(JSON.stringify(itemA))
+        // itemB.push('d');
+        // itemB[3].name = 'jack'
+        // console.log(itemA);
+        // console.log(itemB);
+
+        //console.log('-----------------------------------')
+
+        // //isNaN is not a Number 不是數值
+        // console.log(isNaN("abcd")); //true
+        // console.log(isNaN("12")); //false
+        // let strUrl = "https://www.ispan.com.tw/?search=前端工程師&key=value&%@#$value";
+
+        // console.log(encodeURI(strUrl));
+        // console.log(encodeURIComponent(strUrl));
+        // console.log(decodeURIComponent("https%3A%2F%2Fwww.ispan.com.tw%2F%3Fsearch%3D%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB%26key%3Dvalue%26%25%40%23%24value"));
+
+        //console.log('-----------------------------------')
+
+        // let str = 'JavaScript'
+        // console.log(str.charAt(4));         //  S
+        // console.log(str.indexOf('a'));      //  1
+        // console.log(str.lastIndexOf('a'));  //  3
+        // console.log(str.indexOf('V'));      //  -1 找不到
+        // console.log(str.indexOf('Script')); //  4
+        // console.log(str.substr(4,6));       //    Script（第4個字元開始 , 取6個字元）
+        // console.log(str.substring(4,6));    //     Sc（從第4個字元開始 , 到第6個字元結束 不包含第6個字元）
+        // console.log(str.substring(4,10));   //     Script
+
+        //console.log('-----------------------------------')
+        // // 練習checkemail
+
+        // let inputname = document.getElementById('inputname')
+        // let btn = document.getElementById('button1')
+        // // let strMail = ".@abc@company.com.tw@."
+        // // let strMail =  inputname.value ;
+        // //檢查電子郵件是否正確
+        // let check1 ;
+        // let check2 ;
+        // function checkEmpty(item) {
+        //     let data = item.trim();
+        //     let isValid = true;
+        //     if (data === "" || data.length === 0) {
+        //         isValid = false;
+        //     }
+        //     return isValid;
+        // }
+
+        // function checkEmail(email){
+        //     let isValid = true;
+        //     if (email.indexOf('@') === -1 || email.indexOf('@') === 0 || email.indexOf('@') !== email.lastIndexOf('@') || email.indexOf("@") === email.length - 1){
+        //         isValid = false;
+        //     }
+        //     else if (email.indexOf(".") === -1 || email.indexOf(".") === 0 || email.indexOf(".") === email.length - 1) {
+        //         isValid = false;
+        //     }
+        //     else if (!checkEmpty(email)){
+        //         isValid = false;
+        //     }
+        //     else if (email.indexOf('.') < email.indexOf('@')){
+        //         isValid = false;
+        //     }
+        //     return isValid;
+        // }
+
+        // btn.addEventListener('click',function(){
+        //     let strMail =  inputname.value ;
+        //     console.log(checkEmail(strMail));
+        // })
+
+        //console.log('-----------------------------------')
+
+        // //Date物件
+
+        // let date = new Date()
+        // console.log(date);
+        // let day = ['日','一','二','三','四','五','六']
+        // console.log(date.getFullYear());
+        // console.log(date.getMonth() + 1); //回傳 0~11 後面要+1才是當月份
+        // console.log(date.getDate());
+        // console.log(`星期${day[date.getDay()]}`); // 用陣列方式去取得 0~6的數值 對應到中文日～六
+        // console.log(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`);
+
+        //console.log('-----------------------------------')
+
+        // //計算年紀
+
+        // function calcAge(birthday){
+        //     let birth = new Date(birthday);
+        //     let today = new Date();
+        //     let age = Math.floor((today - birth) / (365.2425 * 24 * 60 * 60 * 1000))
+        //     console.log(age);
+        // }
+        // calcAge('2001/05/22')
+        // calcAge('1998/04/09')
+
+        //console.log('-----------------------------------')
+
+        // // 計算過了幾天
+
+        // function countDay(theday){
+        //     let day = new Date(theday);
+        //     let today = new Date();
+        //     let countDat = Math.floor((today - day) / (24 * 60 * 60 * 1000))
+        //     console.log(countDat);
+        // }
+        // countDay('2021/09/19')
+
+        //console.log('-----------------------------------')
+
+        // let re = /a/gi;
+        // let str = 'JavaScript JAVA';
+        // let result = str.match(re);
+        // console.log(result);
+
+        //console.log('-----------------------------------')
+
+        //檢查身分證(RegExp物件)
+
+        // var re = /[a-z]{1}[1-2]{1}\d{8}$/;
+        // console.log(re.test('a123456789'));
+        // console.log(re.test('a323456789'));
+        // console.log(re.test('1a23456789'));
+        // console.log(re.test('x123456789'));
+        // console.log(re.test('a112323456789'));
+
+        //console.log('-----------------------------------')
+
+        // google search = 'regexlib.com' 別人做出來的regexp檢查工具
+
+        // re = /^.+@.+\..{2,3}$/;
+
+        // ^   比對開頭字元 
+        // .+  任何字元出現一次以上    #@company.com
+        // @   直接出現小老鼠
+        // \.  打出.
+        // .{2,3} 任何字元出現兩次或三次以上
+        // $   比對結束字元
+
+        //console.log('-----------------------------------')
+
+        // //陣列
+
+        // let arr1 = [ 'a' , 'b' , 'c' , 'd' , 'e' , 'f' ];
+        // let arr2 = [ 'x' , 'y' , 'z']
+        // for( let i = 0 , max = arr1.length ; i < max ; i++){    //秀出全部陣列
+        //     console.log( arr1[i] );
+        // }
+        // arr1.push('0')
+        // console.log(arr1);
+        // arr1.pop()
+        // console.log(arr1);
+        // arr1.unshift('0')
+        // console.log(arr1);
+        // arr1.shift()
+        // console.log(arr1);
+        // console.log(arr1.indexOf('c') + 1);
+        // arr3 = arr1.concat(arr2)
+        // console.log(arr3);
+
+        //console.log('-----------------------------------')
+
+        // //逐一列出陣列元素
+
+        // let arr1 = ['baseball','valleyball','football','baseball','basketball','footerball']
+
+        // arr1.forEach(function(value,index,array){
+        //     console.log(`${value} - ${index}`);
+        // })
+
+        // //取出不重複陣列
+
+        // let result1 = arr1.filter(function(value,index,array){
+        //     // return index === arr1.indexOf(value)
+        //     if(index === arr1.indexOf(value)){
+        //         return true
+        //     }
+        // })
+        // console.log('result1',result1);
+
+        // //取出偶數陣列
+
+        // let result2 = arr1.filter(function(value,index,array){
+        //     if (index % 2 == 0){
+        //         return value
+        //     }
+        // })
+        // console.log('result2',result2);
+
+        // // map 改陣列數值
+
+        // let balls = ["basketball","valleyball","baseball","football"];
+        // let result = balls.map(function(value,index, array){
+        // return `${index + 3}.${value}`;
+        // })
+        // console.log(result);
+
+        //console.log('-----------------------------------')
+        
+        // let arr1 = [1, 5, 7, 13, 123, 9 , 123]
+        // arr1.sort(function( a, b ){
+        //     if (( a - b ) > 0){
+        //         return 1
+        //     }
+        //     else if (( a - b ) < 0){
+        //         return -1
+        //     }
+        // })
+        // console.log(arr1);
+        
+        // let arr2 = [ 'a' ,'b' , 'f', 'c' ,'b' , 'd', 'a']
+        // arr2.sort(function(a, b){
+        //     if( a > b ){
+        //         return 1
+        //     }
+        //     else if ( b > a ){
+        //         return -1
+        //     }
+        // })
+        // console.log(arr2);
+
+        //console.log('-----------------------------------')
+        
+        // let arr1 = [{ "name": "Tom", "workYears": 3, "salary": 35000 },
+        //             { "name": "Jack", "workYears": 5, "salary": 40000 },
+        //             { "name": "Fiona", "workYears": 3, "salary": 37000 },
+        //             { "name": "Mary", "workYears": 7, "salary": 45000 }]
+        // //排序
+        // arr1.sort(function(a,b){    
+        //     if ((a.workYears - b.workYears) > 0 ){
+        //         return 1
+        //     }
+        //     else if ((a.workYears - b.workYears) < 0 ){
+        //         return -1
+        //     }
+        // })
+
+        // //只顯示超過五年以上的
+        // let datafilter = arr1.filter(function(value , index ,array){
+        //     if (value.workYears >= 5){ 
+        //         console.log(value);
+        //         return value
+        //     }
+            
+        // })
+        // console.log(datafilter);
+
+        // let data1 = arr1.map(function(value,index,array){
+        //     let {name , workYears , salary} = value;
+            
+        //     return (
+        //         `<li>${name}-${workYears}y-${salary}</li>`
+        //     )
+        // })
+        // // document.getElementById('empUl').innerHTML = data1.join('')
+        
+        // let data2 = datafilter.map(function(value,index,array){
+        //     let {name , workYears , salary} = value;
+        //     return(
+        //         `<li>${name}-${workYears}y-${salary}</li>`
+        //     )
+        // })
+        // document.getElementById('empUl').innerHTML = data2.join('')
+
+        //console.log('-----------------------------------')
+        
+        //事件物件
+
+        // document.querySelector('.box').addEventListener('mousedown',function(abx){
+        //     // console.log(abx);
+        //     // console.log(abx.target);
+        //     switch(abx.button){
+        //         case 0 :
+        //             console.log('左鍵');
+        //             break;
+        //         case 2 :
+        //             console.log('右鍵');
+        //             break;
+        //     }
+        // })
+
+        // document.addEventListener('mousedown',function(abx){
+            // console.log(abx.screenX , abx.screenY); //  整個螢幕
+            // console.log(abx.clientX , abx.clientY); //  document 左上是 (0 , 0)
+        // })
+        // document.querySelector('.box').addEventListener('mousedown',function(abx){
+        //     console.log(abx.offsetX , abx.offsetY);    //  這個div裡的左上是 (0 , 0)
+        //     console.log(abx.target.offsetLeft , abx.target.offsetTop);  //這個div是相對於這個document位置
+        // })
+
+        // document.addEventListener('contextmenu',function(){     //取消右鍵選單
+        //     event.preventDefault()
+        // })
+
+        //console.log('-----------------------------------')
+            
+        // //偵測鍵盤事件
+
+        // let t1 = document.getElementById('inputname')
+        // t1.addEventListener('keypress',function(event){
+        //     console.log(event);
+        //     console.log(event.which);
+        // })
+
+        //console.log('-----------------------------------')
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            transition: .5s;
+        }
+        .transform:hover{
+            transform: translate(30px, 70px);
+        }
+        .rotate:hover{
+            transform:rotate(1440deg);
+        }
+        .scale:hover{
+            transform:scale(2);
+        }
+        .skew:hover{
+            transform:skew(50deg);
+        }
+        .Shuriken:hover{
+            transform: translate(200px,200px)
+                        rotate(1440deg);
+        }
+        .imgrotate{
+            object-fit: cover;
+            overflow: hidden;
+
+        }
+        img {
+            width: 100%;
+        }
+        .imgrotate:hover .test{
+            transform: scale(2)translate(20px,20px);
+            transition: .5s;
+        }
+        .imgrotate2{
+            background: url(images/1.png) no-repeat center center / cover;
+            overflow: hidden;
+        }
+        .imgrotate2:hover{
+            transform: scale(2);
+            transition: .5s;
+        }
+        .bigbox{
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+        }
+        .box1{
+            background-color: rgb(255, 115, 80);
+
+        }.box2{
+            background-color: rgb(252, 167, 56);
+
+        }.box3{
+            background-color: rgb(252, 255, 77);
+
+        }.box4{
+            background-color: rgb(59, 255, 76);
+
+        }
+        .anotherbox:hover .box1{
+            transform: translateX(100px)rotate(1440deg);
+            /* transform-origin: 0px 0px ; */
+        }.anotherbox:hover .box2{
+            transform: translateX(100px)rotate(1440deg);
+        }.anotherbox:hover .box3{
+            transform: translateX(100px)rotate(1440deg);
+        }.anotherbox:hover .box4{
+            transform: translateX(100px)rotate(1440deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box transform"></div>
+    <div class="box rotate"></div>
+    <div class="box scale"></div>
+    <div class="box skew"></div>
+
+    <div class="box Shuriken"></div>
+    <div class="box imgrotate">
+        <img  class=" test"src="images/1.png" alt="">
+    </div>
+    <div class="bigbox">
+        <div class="box imgrotate2"></div>
+    </div>
+    <div class="box anotherbox">
+        <div class="box box1">
+            <div class="box box2">
+                <div class="box box3">
+                    <div class="box box4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

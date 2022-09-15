@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreatestCommonFactor</title>
+</head>
+
+<body>
+    <input type="text" placeholder="數字A" id="numA">
+    <input type="text" placeholder="數字B" id="numB">
+    <input type="button" name="" id="btn" value="最大公因數">
+    <div id="mydiv">
+
+    </div>
+
+    <script>
+        let numA = document.getElementById('numA')
+        let numB = document.getElementById('numB')
+        let btn = document.getElementById('btn')
+        let mydiv = document.getElementById('mydiv')
+
+        btn.addEventListener('click', function () {
+            a = numA.value;
+            b = numB.value;
+            mydiv.innerHTML = gcd(a, b)
+        })
+
+
+
+        function gcd(a, b) {
+            a = Number(a)
+            b = Number(b)//比較n1 n2 哪個比較大
+            if (a < b) {
+                [a, b] = [b, a]   //要是b比較大 讓 a = b  b = a;      
+            }
+            if (a % b == 0) {
+                return b;
+            }
+            else {
+                // return arguments.callee( b , a % b ) //  重複運段calle後面的數值
+                return gcd(b, a % b)
+            }
+        }
+        console.log(gcd(48,18));
+
+
+
+
+
+    </script>
+</body>
+
+</html>

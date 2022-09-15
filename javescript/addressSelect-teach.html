@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select id="select1">
+        <!-- <option value="1">text</option>
+        <option value="2">Item2</option> -->
+    </select>
+    <select id="selectArea"></select>
+    <select id="selectRoad"></select>
+
+    <script src="data.js"></script>
+    <script>
+        let sel = document.querySelector("#select1");
+        let selArea = document.querySelector("#selectArea");
+        //[{},{}] 
+        //value => {"CityName":"台北市"}
+        //index => 0,1..
+        //array => [{},{}]
+        ADDRESS.forEach((value, index, array) => {
+            let { CityName, CityEngName } = value;
+            sel[index] = new Option(CityName, CityName);
+            // console.log(value.CityEngName);
+        })
+
+        sel.addEventListener("change", () => {
+            selArea.options.length = 0;
+            //讀取資料
+            //console.log(sel.selectedIndex);
+            let city = sel.options[sel.selectedIndex].value;
+            //console.log(sel.options[sel.selectedIndex].text);
+            let areas = ADDRESS.filter((value, index, array) => value.CityName === city);
+            areas[0].AreaList.forEach((value, index, array) => {
+                let { ZipCode, AreaName } = value;
+                selArea[index] = new Option(AreaName, ZipCode);
+            })
+            // console.log(areas);
+        })
+
+
+        // //新增方法一
+        // sel.options.add(new Option("Item3", 3));
+        // //新增方法二
+        // sel[sel.options.length] = new Option("Item4", 4);
+        // sel[sel.options.length] = new Option("Item5", 5);
+
+        //清除
+        //sel.options.length = 0;
+    </script>
+</body>
+
+</html>

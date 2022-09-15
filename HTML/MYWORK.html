@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Inline+One&display=swap" rel="stylesheet">
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        /* div{ */
+            /* outline:1px solid red; */
+        /* } */
+        /* page1 */
+        .page1{
+            background: 
+                    url(/HTML/mywork/restatount.jpg) no-repeat
+                    center center / cover;
+            width: 100%;
+            height: 100%;
+        }
+        .title{
+            width: 100%;
+            display:flex;
+            flex-direction: row;
+        }
+        .smalllogo{
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 2;
+        }
+        .smalllogo img{
+            width: 100%;
+            max-width: 250px;
+
+        }
+        .header{
+            flex-grow: 1;
+            font-size: 2em;
+            text-align: center;
+            color: white;
+            font-family: 'Shadows Into Light';
+            letter-spacing: 10px;
+
+        }
+        .greenline{
+            margin: 20px 0px;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+        .biglogo{
+            padding-top: 60px;
+            clear: both;
+            width: 90%;
+            margin:0px auto;
+            /* height: 100%; */
+            
+        }
+        .biglogo img{
+            width: 100%;
+        }
+        .thefinest{
+            width: 90%;
+            color: aliceblue;
+            text-align: center;
+            font-size: 48px;
+            padding-top: 100px;
+            padding-bottom: 400px;
+            margin: 0px auto;
+        }
+        .texthover:hover{
+            color:rgba(54, 165, 69, 1)
+        }
+        
+
+
+
+        /* page2 */
+        .food{
+            width: 100%;
+            color: aliceblue;
+            font-size: 50px;
+            font-weight: 300;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            flex-wrap: wrap;
+            padding: 50% 0px 50% 0px ;
+            font-family: 'Shadows Into Light', cursive;
+            letter-spacing: 10px;
+            filter: brightness(50%);
+            transition: 0.8s;
+        }
+        .food:hover{
+            filter: brightness(100%);
+        }
+        .seafood{
+            background:
+                    url(640x640/seafood640.jpg) no-repeat center center / cover;
+        }
+        .pasta{
+            background:
+                    url(640x640/pasta640.jpg) no-repeat center center / cover;
+        }
+        .steak{
+            background:
+                    url(640x640/steak640.jpg) no-repeat center center / cover;
+        }
+        .drinks{
+            background:
+                    url(640x640/drink640.jpg) no-repeat center center / cover;
+        }
+        .desserts{
+            background:
+                    url(640x640/dessert640.jpg) no-repeat center center / cover;
+        }
+        .soup{
+            background:
+                    url(640x640/soup640.jpg) no-repeat center center / cover;
+        }
+        /* page3 */
+        
+        .page3{
+            background-color: rgba(75, 75, 75, 1);
+
+            text-align: center;
+        }
+        .greenlight{
+            padding-top: 40px;
+            padding-bottom: 30px;
+        }
+        .page3card{
+            width: 90%;
+            height: 100%;
+            background-color: rgba(158, 158, 158, 0);
+            text-align: center;
+            box-sizing: border-box;
+            padding: 40px 30px 40px;
+            position: relative;
+            margin:0px auto;
+        }
+        .page3card:hover{
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5)
+                    ,   0 6px 40px rgba(155, 155, 155, 0.3);
+        }
+        .page3card:hover .page3cardtext{
+            color:rgba(135, 238, 149, 0.685);
+        }
+        .page3card:hover .page3cardsign{
+            color:rgba(135, 238, 149, 0.685);
+        }
+        .page3cardcircle{
+            width: 200px;
+            height: 200px;
+            background-color: rgb(211, 211, 211);
+            text-align: center;
+            overflow: hidden;
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+            margin-bottom: 60px;
+        }
+        .page3cardcircle img{
+            position:absolute;
+            left: 0;
+            top: -60px;
+            width: 100%;
+        }
+        .page3cardtext{
+            line-height: 30px;
+            font-family: 'Shadows Into Light', cursive;
+            font-size: 2rem;
+            text-align: center;
+            font-weight: 600;
+            padding: 0px 0px;
+            color: azure;
+            letter-spacing: 3px;
+            padding-bottom: 120px;
+        }
+        .ourvists{
+            font-family: 'Alumni Sans Inline One', cursive;
+            font-size: 3rem;
+            color:azure;
+            padding-bottom: 40px;
+        }
+        .page3cardsign{
+            position: absolute;
+            left: 240px;
+            bottom:60px;
+            font-family: 'Shadows Into Light', cursive;
+            color:azure;
+            font-size: 2rem;
+            text-align: center;
+            font-weight: 600;
+    
+        }
+
+
+
+        @media screen and (min-width:576px) {
+ 
+            /* page1 */
+            .title{
+                flex-direction: column;
+            }
+            .smalllogo{  
+                padding: 90px 0px;
+            }
+            .header{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px 0px;
+            }
+            .header-text{
+                display: flex;
+            }
+
+
+
+            /* page2 */
+            .page2{
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .food{
+                width: 50%;
+                aspect-ratio: 1/1;
+                padding: 0px;
+            }
+
+
+            /* page3 */
+            .page3{
+                overflow: hidden;
+            }
+            .page3-col{
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .page3card{
+                display: flex;
+            }
+            .page3cardcircle{
+                aspect-ratio: 1/1;
+                margin-right: 40px;
+
+            }
+            .page3cardtext{
+                flex-shrink: 30;
+                font-size: 20px;
+                padding-bottom: 0px;
+                line-height: 20px;
+                height: 180px;
+                margin-top: 10px;
+                overflow: auto;
+            }
+            .page3cardsign  {
+                left: 0px;
+                right:0px;
+                display: flex;
+                justify-content: flex-end;
+                margin-right: 50px;
+            }
+        }
+
+        @media screen and (min-width:992px){
+            /* page2 */
+            .food{
+                width: 33.33%;
+            }
+            /* page3 */
+            .page3cardtext{
+                font-size: 30px;
+            }
+        }
+            
+        
+    </style>
+</head>
+<body>
+    <!-- page1 -->
+    <div class="page1">
+        <div class="title">
+            <div class="smalllogo">
+                <img src="mywork/smalllogo.webp" alt="">
+            </div>
+            <div class="header">
+                <ul class="header-text">
+                    <li class="texthover">About</li>
+                    <li>/</li>
+                    <li class="texthover">Food</li>
+                    <li>/</li>
+                    <li class="texthover">Comment</li>
+                </ul>
+            </div>
+        </div>
+        <div class="greenline">
+            <img src="mywork/whiteline.png" alt="">
+        </div>
+        <div class="biglogo">
+            <img src="mywork/biglogo.webp" alt="">
+        </div>
+        <div class="thefinest">
+            <p>The Finest Place for the Traditional Italian Cuisine!</p>
+        </div>
+    </div>
+    <!-- page2 -->
+    <div class="page2">
+        <div class="food seafood">
+            <p>Seafood</p>
+        </div>
+        <div class="food pasta">
+            <p>Pasta</p>
+        </div>
+        <div class="food steak">
+            <p>Steak</p>
+        </div>
+        <div class="food drinks">
+            <p>Drinks</p>
+        </div>
+        <div class="food desserts">
+            <p>Desserts</p>
+        </div>
+        <div class="food soup">
+            <p>Soup</p>
+        </div>
+    </div>
+
+    <!-- page3 -->
+    <div class="page3">
+        <div class="greenlight">
+            <img src="mywork/whiteline.png" alt="">
+        </div>
+        <div class="ourvists">
+            <p>Our Visitors Just Love Our Food</p>
+        </div>
+        <div class="page3-col">
+            <div class="page3card">
+                <div class="page3cardcircle">
+                    <img src="cat.PNG" alt="">
+                </div>
+                <div class="page3cardtext">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit quam rerum consequatur, dignissimos quas voluptates corrupti laboriosam nisi tempora, laborum doloribus possimus officiis sapiente accusamus illo enim corporis iure hic.</p>
+                </div>
+                <div class="page3cardsign  ">
+                    -Mr.Cat
+                </div>
+            </div>
+            <div class="page3card">
+                <div class="page3cardcircle">
+                    <img src="cat.PNG" alt="">
+                </div>
+                <div class="page3cardtext">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit quam rerum consequatur, dignissimos quas voluptates corrupti laboriosam nisi tempora, laborum doloribus possimus officiis sapiente accusamus illo enim corporis iure hic.</p>
+                </div>
+                <div class="page3cardsign  ">
+                    -Mr.Cat
+                </div>
+            </div>
+            <div class="page3card">
+                <div class="page3cardcircle">
+                    <img src="cat.PNG" alt="">
+                </div>
+                <div class="page3cardtext">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit quam rerum consequatur, dignissimos quas voluptates corrupti laboriosam nisi tempora, laborum doloribus possimus officiis sapiente accusamus illo enim corporis iure hic.</p>
+                </div>
+                <div class="page3cardsign  ">
+                    -Mr.Cat
+                </div>
+            </div>
+            <div class="page3card">
+                <div class="page3cardcircle">
+                    <img src="cat.PNG" alt="">
+                </div>
+                <div class="page3cardtext">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit quam rerum consequatur, dignissimos quas voluptates corrupti laboriosam nisi tempora, laborum doloribus possimus officiis sapiente accusamus illo enim corporis iure hic.</p>
+                </div>
+                <div class="page3cardsign  ">
+                    -Mr.Cat
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

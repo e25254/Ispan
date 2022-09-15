@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addressSelect-pratice</title>
+</head>
+<body>
+    <select name="" id="citysel"></select>
+    <select name="" id="areasel"></select>
+    <select name="" id="roadsel"></select>
+
+
+
+
+
+
+    <script src="/javescript/data.js"></script>
+    <script>
+        let citysel = document.querySelector('#citysel')
+        let areasel = document.querySelector('#areasel')
+        let roadsel = document.querySelector('#roadsel')
+
+        ADDRESS.forEach(function( value , index , array){
+            let {CityName , CityEngName} = value;
+            citysel[index] = new Option (CityName , CityName)
+        });
+
+        ADDRESS[0].AreaList.forEach(function( value , index , array){
+            let {AreaName , ZipCode} = value
+            areasel[index] = new Option (AreaName , ZipCode)
+        })
+
+        ADDRESS[0].AreaList[0].RoadList.forEach(function( value , index , array){
+            let {RoadName , RoadEngName} = value
+            roadsel[index] = new Option (RoadName , RoadEngName) 
+        })
+
+        citysel.addEventListener('change',function(){
+            //  清空 areasel裡的數值並輸入 areasel對應到的 CityName的陣列
+            areasel.options.length = 0;
+            citychoose = citysel.options[citysel.selectedIndex].value
+            city = ADDRESS.filter(function(value , index ,array){
+                return value.CityName === citychoose
+            });
+            city[0].AreaList.forEach(function(value , index ,array){
+                let {AreaName} = value
+                areasel[index] = new Option (AreaName , AreaName)
+            })
+            // 清空 roadsel裡的數值並輸入 roadsel對應到的 CityName[0].Arealist的陣列
+            roadsel.options.length = 0;
+            city[0].AreaList[0].RoadList.forEach(function(value , index ,array){
+                let {RoadEngName,RoadName} = value;
+                roadsel[index] = new Option(RoadName ,RoadName)
+            })
+        })
+
+        areasel.addEventListener('change',function(){
+            // 清空 roadsel裡的數值並輸入 areasel對應到的 AreaName[0].Roadlist的陣列
+            roadsel.options.length = 0;
+            areachoose = areasel.options[areasel.selectedIndex].value
+            arealist = city[0].AreaList
+            area = arealist.filter(function(value , index, array){
+                return value.AreaName === areachoose
+            });
+            area[0].RoadList.forEach(function(value , index , array){
+                let {RoadEngName,RoadName} = value;
+                roadsel[index] = new Option(RoadName ,RoadName)
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<htm lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        fieldset {
+            width: 500px;
+            margin: 15px auto;
+            border:1px solid rgb(0, 153, 255) ;
+            border-radius: 10px;
+        }
+        legend{
+            border:1px solid rgb(0, 153, 255) ;
+            border-radius: 10px;
+            padding: 5px 15px;
+        }
+        .st {
+            width: 450px;
+            margin: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .title {
+            width: 100px;
+            float: left;
+            text-align: right;
+            padding-right: 3px;
+        }
+        em {
+            color: #f00;
+        }
+        .btn {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form action="mailto:andytung@ispan.com.tw?subject=test" method="post" enctype="text/plain">
+        <label for="">姓名</label>
+        <input type="text" placeholder="請輸入真實姓名" size="20" maxlength="10" > <br>
+        <label for="">密碼</label>
+        <input type="password" placeholder="請輸入12碼英文加數字" size="30" maxlength="12"> <br>
+        <label for="">備註</label>
+        <textarea name="" id="" cols="30" rows="4"></textarea> <br>
+        <label for="">性別</label>
+        <input type="radio" name="gender" value="male" checked>男
+        <input type="radio" name="gender" value="female">女 <br>
+        <label for="">興趣</label>
+        <input type="checkbox" name="hobby" value="music" checked>音樂
+        <input type="checkbox" name="hobby" value="sport">運動
+        <input type="checkbox" name="hobby" value="reading">閱讀 <br>
+        <select name="" id="">
+            <option value="TPE">台北</option>
+            <option value="">新北</option>
+            <option value="" selected>桃園</option>
+            <option value="">新竹</option>
+        </select> <br>
+        <label for="">上傳檔案</label>
+        <input type="file"> <br>
+        <input type="reset" value="清除">
+        <input type="submit" value="送出">
+    </form>
+    <br>
+
+    <form action="">
+        <fieldset>
+            <legend>個人資料表<em>(必填)</em></legend>
+            <div class="st">
+                <label for="" class="title">姓名</label>
+                <input type="text" placeholder="請輸入真實姓名" size="20" maxlength="10" >
+            </div>
+            <div class="st">
+                <label for="" class="title">密碼</label>
+                <input type="password" placeholder="請輸入12碼英文加數字" size="30" maxlength="12">
+            </div>
+            <div class="st">
+                <label for="" class="title">性別</label>
+                <input type="radio" name="gender" value="male" checked>男
+                <input type="radio" name="gender" value="female">女
+            </div>
+            <div class="st">
+                <label for="" class="title">我的興趣</label>
+                <input type="checkbox" name="hobby" value="music" checked>音樂
+                <input type="checkbox" name="hobby" value="sport">運動
+                <input type="checkbox" name="hobby" value="reading">閱讀
+            </div>
+            <div class="st">
+                <label for="" class="title">備註</label>
+                <textarea name="" id="" cols="30" rows="4"></textarea>
+            </div>
+            <div class="st btn">
+                <input type="reset" value="清除">
+                <input type="submit" value="送出">
+            </div>
+        </fieldset>
+    </form>
+</body>
+</htm

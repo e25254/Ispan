@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>背景透明，文字不透明</title>
+<style>
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: #ff0d00;
+    padding: 100px;
+}
+.test-opacity{
+    padding: 25px;
+    background-color: rgba(255, 223, 223, 0.475);/* IE9、標準瀏覽器、IE6和部分IE7內核的瀏覽器(如QQ瀏覽器)會讀懂 */
+}
+
+/* 只支持IE6、7、8 */
+@media \0screen\,screen\9 {
+    .test-opacity{
+        background-color: rgb(255, 255, 255);
+        filter: Alpha(opacity=50);
+        /* 激活IE6、7的haslayout屬性，讓它讀懂Alpha */
+    }
+    .test-opacity p{
+        position: relative;/* 設置子元素爲相對定位，可讓子元素不繼承Alpha值 */
+    }
+}
+</style>
+<body>
+
+    <div class="test-opacity">
+        <p>背景透明，文字不透明</p>
+    </div>
+
+</body>
+</html>
