@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM_History</title>
+</head>
+<body>
+    <button id="button1">0</button>
+    <script>
+        let btn = document.querySelector('#button1')
+        let count = 0
+        btn.addEventListener('click',function(){
+            btn.textContent = ++count
+            history.pushState(count , null , "/push/" + count);
+        })
+        window.addEventListener("popstate",function(event){
+            if(event.state){
+                btn.textContent = event.state;
+                return;
+            }
+            btn.textContent = 0
+        })
+</script>
+</body>
+</html>
