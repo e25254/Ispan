@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       
+        console.log(window.navigator);  //瀏覽器相關
+        console.log(navigator.language); //瀏覽器的語言 zh-tw
+        console.log(navigator.onLine);  //連線 or 離線 
+        console.log(navigator.userAgent);  //瀏覽器的版本
+
+        let agent = navigator.userAgent.toLowerCase();
+        let chromeBrowser = (agent.indexOf("chrome") > -1) && (agent.indexOf("edg") === -1) 
+        //opr
+        if(chromeBrowser){
+            console.log("chrome browser");
+        }
+
+        if(agent.indexOf("edg") > -1){
+            console.log("edge browser");
+        }
+
+        //IE6、IE7、IE8 
+        //IE9 
+    </script>
+</body>
+</html>
