@@ -7,13 +7,74 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="#abc">abc</a>
+    <hr>
+    <select id="select1">
+        <option value="Index.html">請選擇</option>
+        <option value="BOM_Screen.html">screen</option>
+        <option value="BOM_navigator.html">navigator</option>
+        <option value="BOM_Location.html">location</option>
+    </select>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p>aaa</p>
+    <p id="abc">bbb</p>
+    <p>bbb</p>
+    <p>bbb</p>
+    <p>bbb</p>
+    <p>bbb</p>
+    <p>bbb</p>
+    <p>bbb</p>
+    <p>bbb</p>
+    <p>bbb</p>
+    <p>bbb</p>
+    <p>bbb</p>
+    <p>bbb</p>
+    <p>bbb</p>
+    <p>bbb</p>
+    <p>bbb</p>
+    <p>bbb</p>
+    <p>bbb</p>
+    <p>bbb</p>
+    <p>bbb</p>
+    <p>bbb</p>
+    <p>bbb</p>
+    <p>bbb</p>
     <script>
        
         console.log(location);  //網址列相關資訊
         console.log(location.protocol);  //http  https
         console.log(location.host);  //127.0.0.1:5500
         console.log(location.pathname);  // /bom/abc.html
-        console.log(location.search);  // /bom/abc.html
+        console.log(location.search);  // ?key=value
+        console.log(location.hash);  // #abc
+        const sel = document.querySelector("#select1")
+        sel.addEventListener("change",event=>{
+            //  console.log(sel.options[sel.selectedIndex].value);
+            //  可以回上一頁
+            location.href = sel.options[sel.selectedIndex].value;
+            //  不能回上一頁
+            //  location.replace(sel.options[sel.selectedIndex].value) 
+
+        })
        
     </script>
 </body>
