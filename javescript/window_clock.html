@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>widow_clock</title>
+</head>
+<body>
+    <input type="button" value="START" id="button1" >
+    <div id="div1">00:00:00</div>
+
+    <script>
+        let btn = document.querySelector("#button1")
+        let divclock = document.querySelector('#div1')
+        let t = null;
+
+        
+        btn.addEventListener('click',function(){
+            if(btn.value === "START"){
+                t = window.setInterval(clock)
+                btn.value = "STOP"
+
+            }
+            else{
+                t = window.clearInterval(t)
+                btn.value = "START"
+            }
+        })
+
+        function clock(){
+            let hh = (new Date().getHours()) >= 10 ? new Date().getHours() : ('0'+ new Date().getHours())
+            let mm = (new Date().getMinutes()) >= 10 ? new Date().getMinutes() : ('0' + new Date().getMinutes())
+            let ss = (new Date().getSeconds()) >= 10 ? new Date().getSeconds() : ('0' + new Date().getSeconds())
+            divclock.innerHTML = `${hh}:${mm}:${ss}`
+        }
+        
+
+    </script>
+</body>
+
+</html>

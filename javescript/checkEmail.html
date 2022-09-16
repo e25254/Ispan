@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>checkEmail</title>
     <style>
-        #showmydiv{
+        #showmydiv {
             /* color: red; */
             font-size: 12px;
         }
     </style>
 </head>
+
 <body>
     <div id="mydiv">
         <input type="text" id="text">
         <input type="button" id="btn" value="check">
     </div>
     <div id="showmydiv"></div>
+    
 
 
     <script>
@@ -26,55 +29,55 @@
         let btn = document.getElementById('btn')
         let showmydiv = document.getElementById('showmydiv')
 
-        btn.addEventListener('click',function(){
+        btn.addEventListener('click', function () {
             let email = text.value;
-            if(checkEmail(email) == true && checkEmailByRegExp(email) == true){
+            if (checkEmail(email) == true && checkEmailByRegExp(email) == true) {
                 showmydiv.innerHTML = `<span style="color:green">${email} is currect </span>`;
             }
-            else{
+            else {
                 showmydiv.innerHTML = `<span style="color:red">${email} is not currect email </span>`;
             }
 
         })
-            
 
 
-        
 
-        function checkEmpty(item){
+
+
+        function checkEmpty(item) {
             let checkEmptyitem = item.trim()
             let isValid = true;
-            if (checkEmptyitem === '' || checkEmptyitem.length === 0){
+            if (checkEmptyitem === '' || checkEmptyitem.length === 0) {
                 isValid = false;
             }
             return isValid;
         }
 
-        function checkEmail(email){
+        function checkEmail(email) {
             let isValid = true;
-            if (!checkEmpty(email)){
+            if (!checkEmpty(email)) {
                 isValid = false
             }
             else if (
-                email.indexOf('@') === -1 || email.indexOf('@') !== email.lastIndexOf('@') ||email.indexOf('@') === 0 || email.indexOf('@') == email.length - 1 ||email.indexOf('@') > email.indexOf('.')
-            ){
+                email.indexOf('@') === -1 || email.indexOf('@') !== email.lastIndexOf('@') || email.indexOf('@') === 0 || email.indexOf('@') == email.length - 1 || email.indexOf('@') > email.indexOf('.')
+            ) {
                 isValid = false
             }
             else if (
                 email.indexOf('.') === -1 || email.indexOf('.') == 0 || email.indexOf('.') == email.length - 1
-            ){
+            ) {
                 isValid = false;
             }
             return isValid;
         }
 
-        function checkEmailByRegExp(email){
+        function checkEmailByRegExp(email) {
             let isValid = true;
             let re = /^.+@.+\..{2,3}$/;
-            if (re.test(email)){
+            if (re.test(email)) {
                 isValid = true
             }
-            else{
+            else {
                 isValid = false
             }
             return isValid
