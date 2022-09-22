@@ -49,3 +49,83 @@ WHERE `author` like '%陳%'
 SELECT *
 FROM `orders`
 WHERE `order_date` > '2016-01-01' and `order_date` <='2017-12-31'
+
+
+
+
+
+
+
+
+SELECT * 
+    FROM hotel 
+    JOIN `area` 
+    ON `hotel`.`area_sid` = `area`.`area_sid` 
+    JOIN `city`
+    ON `area`.`city_sid` = `city`.`city_sid`
+    JOIN `hotel_categories`
+    ON `hotel`.`categories_sid` = `hotel_categories`.`hotel_categories_sid`
+    ORDER BY SID
+
+
+
+
+
+SELECT * 
+    FROM `hotel` 
+    WHERE `sid` like '%新北%'
+    OR `area_sid` LIKE '%新北%'
+    OR `hotel_name` LIKE '%新北%'
+    OR `hotel_code` LIKE '%新北%'
+    OR `phone` LIKE '%新北%'
+    OR `address` LIKE '%新北%'
+    OR `picture` LIKE '%新北%'
+    OR `wifi` LIKE '%新北%'
+    OR `breakfast` LIKE '%新北%'
+    OR `lunch` LIKE '%新北%'
+    OR `dinner` LIKE '%新北%'
+    OR `check_in` LIKE '%新北%'
+    OR `check_out` LIKE '%新北%'
+    OR `facility` LIKE '%新北%'
+    OR `tag` LIKE '%新北%'
+
+
+
+SELECT * 
+    FROM hotel 
+    JOIN `area` 
+    ON `hotel`.`area_sid` = `area`.`area_sid` 
+    JOIN `city`
+    ON `area`.`city_sid` = `city`.`city_sid`
+    JOIN `hotel_categories`
+    ON `hotel`.`categories_sid` = `hotel_categories`.`hotel_categories_sid`
+    ORDER BY SID
+
+SELECT * 
+    FROM `hotel` 
+    JOIN `area` 
+    ON `hotel`.`area_sid` = `area`.`area_sid` 
+    JOIN `city`
+    ON `area`.`city_sid` = `city`.`city_sid`
+    JOIN `hotel_categories`
+    ON `hotel`.`categories_sid` = `hotel_categories`.`hotel_categories_sid`
+WHERE 
+    `sid` like '%新北%'
+    or `city`.`city_name` LIKE '%新北%'
+    OR `area`.`area_name` LIKE '%新北%'
+    OR `hotel_name` LIKE '%新北%'
+    OR `hotel_code` LIKE '%新北%'
+    OR `phone` LIKE '%新北%'
+    OR `address` LIKE '%新北%'
+    OR `picture` LIKE '%新北%'
+    OR `wifi` LIKE '%新北%'
+    OR `breakfast` LIKE '%新北%'
+    OR `lunch` LIKE '%新北%'
+    OR `dinner` LIKE '%新北%'
+    OR `check_in` LIKE '%新北%'
+    OR `check_out` LIKE '%新北%'
+    OR `facility` LIKE '%新北%'
+    OR `tag` LIKE '%新北%'
+    ORDER BY SID
+    
+
