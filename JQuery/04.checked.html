@@ -7,21 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        h1 {
-            color: red;
-        }
+
     </style>
 </head>
 
 <body>
-    <h1>Hello Worlds</h1>
 
-
+    <div>
+        <input type="checkbox" name="alex">
+        <span>ALEX</span>
+    </div>
+    <div>
+        <input type="checkbox" name="bill" checked>
+        <span>BILL</span>
+    </div>
 
 
     <script src="./js/jquery-3.6.1.min.js"></script>
     <script>
-        $('h1').css('color', 'green')
+
+    $( "input:not(:checked) + span" ).css( "background", "yellow" );
+
+
     </script>
 
 </body>
