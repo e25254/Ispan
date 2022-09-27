@@ -15,8 +15,7 @@
 
     <ul class="level-1">
         <li class="item-1">item-1</li>
-        <li class="item-2">
-            <p>item-2</p>
+        <li class="item-2">item-2
             <ul class="level-2">
                 <li class="item-01">item-01</li>
                 <li class="item-02">item-02
@@ -35,13 +34,24 @@
     <script src="./js/jquery-3.6.1.min.js"></script>
     <script>
 
-        $('.item-002').css('border', 'green 1px solid')
-        // $('.item-002').parent().parent().parent().children().not('.item-02').css('border' , 'red 1px solid')
-        // $('.item-002').parent().parent().parent().parent().parent().children().not('.item-2').css('border' , 'blue 1px solid')
+        // 從裡層抓到外層
 
-        $('.item-002').parent().parent().siblings().css('border' , 'red 1px solid')
-        $('.item-002').parent().parent().parent().parent().siblings().css('border' , 'blue 1px solid')
-        // $('.item-002').closest('.item-2').find('p').css('border', 'red 1px solid')
+        // $('.item-002').css('border', 'green 1px solid')
+        // $('.item-002').parent().parent().siblings().css('border' , 'red 1px solid')
+        // $('.item-002').parent().parent().parent().parent().siblings().css('border' , 'blue 1px solid')
+        
+        // 從外層抓到裡層
+
+        // $('.item-1').css('outline','red 1px solid')
+        // $('.item-1').next().find('.item-001').siblings().css('outline','blue 1px solid')
+
+        // 同層
+
+        $('.item-01').css('outline','red 1px solid')
+        $('.item-01')
+            .next().find('.item-002').css('outline','green 1px solid')
+            .end('').end().next().next().css('outline','green 1px solid')
+
 
 
     </script>
