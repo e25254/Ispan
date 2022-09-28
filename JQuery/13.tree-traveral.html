@@ -39,19 +39,41 @@
         // $('.item-002').css('border', 'green 1px solid')
         // $('.item-002').parent().parent().siblings().css('border' , 'red 1px solid')
         // $('.item-002').parent().parent().parent().parent().siblings().css('border' , 'blue 1px solid')
+
+
         
         // 從外層抓到裡層
 
         // $('.item-1').css('outline','red 1px solid')
         // $('.item-1').next().find('.item-001').siblings().css('outline','blue 1px solid')
 
+
+
         // 同層
 
-        $('.item-01').css('outline','red 1px solid')
-        $('.item-01')
-            .next().find('.item-002').css('outline','green 1px solid')
-            .end('').end().next().next().css('outline','green 1px solid')
+        // $('.item-01').css('outline','red 1px solid')
+        // $('.item-01')
+        //     .next().find('.item-002').css('outline','green 1px solid')
+        //     .end('').end().next().next().css('outline','green 1px solid')
 
+
+
+        // 迴圈
+
+
+        // $('li').each(function(index , item){
+        //     console.log('index',index);
+        //     console.log('item',item);
+        // })
+
+        
+
+        // 取得每一個值
+
+        $('li').click(function(e){
+            e.stopPropagation()
+            console.log($(e.currentTarget).text());
+        })
 
 
     </script>
