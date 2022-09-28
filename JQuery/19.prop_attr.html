@@ -13,12 +13,19 @@
 
 <body>
 
-    
+    <button>Click</button>
+
+    <input type="checkbox" name="" id="" checked="no" >
 
     <script src="./js/jquery-3.6.1.min.js"></script>
     <script>
 
+        $('button').click(function(){
+            console.log($('input').prop('checked'));
+            console.log($('input').attr('checked'));
+        })
 
+        // console.log($('input').attr('checked'));
 
     </script>
 
