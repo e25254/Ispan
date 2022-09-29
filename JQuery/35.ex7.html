@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>35.ex7</title>
+</head>
+
+<body>
+    <form action="">
+        <select name="city" id="city">
+            <option value="0">基隆</option>
+            <option value="1">台北</option>
+            <option value="2">新北</option>
+        </select>
+        <select name="district" id="district">
+            <option value="0">七堵</option>
+            <option value="1">中正</option>
+            <option value="2">暖暖</option>
+        </select>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script>
+        let districtArray = [
+            ['七堵', '中正', '暖暖'],
+            ['中正', '大安', '信義'],
+            ['蘆洲', '三重', '新店','新莊'],
+        ];
+        // console.log($('#city option').eq('0').val());
+        // console.log($('#district option'));
+        // console.log(districtArray[0]);
+
+        
+        $('#city').change(function(){
+            $('#district option').remove()
+            let citynum = $('#city').val()
+            console.log(citynum);
+            console.log(districtArray[citynum]);
+
+            for( i = 0 ; i < districtArray[citynum].length ; i++ ){
+                $('#district').append(`<option value="${i}">${districtArray[citynum][i]}</option>`)
+            }
+         })
+        
+
+    </script>
+</body>
+
+</html>

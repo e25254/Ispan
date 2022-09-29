@@ -6,11 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>33.ext6</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         .wrap{
             width: 800px;
             height: 400px;
             overflow: hidden;
+            margin: auto;
+            position: relative;
         }
 
         .train{
@@ -18,17 +21,52 @@
             list-style: none;
             display: flex;
             width: 500%;
-            transform: translateX(-800px);
+            transform: translateX(0px);
+            transition: .5s;
         }
         .train li img {
             width: 100%;
             object-fit: cover;
         }
+        .slider-dots{
+            position: absolute;
+            bottom:0;
+            left: 0;
+            right: 0;
+            list-style: none;
+            padding-left: 0px;
+            display: flex;
+            justify-content: center;
+        }
+        .slider-dots li{
+            width: 40px;
+            height: 10px;
+            border: 1px solid white;
+            margin: 0 6px;
+        }
+        .slider-dots li:nth-child(1) {
+            background-color: #fff;
+        }
+        .fa-classic, .fa-regular, .fa-solid, .far, .fas {
+            color:rgba(255, 255, 255, 0.5);
+            font-size: 40px;
+        }
+        .arrow-left{
+            position: absolute;
+            top: 200px;
+            padding-left: 20px;
+            
+        }
+        .arrow-right{
+            position: absolute;
+            top: 200px;
+            right: 0;
+            padding-right: 20px;
+        }
     </style>
 </head>
 
 <body>
-
     <div class="wrap">
         <ul class="train">
             <li><img src="./images/slide1.jpg" alt=""></li>
@@ -36,15 +74,52 @@
             <li><img src="./images/slide3.jpg" alt=""></li>
             <li><img src="./images/slide4.jpg" alt=""></li>
             <li><img src="./images/slide5.jpg" alt=""></li>
-            
         </ul>
+        <ul class="slider-dots">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="arrow-left">
+            <i class="fa-solid fa-circle-arrow-left"></i>
+        </div>
+        <div class="arrow-right">
+            <i class="fa-solid fa-circle-arrow-right"></i>
+        </div>
     </div>
 
 
     <script src="./js/jquery-3.6.1.min.js"></script>
     <script>
+        let page = 1
+        $('.arrow-left').css('display','none')
+        $('.slider-dots li').click(function(e){
+            console.log($(e.currentTarget).index());
+            page = ($(e.currentTarget).index()) + 1
+            console.log('page',page);            
+            let moveX = ($(e.currentTarget).index()) * (-800)
+            // console.log(moveX);
+            $('.train').css({
+                'transform':`translateX(${moveX}px)`
+            })
+            $(e.currentTarget).css('background','#fff').siblings().css('background','transparent')
+            if($(e.currentTarget).index() == 4){
+                $('.arrow-right').css('display','none')
+                $('.arrow-left').css('display','')
+            }else if($(e.currentTarget).index() == 0){
+                $('.arrow-left').css('display','none')
+                $('.arrow-right').css('display','')
+            }else{
+                $('.arrow-left').css('display', '')
+                $('.arrow-right').css('display', '')
+            }
+        })
 
-
+        $('.arrow-right i').click(function(){
+            console.log(page);
+        })
 
     </script>
 
