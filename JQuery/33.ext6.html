@@ -94,33 +94,73 @@
     <script src="./js/jquery-3.6.1.min.js"></script>
     <script>
         let page = 1
-        $('.arrow-left').css('display','none')
+        let moveX = 0
+
+        if(page>5){
+            page = 1
+        }else if (page < 1){
+            page = 5
+        }
+        // $('.arrow-left').css('display','none')
         $('.slider-dots li').click(function(e){
-            console.log($(e.currentTarget).index());
-            page = ($(e.currentTarget).index()) + 1
-            console.log('page',page);            
-            let moveX = ($(e.currentTarget).index()) * (-800)
-            // console.log(moveX);
+            page = ($(e.currentTarget).index()) + 1           
+            moveX = (page-1) * (-800)
             $('.train').css({
                 'transform':`translateX(${moveX}px)`
             })
-            $(e.currentTarget).css('background','#fff').siblings().css('background','transparent')
-            if($(e.currentTarget).index() == 4){
+            console.log(page);
+            checkDot()
+        })
+
+        $('.arrow-right i').click(function(){
+            //  點下去的時候要發生：
+            //  往右移動 => page+1
+            page = page + 1
+            checkNoPage()
+            moveX = (page - 1) * (-800)
+            $('.train').css({
+                'transform':`translateX(${moveX}px)`
+            })
+            console.log(page);
+            checkDot()
+
+        })
+        $('.arrow-left i').click(function(){
+            //  點下去的時候要發生：
+            //  往右移動 => page+1
+            page = page - 1
+            checkNoPage()
+            moveX = (page - 1) * (-800)
+            $('.train').css({
+                'transform':`translateX(${moveX}px)`
+            })
+            console.log(page);
+            checkDot()
+            
+        })
+
+        function checkPage(){
+            if(page == 5){
                 $('.arrow-right').css('display','none')
                 $('.arrow-left').css('display','')
-            }else if($(e.currentTarget).index() == 0){
+            }else if(page == 1){
                 $('.arrow-left').css('display','none')
                 $('.arrow-right').css('display','')
             }else{
                 $('.arrow-left').css('display', '')
                 $('.arrow-right').css('display', '')
             }
-        })
-
-        $('.arrow-right i').click(function(){
-            console.log(page);
-        })
-
+        }
+        function checkDot(){
+            $('.slider-dots li').eq(page-1).css('background','#fff').siblings().css('background','transparent')
+        }
+        function checkNoPage(){
+            if(page>5){
+                page = 1
+            }else if (page < 1){
+                page = 5
+            }
+        }
     </script>
 
 </body>
