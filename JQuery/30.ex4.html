@@ -7,17 +7,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>30.ex4</title>
     <style>
-
+        div{
+            /* outline: 1px red solid; */
+        }
+        .box{
+            height: 100vh;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+        .box1{
+            width: 300px;
+            margin: 0px 20px;
+            object-fit: cover;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        img{
+            width: 100%;
+            
+        }
     </style>
 </head>
 
 <body>
 
-
+    <div class="box">
+        <div class="box1"><img src="./images/person1.jpg"></div>
+        <div class="box1"><img src="./images/person2.jpg"></div>
+        <div class="box1"><img src="./images/person3.jpg"></div>
+        <div class="box1"><img src="./images/person4.jpg"></div>
+        <div class="box1"><img src="./images/person5.jpg"></div>
+    </div>
 
     <script src="./js/jquery-3.6.1.min.js"></script>
     <script>
+        $('.box1').click(function(e){
+            console.log($(e.currentTarget).index());
+            let a = $(e.currentTarget).index()
+            $('.box1').eq(a).css('border','3px solid red').siblings().css('border','')
 
+        })
 
 
     </script>
