@@ -1,27 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>31.ex5</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <style>
-
+        .mytable{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        th{
+            text-align: center;
+            
+        }
+        td{
+            text-align: center;
+        }
     </style>
 </head>
-
 <body>
+
+    <div class="mytable">
+        <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">checkBox</th>
+                <th scope="col">Name</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                    <input type="checkbox" name="" id="" class="checkboxclass">
+                </td>
+                <td>Mark</td>
+                <td>0943432982</td>
+                <td>Mark@gmail.com</td>
+              </tr>
+              <tr>
+                <td>
+                    <input type="checkbox" name="" id="" class="checkboxclass">
+                </td>
+                <td>Jacob</td>
+                <td>0943432982</td>
+                <td>Jacob@gmail.com</td>
+              </tr>
+              <tr>
+                <td>
+                    <input type="checkbox" name="" id="" class="checkboxclass">
+                </td>
+                <td>Larry</td>
+                <td>0943432982</td>
+                <td>Larry@gmail.com</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
 
 
 
     <script src="./js/jquery-3.6.1.min.js"></script>
+
     <script>
+        $('tbody tr td input:checkbox').click(function(e){
+            if(($(e.currentTarget).prop('checked')) == true){
+                $(e.currentTarget).parent().parent().css({'background-color':'green','color':'white'})
+            }
+            else{
+                $(e.currentTarget).parent().parent().css({'background-color':'','color':''})
+            }
+        })
+        
+        // $('tr td input:checkbox').eq(0).parent().parent().css({'background-color':'#ccc','color':'blue'})
+
 
 
 
     </script>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </body>
-
 </html>
