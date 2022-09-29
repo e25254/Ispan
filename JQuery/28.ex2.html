@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>28.ex2</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        .box{
+            width: 120px;
+            height: 60px;
+        }    
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="box autobg d-flex justify-content-center align-items-center">box1</div>
+            <div class="box autobg d-flex justify-content-center align-items-center">box2</div>
+            <div class="box autobg d-flex justify-content-center align-items-center">box3</div>
+            <div class="box autobg d-flex justify-content-center align-items-center">box4</div>
+            <div class="box autobg d-flex justify-content-center align-items-center">box5</div>
+            <div class="box autobg d-flex justify-content-center align-items-center">box6</div>
+            <div class="box autobg d-flex justify-content-center align-items-center">box7</div>
+            <div class="box autobg d-flex justify-content-center align-items-center">box8</div>
+            <div class="box autobg d-flex justify-content-center align-items-center">box9</div>
+            <div class="box autobg d-flex justify-content-center align-items-center">box10</div>
+            <div class="box autobg d-flex justify-content-center align-items-center">box11</div>
+            <div class="box autobg d-flex justify-content-center align-items-center">box12</div>
+        </div>
+    </div>
+
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script>
+     function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max - 50) + 100);
+    }
+    
+    function getRBGA() {
+        return `linear-gradient(135deg, rgba(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)},.5), rgba(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)},.8)`
+    }
+    
+    const elements = document.querySelectorAll('.autobg');
+    
+    Array.from(elements).forEach((element, index) => {
+        element.style.backgroundImage = getRBGA();
+    });
+    
+    // $('.autobg').each(function (index, currentElement) {
+    //     currentElement.style.backgroundImage = getRBGA();
+    // });
+    </script>
+
+    <script>
+
+        $('.box').click(function(e){
+            const elements = document.querySelectorAll('.autobg');
+    
+            Array.from(elements).forEach((element, index) => {
+                element.style.backgroundImage = getRBGA();
+            });
+            let a = $(e.currentTarget).index()
+            console.log(a);
+            $(`.box:gt(${a})`).css('background','lightblue')
+        })
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>
