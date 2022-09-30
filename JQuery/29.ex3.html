@@ -30,6 +30,7 @@
                           <label class="form-check-label" for="exampleCheck1">Check me out</label>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-primary" id="resetbtn">reset</button>
                       </form>
                 </div>
               </div>        
@@ -44,6 +45,13 @@
           $('#exampleInputEmail1').attr('value','hi123@gmail.com')
           $('#exampleInputPassword1').attr('value','hihihi')
           $('#exampleCheck1').prop('checked',true)
+        })
+
+        $('#resetbtn').click(function(){
+            $('#usernametext').attr('value','')
+          $('#exampleInputEmail1').attr('value','')
+          $('#exampleInputPassword1').attr('value','')
+          $('#exampleCheck1').prop('checked',false)
         })
 
 

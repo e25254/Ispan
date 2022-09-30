@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>37.ex8</title>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+        body{
+            height: 800vh;
+        }
+        .wrap{
+            height: 50px;
+            width: 100%;
+            background-color: #ccc;
+            position: fixed;
+            top: 0;
+        }
+
+        .box{
+            height: 100%;
+            width: 0%;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box">
+
+        </div>
+    </div>        
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script>
+        $(window).scroll(function(){
+            let bodyheight = $(this).height() // 1/10
+            let button = $(this).scrollTop() // 10/10
+            let all = $('body').height()
+            let answer = ((button / (all-bodyheight)))*100+'%'
+            console.log(answer);
+            $('.box').css('width',answer)
+        })
+    </script>
+</body>
+</html>
