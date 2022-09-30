@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>39.ON2</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+           <div class="box"></div>
+           <h1 id="showAction"></h1>
+        </div>
+    </div>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script>
+        let a = 3
+        // $('ul').append('<li>item4</li>')
+        // $('ul').append('<li>item3</li>')
+        // $('ul').prepend('<li>item-1</li>')
+        $('input').click(function () {
+            $('ul').append(`<li>item${a}</li>`)
+            a = a + 1
+        })
+
+        // $('li').click(function(){
+        //     console.log('li',$(this).text());
+        // })
+
+        // $('ul').on('click','li',function(){
+        //     console.log('li',$(this).text());
+        // })
+
+        $(".box").on({
+            mouseenter: function () {
+                $("#showAction").text("Mouse Enter");
+            },
+            click: function () {
+                $("#showAction").text("Click");
+            },
+            dblclick: function () {
+                $("#showAction").text("Double Click");
+            }
+        });
+
+
+    </script>
+
+
+
+</body>
+
+</html>
