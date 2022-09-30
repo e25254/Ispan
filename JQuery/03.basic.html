@@ -69,6 +69,16 @@
         $('td:gt(-6)').css('background-color','white')
         $(':header').css('color','blue')
         
+        // $('table').on('click','td',function(e){
+        //     console.log($('table tr td').index());
+        // })
+
+        $('td').click(function(e){
+            $('table tr td').each(function(i){
+                console.log($('td').index());
+            })
+        })
+        
 
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
