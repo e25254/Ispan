@@ -74,10 +74,17 @@
         let box_right;
         let myInterval = null
 
-        // $('.arrow_up').click(move_up)
+        // $('.arrow_up').click(startIntervalRight)
         // $('.arrow_left').click(move_left)
         // $('.arrow_down').click(move_down)
-        // $('.arrow_right').click(move_right)
+        $('.arrow_right').mousedown(function(){
+            startIntervalRight()
+        })
+        $('.arrow_right').mouseup(function(){
+            stopInterval()
+        })
+
+        
 
         $(document).on('keydown',function(i){
             let k = i.keyCode
@@ -101,11 +108,33 @@
         })
 
         
-        // $('.arrow_right').mousedown(startIntervalRight)
-        // $('.arrow_right').mouseup(stopInterval)
+        $('.arrow_right').mousedown(function(){
+            stopInterval()
+            startIntervalRight()
+        })
+        $('.arrow_right').mouseup(stopInterval)
+        $('.arrow_left').mousedown(function(){
+            stopInterval()
+            startIntervalLeft()
+        })
+        $('.arrow_left').mouseup(stopInterval)
+        $('.arrow_down').mousedown(function(){
+            stopInterval()
+            startIntervalBotton()
+        })
+        $('.arrow_down').mouseup(stopInterval)
+        $('.arrow_up').mousedown(function(){
+            stopInterval()
+            startIntervalTop()
+        })
+        $('.arrow_up').mouseup(stopInterval)
+        
 
 
-        function move_up(){
+        function move_up(speed){
+            if(speed == undefined){
+                speed = 100
+            }
             if(box_top <= 0){
                 box_top = max_botton
                 $('.box').css('top',`${box_top}px`)
@@ -115,7 +144,10 @@
                 $('.box').css('top',`${box_top}px`)
             }
         }
-        function move_left(){
+        function move_left(speed){
+            if(speed == undefined){
+                speed = 100
+            }
             if(box_left <= 0 ){
                 box_left = max_right
             }else{
@@ -126,18 +158,25 @@
             }
             $('.box').css('left',`${box_left}px`);
         }
-        function move_down(){
+        function move_down(speed){
+            if(speed == undefined){
+                speed = 100
+            }
             if (box_top < max_botton) {
-                box_top += 100;
+                box_top += speed;
                 $('.box').css('top', box_top);
             }else if (box_top >= max_botton){
                 box_top = 0;
                 $('.box').css('top',`${box_top}px`);
             }
         }
-        function move_right(){;
+        function move_right(speed){;
+            if(speed == undefined){
+                speed = 100
+            }
+            console.log('speed',speed);
             if(box_left <= max_right){
-                box_left += 100
+                box_left += speed
                 if(box_left > max_right){
                     box_left = 0
                 }
@@ -149,9 +188,52 @@
 
         function startIntervalRight(){
             myInterval = setInterval(function(){
-
-                box_left += 10
-                move_right(box_left)
+                // box_left += 10
+                if(box_left < max_right ){
+                    box_left += 10
+                }else{
+                    box_left = 0
+                }
+                $('.box').css('left',`${box_left}px`)
+            },100)
+        }
+        function startIntervalLeft(){
+            myInterval = setInterval(function(){
+                // box_left += 10
+                if(box_left < 0 ){
+                    box_left = max_right
+                }else{
+                    box_left -= 10
+                    if(box_left < 0 ){
+                    box_left = max_right
+                }
+                }
+                $('.box').css('left',`${box_left}px`)
+            },100)
+        }
+        function startIntervalBotton(){
+            myInterval = setInterval(function(){
+                // box_left += 10
+                if(box_top < max_botton ){
+                    box_top += 10
+                }else{
+                    box_top = 0
+                }
+                $('.box').css('top',`${box_top}px`)
+            },100)
+        }
+        function startIntervalTop(){
+            myInterval = setInterval(function(){
+                // box_left += 10
+                if(box_top < 0 ){
+                    box_top = max_botton
+                }else{
+                    box_top -= 10
+                    if(box_top < 0 ){
+                    box_top = max_botton
+                }
+                }
+                $('.box').css('top',`${box_top}px`)
             },100)
         }
         function stopInterval() {
