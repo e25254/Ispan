@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>45.addClass</title>
+    <style>
+        .box{
+            margin-top: 20px;
+            width: 300px;
+            height: 300px;
+            background-color: tomato;
+            transition: .5s;
+        }
+        .box.active{
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="btnadd">ADD</button>
+    <button class="btnremove">Remove</button>
+    <button class="btntoggle">Toggle</button>
+    <div class="box"></div>
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script>
+
+        $('.btnadd').click(function(){
+            $('.box').addClass('active')
+        })
+        $('.btnremove').click(function(){
+            $('.box').removeClass('active')
+        })
+        $('.btntoggle').click(function(){
+            $('.box').toggleClass('active')
+        })
+
+    </script>
+
+</body>
+
+</html>

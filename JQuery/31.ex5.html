@@ -68,7 +68,7 @@
 
     <script>
         $('tbody tr td input:checkbox').click(function(e){
-            if(($(e.currentTarget).prop('checked')) == true){
+            if(($(e.currentTarget).prop('checked'))){
                 $(e.currentTarget).parent().parent().css({'background-color':'green','color':'white'})
             }
             else{

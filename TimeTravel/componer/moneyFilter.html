@@ -20,9 +20,10 @@
             background-color: #ccc;
         }
 
+        /* 
         div {
             outline: 1px red solid;
-        }
+        } */
 
         .moneyFilter {
             margin: auto auto;
@@ -30,7 +31,7 @@
             height: 180px;
             background-color: white;
             display: flex;
-            flex-direction:column;
+            flex-direction: column;
             padding: 20px;
         }
 
@@ -43,21 +44,48 @@
             font-weight: 600;
             margin-bottom: 1.5rem;
         }
-        .money{
+
+        .money {
             letter-spacing: 5px;
             margin-bottom: 1.5rem;
         }
-        .scrollbar{
+
+        .scrollbar {
             width: 100%;
             height: 1.5rem;
             display: flex;
             align-items: center;
+            padding: 0 15px;
         }
-        .blue{
+
+        .blue {
+            -webkit-appearance: none;
             width: 100%;
             height: 0.5rem;
+            /* rgba(50, 188, 197, 1) */
             /* rgba(94, 183, 234, 1) */
             /* rgba(50, 191, 200, 1); */
+            background: linear-gradient(90deg,
+                    rgba(94, 181, 233, 1) 0%,
+                    rgba(50, 188, 197, 1) 70%,
+                    rgba(50, 188, 197, 1) 100%);
+            ;
+            border-radius: 20px;
+        }
+        
+        .blue::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            position: relative;
+            width: 30px;
+            height: 30px;
+            background: rgb(179, 176, 176);
+            border-radius: 50%;
+        }
+
+        .white {
+            width: 0%;
+            height: 0.5rem;
+            background-color: #fff;
         }
     </style>
 </head>
@@ -68,11 +96,15 @@
         <div class="text">價錢(TWD)</div>
         <div class="money">0~10000</div>
         <div class="scrollbar">
-            <div class="blue"></div>
+            <input type="range" class="blue">
         </div>
     </div>
-
-
+    <script src="/JQuery/js/jquery-3.6.1.min.js"></script>
+    <script>
+        $('input').mouseenter(function () {
+            console.log(($('input').val()));
+        })
+    </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

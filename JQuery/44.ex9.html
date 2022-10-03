@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>44.ex9</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .wrap {
+            width: 800px;
+            height: 400px;
+            background-color: #ccc;
+            position: relative;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: tomato;
+            position:absolute;
+            top: 0px;
+            left: 0px;
+            transition: 0.1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="wrap mx-auto">
+                <div class="box"></div>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12 text-center">
+                <button class="btn btn-info arrow_up" >
+                    <i class="fa-solid fa-caret-up"></i>
+                </button>
+            </div>
+            <div class="col-12 text-center">
+                <button class="btn btn-info mx-3 arrow_left">
+                    <i class="fa-solid fa-caret-left"></i>
+                </button>
+
+                <button class="btn btn-info mx-3 arrow_right">
+                    <i class="fa-solid fa-caret-right"></i>
+                </button>
+            </div>
+            <div class="col-12 text-center">
+                <button class="btn btn-info arrow_down">
+                    <i class="fa-solid fa-caret-down"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script>
+        let max_right = ($('.wrap').width() - $('.box').width())
+        let max_botton = ($('.wrap').height() - $('.box').height())
+        let box_top = parseInt($('.box').css('top'));
+        let box_left = parseInt($('.box').css('left'));
+        let box_right;
+        let myInterval = null
+
+        // $('.arrow_up').click(move_up)
+        // $('.arrow_left').click(move_left)
+        // $('.arrow_down').click(move_down)
+        // $('.arrow_right').click(move_right)
+
+        $(document).on('keydown',function(i){
+            let k = i.keyCode
+            // console.log(k);
+            if(k === 38 || k === 87){
+                i.preventDefault()
+                move_up();
+            }
+            if(k === 37 || k === 65){
+                i.preventDefault()
+                move_left();
+            }
+            if(k === 40 || k === 83){
+                i.preventDefault()
+                move_down();
+            }
+            if(k === 39 || k === 68){
+                i.preventDefault()
+                move_right()
+            }
+        })
+
+        
+        // $('.arrow_right').mousedown(startIntervalRight)
+        // $('.arrow_right').mouseup(stopInterval)
+
+
+        function move_up(){
+            if(box_top <= 0){
+                box_top = max_botton
+                $('.box').css('top',`${box_top}px`)
+            }
+            else if(box_top <= max_botton ){
+                box_top -= 100
+                $('.box').css('top',`${box_top}px`)
+            }
+        }
+        function move_left(){
+            if(box_left <= 0 ){
+                box_left = max_right
+            }else{
+                box_left -= 100
+                if(box_left < 0 ){
+                    box_left = max_right
+                }
+            }
+            $('.box').css('left',`${box_left}px`);
+        }
+        function move_down(){
+            if (box_top < max_botton) {
+                box_top += 100;
+                $('.box').css('top', box_top);
+            }else if (box_top >= max_botton){
+                box_top = 0;
+                $('.box').css('top',`${box_top}px`);
+            }
+        }
+        function move_right(){;
+            if(box_left <= max_right){
+                box_left += 100
+                if(box_left > max_right){
+                    box_left = 0
+                }
+            }else{
+                box_left = 0
+            }
+            $('.box').css('left',`${box_left}px`);
+        }
+
+        function startIntervalRight(){
+            myInterval = setInterval(function(){
+
+                box_left += 10
+                move_right(box_left)
+            },100)
+        }
+        function stopInterval() {
+            clearInterval(myInterval);
+        }
+
+    </script>
+
+</body>
+
+</html>
