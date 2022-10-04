@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>47.ex11</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .left{
+            background-color: #ccc;
+            height: 200px;
+            width: 200px;
+
+        }
+        .right{
+            background-color: rgb(234, 234, 234);
+            height: 200px;
+            width: 200px;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn{
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            border-radius: 50%;
+            margin: 0px 5px;
+        }
+        .red{
+            background-color: red;
+        }
+        .pink{
+            background-color: pink;
+        }
+        .orange{
+            background-color: orange;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+        .green{
+            background-color: green;
+        }
+        .lightblue{
+            background-color: lightblue;
+        }
+        .blue{
+            background-color: blue;
+        }
+        .purple{
+            background-color: purple;
+        }
+        .clear{
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="left mx-1"></div>
+    <div class="right mx-1">
+        <button class="btn red"></button>
+        <button class="btn pink"></button>
+        <button class="btn orange"></button>
+        <button class="btn yellow"></button>
+        <button class="btn green"></button>
+        <button class="btn lightblue"></button>
+        <button class="btn blue"></button>
+        <button class="btn purple"></button>
+        <button class="btn clear"></button>
+    </div>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script>
+        $('.btn').click(function(){
+            let color = $(this).css('background-color')
+            $('.left').css('background',color)
+
+
+            // let color = $(this).prop('class')
+            // // console.log(color);
+            // let a = color.split('btn ')
+            // let colorname = a[1]
+            // if(colorname == 'clear'){
+            //     $('.left').css('background-color','')
+            // }else if($(this).hasClass(colorname)){
+            //     $('.left').css('background-color',colorname)
+            // }
+        })
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>

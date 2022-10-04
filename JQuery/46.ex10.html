@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>46.ex10</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        .btn-group{
+            display: flex;
+            justify-content: end;
+        }
+        .fontS{
+            font-size: 10px;
+        }
+        .fontM{
+            font-size: 20px;
+        }
+        .fontL{
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="btn-group">
+        <button class="btn btn-info">S</button>
+        <button class="btn btn-info active">M</button>
+        <button class="btn btn-info">L</button>
+    </div>
+    
+
+    <h1>JQuery</h1>
+    <p class="fontS">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate voluptatem nesciunt quod officia placeat. Qui autem enim maxime deserunt inventore adipisci aspernatur odit magni cupiditate eos accusamus neque, rem vero?</p>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim eum consectetur voluptate voluptas harum, magnam molestiae possimus consequuntur, iusto ullam autem, atque repellendus porro? Suscipit similique quae reprehenderit obcaecati tempora!</p>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script>
+
+        $('.btn').eq(0).click(function(){
+            $('p').removeClass('fontL fontM').addClass('fontS')
+            $(this).addClass('active').siblings().removeClass('active')
+            
+        })
+        $('.btn').eq(1).click(function(){
+            $('p').removeClass('fontL fontS').addClass('fontM')
+            $(this).addClass('active').siblings().removeClass('active')
+        })
+        $('.btn').eq(2).click(function(){
+            $('p').removeClass('fontS fontM').addClass('fontL')
+            $(this).addClass('active').siblings().removeClass('active')
+        })
+
+    </script>
+
+</body>
+
+</html>

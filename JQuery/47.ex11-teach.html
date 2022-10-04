@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>47.ex11-teach</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .color-demo-area,
+        .color-select-area {
+            /* height: 480px; */
+            aspect-ratio: 1/1;
+            background-color: #ccc;
+        }
+
+        .color-selector {
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="color-demo-area"></div>
+            </div>
+            <div class="col-6">
+                <div class="color-select-area d-flex flex-wrap">
+                    <!-- <div class="col-6 col-md-4 col-lg-3">
+                        <div class="color-selector autobg"></div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="color-selector autobg"></div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="color-selector autobg"></div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="color-selector autobg"></div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script>
+        for(let i = 0 ; i < 10 ; i++){
+            $('.color-select-area').append(`
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="color-selector autobg"></div>
+                </div>`
+            )
+        }
+        $('.color-select-area').on('click','.color-selector',function () {
+            // console.log($(this).css('background'));
+            let color = $(this).css('background')
+            let a = color.split('/')
+            let colorname = a[0]
+            $('.color-demo-area').css('background', colorname)
+        })
+
+        
+    </script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script>
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max - 50) + 100);
+        }
+
+        function getRBGA() {
+            return `linear-gradient(135deg, rgba(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)},.5), rgba(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)},.8)`
+        }
+
+        const elements = document.querySelectorAll('.autobg');
+
+        Array.from(elements).forEach((element, index) => {
+            element.style.backgroundImage = getRBGA();
+        });
+
+        // $('.autobg').each(function (index, currentElement) {
+        //     currentElement.style.backgroundImage = getRBGA();
+        // });
+    </script>
+</body>
+
+</html>
