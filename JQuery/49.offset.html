@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>49.offset</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        section {
+            height: 100vh;
+            font-size: 10rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .img{
+            transition: .3s;
+            transform: translateX(150%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .img.show{
+            transform: translateX(0%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="section1 autobg">section1</section>
+    <section class="section2 autobg">
+        <div class="wrap">
+            <div class="img">
+                <img src="./images/1.png" alt="">
+                <img src="./images/2.png" alt="">
+                <img src="./images/3.png" alt="">
+            </div>
+        </div>
+    </section>
+    <section class="section3 autobg">section3</section>
+    <section class="section4 autobg">section4</section>
+    <section class="section5 autobg">section5</section>
+    <section class="section6 autobg">section6</section>
+    <section class="section7 autobg">section7</section>
+    <section class="section8 autobg">section8</section>
+    <section class="section9 autobg">section9</section>
+    <section class="section10 autobg">section10</section>
+    <section class="section11 autobg">section11</section>
+    <section class="section12 autobg">section12</section>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script>
+
+        // console.log($('.section2').offset().top);
+        let changeScroll = ($('.section2').offset().top) * 0.4
+        // console.log($(window).scrollTop());
+        $(window).scroll(function(){
+            console.log($('.section2').offset().top);
+            // console.log(changeScroll);
+            let nowScroll = $(window).scrollTop()
+            console.log(nowScroll);
+            if(nowScroll >= changeScroll){
+                // $('.section2').css('background','orange')
+                $('.img').addClass('show')
+                if(nowScroll >= (changeScroll * 3)){
+                    $('.img').removeClass('show')
+                }
+            }else{
+                // $('.section2').css('background','')
+                $('.img').removeClass('show')
+            }
+        })
+
+    </script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script>
+     function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max - 50) + 100);
+    }
+    
+    function getRBGA() {
+        return `linear-gradient(135deg, rgba(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)},.5), rgba(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)},.8)`
+    }
+    
+    const elements = document.querySelectorAll('.autobg');
+    
+    Array.from(elements).forEach((element, index) => {
+        element.style.backgroundImage = getRBGA();
+    });
+    
+    // $('.autobg').each(function (index, currentElement) {
+    //     currentElement.style.backgroundImage = getRBGA();
+    // });
+    </script>
+
+</body>
+
+</html>

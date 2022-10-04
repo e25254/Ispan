@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>48.width</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+            border: 10px solid black;
+            margin: 50px;
+        }
+        .box1{
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+            border: 10px solid black;
+            margin: 50px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+    </div>
+    <div class="box1">
+
+    </div>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script>
+        console.log('box',$('.box').width());
+        console.log('box',$('.box').height());
+        console.log('box',$('.box').innerWidth());
+        console.log('box',$('.box').innerHeight());
+        console.log('box',$('.box').outerWidth());
+        console.log('box',$('.box').outerHeight());
+        console.log('box',$('.box').outerWidth(true));
+        console.log('box',$('.box').outerHeight(true));
+
+        console.log('box1',$('.box1').width());
+        console.log('box1',$('.box1').height());
+        console.log('box1',$('.box1').innerWidth());
+        console.log('box1',$('.box1').innerHeight());
+        console.log('box1',$('.box1').outerWidth());
+        console.log('box1',$('.box1').outerHeight());
+        console.log('box1',$('.box1').outerWidth(true));
+        console.log('box1',$('.box1').outerHeight(true));
+
+
+
+    </script>
+
+</body>
+
+</html>
