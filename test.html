@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        let snakeX = 360
+        let snakeY = 200
+        let snake = [
+            {snakeX: 360, snakeY: 200},
+            {snakeX: 360, snakeY: 200},
+            {snakeX: 340, snakeY: 200},
+            {snakeX: 320, snakeY: 200},
+            {snakeX: 300, snakeY: 200},
+            {snakeX: 280, snakeY: 200},
+            {snakeX: 260, snakeY: 200},
+            {snakeX: 240, snakeY: 200},
+            {snakeX: 220, snakeY: 200},
+            {snakeX: 200, snakeY: 200},
+            {snakeX: 180, snakeY: 200},
+            {snakeX: 360, snakeY: 200}
+        ]
+        let sameX = snake.map(function(value,index,array){
+            return value.snakeX
+        })
+        console.log(sameX.indexOf(snakeX));
+        
+       
+
+
+
+    </script>
+</body>
+
+
+</html>
