@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>52.ex13</title>
+    <style>
+        body{
+            margin: 0;
+            height: 1000vh;
+        }
+        .nav{
+            width: 100%;
+            height: 50px;
+            background-color: tomato;
+            position: fixed;
+            top:0;
+            transition: .5s;
+        }
+        .nav.hide{
+            width: 100%;
+            transform: translateY(-110%);
+        }
+        button{
+            position: fixed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav"> i m nav</nav>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script>
+        let navY = $('.nav').offset().top
+        $(window).scroll(function(){
+            console.log('nav',navY);
+            let windowY = $(window).scrollTop()
+            console.log('window',windowY);
+            if(windowY > navY){
+                console.log('down');
+                $('.nav').addClass('hide')
+            }else{
+                console.log('up');
+                $('.nav').removeClass('hide')
+            }
+            navY = windowY
+        })
+
+
+    </script>
+
+</body>
+
+</html>

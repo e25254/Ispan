@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake</title>
+    <link rel="stylesheet" href="/JQuery/reset.css">
+    <style>
+        .gamebackground{
+            width: 100%;
+            height: 800px;
+            background-color: #ccc;
+            position: relative;
+        }
+        .snake{
+            background-color: #fff;
+            width: 20px;
+            height: 20px;
+            left: 400px;
+            top: 200px;
+            position:absolute;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="gamebackground">    
+        <div class="snake snake1"></div>
+    </div>
+    <button class="click">click</button>
+    <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
+    <script>
+
+        let x ;
+        let y ;
+
+        let diretion = 'y'
+
+        let ballX = $('.snake').width()
+
+        let ballY = $('.snake').height()
+
+        let max_X = ($('.gamebackground').width()) - ballX
+        console.log('畫面總長',max_X);
+        let max_Y = ($('.gamebackground').height()) - ballY
+        console.log('畫面總寬',max_Y);
+
+        let snakeX = $('.snake').position().left
+        console.log('snakeX',snakeX);
+        let snakeY = $('.snake').position().top
+        console.log('snakeY',snakeY);
+        let right = null;
+        let up = null;
+        let down = null;
+        let left = null;
+
+
+        let snake_big = 1
+
+        $('.click').click(function(){
+            
+            snake_big = snake_big + 1
+            $('.gamebackground').append(`<div class="snake snake${snake_big}"></div>`)
+        })
+
+
+        $(document).on('keydown',function(i){
+            let k = i.keyCode
+            if(k === 38 || k === 87){
+                i.preventDefault()
+                // console.log('w');
+                stopUp()
+                stopDown()
+                stopRight()
+                stopLeft()
+                Up()
+            }
+            if(k === 37 || k === 65){
+                i.preventDefault()
+                // console.log('a');
+                stopLeft()
+                stopDown()
+                stopUp()
+                stopRight()
+                Left()
+                
+            }
+            if(k === 40 || k === 83){
+                i.preventDefault()
+                // console.log('s');
+                stopDown()
+                stopRight()
+                stopUp()
+                stopLeft()
+                Down()
+            }
+            if(k === 39 || k === 68){
+                i.preventDefault()
+                // console.log('d');
+                stopRight()
+                stopDown()
+                stopUp()
+                stopLeft()
+                Right()
+            }
+        })
+
+
+
+
+        function Right(){
+            right = setInterval(function(){
+                snakeX = snakeX + 10
+                checkX()
+                console.log(snakeX);
+                $('.snake').css('left',snakeX)
+            },1000)
+        }
+        function Up(){
+            up = setInterval(function(){
+                snakeY = snakeY - 10
+                checkY()
+                console.log(snakeY);
+                $('.snake').css('top',snakeY)
+            },1000)
+        }
+        function Down(){
+            down = setInterval(function(){
+                snakeY = snakeY + 10
+                checkY()
+                console.log(snakeY);
+                $('.snake').css('top',snakeY)
+            },1000)
+        }
+        function Left(){
+            left = setInterval(function(){
+                snakeX = snakeX - 10
+                checkX()
+                console.log(snakeX);
+                $('.snake').css('left',snakeX)
+            },1000)
+        }
+        function stopRight(){
+            clearInterval(right)
+        }
+        function stopUp(){
+            clearInterval(up)
+        }
+        function stopDown(){
+            clearInterval(down)
+        }
+        function stopLeft(){
+            clearInterval(left)
+        }
+
+        function checkX(){
+            if( snakeX > max_X){
+                snakeX = 0
+            }else if (snakeX < 0){
+                snakeX = max_X
+            }
+        }
+        function checkY(){
+            if( snakeY > max_Y){
+                snakeY = 0
+            }else if (snakeY < 0){
+                snakeY = max_Y
+            }
+        }
+
+
+    </script>
+
+</body>
+
+</html>
