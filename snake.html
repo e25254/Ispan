@@ -10,7 +10,7 @@
     <style>
         .gamebackground{
             width: 100%;
-            height: 600px;
+            height: 400px;
             background-color: #ccc;
             position: relative;
         }
@@ -23,7 +23,7 @@
         }
         .snake1{
             background-color: yellow;
-            left: 1070px;
+            left: 200px;
             top: 200px;
         }
         /* .snake2{
@@ -73,6 +73,7 @@
         let up = null;
         let down = null;
         let left = null;
+        let score = 0
         let oldsnake = [
             // {snakeX: 400, snakeY: 200},
             // {snakeX: 380, snakeY: 200},
@@ -224,26 +225,28 @@
                     left:oldsnake[(i - 1)].snakeX,
                     top:oldsnake[(i - 1)].snakeY
                 })
-                console.log(`${i}`,oldsnake);
-            }
 
-            // $('.snake1').css({
-            //     left:oldsnake[0].snakeX,
-            //     top:oldsnake[0].snakeY
-            // })
-            // $('.snake2').css({
-            //     left:oldsnake[1].snakeX,
-            //     top:oldsnake[1].snakeY
-            // })
-            // $('.snake3').css({
-            //     left:oldsnake[2].snakeX,
-            //     top:oldsnake[2].snakeY
-            // })
-            // $('.snake4').css({
-            //     left:oldsnake[3].snakeX,
-            //     top:oldsnake[3].snakeY
-            // })
-            // console.log(oldsnake[0]);
+                if( i > 1 ){
+                    let same = oldsnake.filter(function(value,index,array){
+                        return (value.snakeX == snakeX) && (value.snakeY == snakeY)
+                    })
+                    if(same.length > 1 ){
+                        score = score + 1
+                    }
+                }
+            }
+            if(score > 0){
+                console.log(score);
+                gameOver()
+            }
+        }
+
+        function gameOver(){
+            stopRight()
+            stopDown()
+            stopUp()
+            stopLeft()
+            console.log('GameOver');
         }
 
     </script>

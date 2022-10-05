@@ -25,10 +25,16 @@
             {snakeX: 180, snakeY: 200},
             {snakeX: 360, snakeY: 200}
         ]
-        let sameX = snake.map(function(value,index,array){
-            return value.snakeX
+        let same = snake.filter(function(value,index,array){
+            return (value.snakeX == snakeX) && (value.snakeY == snakeY)
         })
-        console.log(sameX.indexOf(snakeX));
+
+
+        if(same.length > 0 ){
+            console.log('GameOver');
+        }
+
+        console.log(same);
         
        
 
