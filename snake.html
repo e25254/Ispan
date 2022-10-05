@@ -25,7 +25,7 @@
             left: 400px;
             top: 200px;
         }
-        /* .snake2{
+        .snake2{
             left: 380px;
             top: 200px;
         }
@@ -36,7 +36,7 @@
         .snake4{
             left: 340px;
             top:200px
-        } */
+        }
     </style>
 </head>
 
@@ -44,11 +44,11 @@
 
     <div class="gamebackground">    
         <div class="snake snake1"></div>
-        <!-- <div class="snake snake2"></div>
+        <div class="snake snake2"></div>
         <div class="snake snake3"></div>
-        <div class="snake snake4"></div> -->
+        <div class="snake snake4"></div>
     </div>
-    <button class="click">click</button>
+    <!-- <button class="click">click</button> -->
     <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
     <script>
 
@@ -83,12 +83,7 @@
         let snake_big = 1
 
         $('.click').click(function(){
-            snake_big = snake_big + 1
-            $('.gamebackground').append(`<div class="snake snake${snake_big}"></div>`)
-            $(`.snake${snake_big}`).css({
-                left:oldsnake[(snake_big - 2)].snakeX,
-                top:oldsnake[(snake_big - 2)].snakeY
-            })
+            
         })
 
 
@@ -137,6 +132,14 @@
                 stopUp()
                 stopLeft()
             }
+            if(k == 78){
+                snake_big = snake_big + 1
+                $('.gamebackground').append(`<div class="snake snake${snake_big}"></div>`)
+                $(`.snake${snake_big}`).css({
+                    left:oldsnake[(snake_big - 2)].snakeX,
+                    top:oldsnake[(snake_big - 2)].snakeY
+                })
+            }
         })
 
 
@@ -144,39 +147,41 @@
 
         function Right(){
             right = setInterval(function(){
-                snakeBig()
                 snakeX = snakeX + 20
+                snakeBig()
+                
                 checkX()
                 // console.log(snakeX,snakeY);
                 $('.snake1').css('left',snakeX)
-            },20)
+            },500)
         }
         function Up(){
             up = setInterval(function(){
-                snakeBig()
                 snakeY = snakeY - 20
+                snakeBig()
+                
                 checkY()
                 // console.log(snakeX,snakeY);
                 $('.snake1').css('top',snakeY)
-            },20)
+            },500)
         }
         function Down(){
             down = setInterval(function(){
-                snakeBig()
                 snakeY = snakeY + 20
+                snakeBig()
                 checkY()
                 // console.log(snakeX,snakeY);
                 $('.snake1').css('top',snakeY)
-            },20)
+            },500)
         }
         function Left(){
             left = setInterval(function(){  
-                snakeBig()
                 snakeX = snakeX - 20
+                snakeBig()
                 checkX()
                 // console.log(snakeX,snakeY);
                 $('.snake1').css('left',snakeX)
-            },20)
+            },500)
         }
         function stopRight(){
             clearInterval(right)
@@ -207,26 +212,26 @@
         }
         function snakeBig(){
             oldsnake.unshift({snakeX,snakeY})
-                if(oldsnake.length == 4){
-                    console.log(oldsnake);
+                if(oldsnake.length > 4){
+                    console.log(oldsnake[0],oldsnake[1],oldsnake[2],oldsnake[3],oldsnake[4]);
                     oldsnake.pop()
                 }
-            $('.snake2').css({
+            $('.snake1').css({
                 left:oldsnake[0].snakeX,
                 top:oldsnake[0].snakeY
             })
-            $('.snake3').css({
+            $('.snake2').css({
                 left:oldsnake[1].snakeX,
                 top:oldsnake[1].snakeY
             })
-            $('.snake4').css({
+            $('.snake3').css({
                 left:oldsnake[2].snakeX,
                 top:oldsnake[2].snakeY
             })
-            // $('.snake3').css({
-            //     left:oldsnake[1].snakeX,
-            //     top:oldsnake[1].snakeY
-            // })
+            $('.snake4').css({
+                left:oldsnake[3].snakeX,
+                top:oldsnake[3].snakeY
+            })
             // console.log(oldsnake[0]);
         }
 
