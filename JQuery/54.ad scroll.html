@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>54.ad scroll</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        section{
+            height: 100vh;
+        }
+        .section3{
+            height: 300vh;
+        }
+        .ad-row{
+            position: sticky;
+            top:0
+        }
+        .ad-img-wrap{
+            width: 100%;
+            position: absolute;
+            height: 100vh;
+            /* overflow: hidden; */
+        }
+        .ad-img-wrap img{
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+        }
+        .ad3,
+        .ad2 {
+            transform-origin: 0 0;
+            /* animation: tear-off 3s infinite; */
+        }
+
+        @keyframes tear-off {
+            100% {
+                transform: translate(-120%, -20%) rotate(20deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="section1 autobg">section1</section>
+    <section class="section2 autobg">section2</section>
+    <section class="section3 autobg">
+        <div class="ad-row">
+            <div class="ad-img-wrap ad1">
+                <img src="./images/slide1.jpg" alt="">
+            </div>
+            <div class="ad-img-wrap ad2">
+                <img src="./images/slide2.jpg" alt="">
+            </div>
+            <div class="ad-img-wrap ad3">
+                <img src="./images/slide3.jpg" alt="">
+            </div>
+        </div>
+    </section>
+    <section class="section4 autobg">section4</section>
+    <section class="section5 autobg">section5</section>
+    <section class="section6 autobg">section6</section>
+    <section class="section7 autobg">section7</section>
+    <section class="section8 autobg">section8</section>
+    <section class="section9 autobg">section9</section>
+    <section class="section10 autobg">section10</section>
+    <section class="section11 autobg">section11</section>
+    <section class="section12 autobg">section12</section>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script>
+
+        $(window).scroll(function(){
+            let s3 = $('.section3').offset().top
+            
+            let nowScroll = $(window).scrollTop()
+            let windowHeight = $(window).height()
+            let s2 = s3 + windowHeight
+            let s1 = s2 + windowHeight
+            console.log(nowScroll);
+            console.log(s2);
+            // console.log('nowScroll',nowScroll);
+            // console.log('originalAdImgTop',originalAdImgTop);
+            // console.log('windowHeight',windowHeight);
+            if (nowScroll <= s3) {
+                const percentage = 0;
+
+                const transX = -120 * percentage;
+                const transY = -20 * percentage;
+                const rotateDeg = 20 * percentage;
+                $('.ad3').css('transform', `translate(${transX}%, ${transY}%) rotate(${rotateDeg}deg)`)
+            }
+
+            if(nowScroll > s3){
+                let percentage = (nowScroll - s3) / windowHeight 
+                let transX = -120 * percentage
+                let transY = -20 * percentage
+                let rotateDeg = 20 * percentage
+                
+                $('.ad3').css('transform', `translate(${transX}%, ${transY}%) rotate(${rotateDeg}deg)`)
+                // console.log(percentage);
+            }
+            if (nowScroll <= s2) {
+                const percentage = 0;
+
+                const transX = -120 * percentage;
+                const transY = -20 * percentage;
+                const rotateDeg = 20 * percentage;
+                $('.ad2').css('transform', `translate(${transX}%, ${transY}%) rotate(${rotateDeg}deg)`)
+            }
+
+            if(nowScroll > s2){
+                let percentage = (nowScroll - s2) / windowHeight 
+                let transX = -120 * percentage
+                let transY = -20 * percentage
+                let rotateDeg = 20 * percentage
+                
+                $('.ad2').css('transform', `translate(${transX}%, ${transY}%) rotate(${rotateDeg}deg)`)
+                // console.log(percentage);
+            }
+            if (nowScroll <= s1) {
+                const percentage = 0;
+
+                const transX = -120 * percentage;
+                const transY = -20 * percentage;
+                const rotateDeg = 20 * percentage;
+                $('.ad1').css('transform', `translate(${transX}%, ${transY}%) rotate(${rotateDeg}deg)`)
+            }
+
+            if(nowScroll > s1){
+                let percentage = (nowScroll - s1) / windowHeight 
+                let transX = -120 * percentage
+                let transY = -20 * percentage
+                let rotateDeg = 20 * percentage
+                
+                $('.ad1').css('transform', `translate(${transX}%, ${transY}%) rotate(${rotateDeg}deg)`)
+                // console.log(percentage);
+            }
+        })
+
+    </script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script>
+     function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max - 50) + 100);
+    }
+    
+    function getRBGA() {
+        return `linear-gradient(135deg, rgba(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)},.5), rgba(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)},.8)`
+    }
+    
+    const elements = document.querySelectorAll('.autobg');
+    
+    Array.from(elements).forEach((element, index) => {
+        element.style.backgroundImage = getRBGA();
+    });
+    
+    // $('.autobg').each(function (index, currentElement) {
+    //     currentElement.style.backgroundImage = getRBGA();
+    // });
+    </script>
+</body>
+
+</html>

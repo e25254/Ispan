@@ -18,11 +18,25 @@
             background-color: #fff;
             width: 20px;
             height: 20px;
-            left: 400px;
-            top: 200px;
             position:absolute;
             border-radius: 50px;
         }
+        .snake1{
+            left: 400px;
+            top: 200px;
+        }
+        /* .snake2{
+            left: 380px;
+            top: 200px;
+        }
+        .snake3{
+            left: 360px;
+            top:200px
+        }
+        .snake4{
+            left: 340px;
+            top:200px
+        } */
     </style>
 </head>
 
@@ -30,6 +44,9 @@
 
     <div class="gamebackground">    
         <div class="snake snake1"></div>
+        <!-- <div class="snake snake2"></div>
+        <div class="snake snake3"></div>
+        <div class="snake snake4"></div> -->
     </div>
     <button class="click">click</button>
     <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
@@ -40,30 +57,38 @@
 
         let diretion = 'y'
 
-        let ballX = $('.snake').width()
+        let ballX = $('.snake1').width()
 
-        let ballY = $('.snake').height()
+        let ballY = $('.snake1').height()
 
         let max_X = ($('.gamebackground').width()) - ballX
         // console.log('畫面總長',max_X);
         let max_Y = ($('.gamebackground').height()) - ballY
         // console.log('畫面總寬',max_Y);
-        let snakeX = $('.snake').position().left
-        let snakeY = $('.snake').position().top
+        let snakeX = $('.snake1').position().left
+        let snakeY = $('.snake1').position().top
         console.log(snakeX,snakeY);
         let right = null;
         let up = null;
         let down = null;
         let left = null;
-        let oldsnake = []
+        let oldsnake = [
+            {snakeX: 400, snakeY: 200},
+            {snakeX: 380, snakeY: 200},
+            {snakeX: 360, snakeY: 200},
+            {snakeX: 340, snakeY: 200}
+        ]
 
 
-        let snake_big = 2
+        let snake_big = 1
 
         $('.click').click(function(){
-            
             snake_big = snake_big + 1
             $('.gamebackground').append(`<div class="snake snake${snake_big}"></div>`)
+            $(`.snake${snake_big}`).css({
+                left:oldsnake[(snake_big - 2)].snakeX,
+                top:oldsnake[(snake_big - 2)].snakeY
+            })
         })
 
 
@@ -119,46 +144,39 @@
 
         function Right(){
             right = setInterval(function(){
-                oldsnake.unshift({snakeX,snakeY})
-                if(oldsnake.length > snake_big){
-                    oldsnake.pop()
-                }
-                console.log(oldsnake[0],oldsnake[1]);
-                snakeX = snakeX + 10
+                snakeBig()
+                snakeX = snakeX + 20
                 checkX()
                 // console.log(snakeX,snakeY);
-                $('.snake').css('left',snakeX)
-            },1000)
+                $('.snake1').css('left',snakeX)
+            },20)
         }
         function Up(){
             up = setInterval(function(){
-                oldsnake.push({snakeX,snakeY})
-                console.log(oldsnake);
-                snakeY = snakeY - 10
+                snakeBig()
+                snakeY = snakeY - 20
                 checkY()
                 // console.log(snakeX,snakeY);
-                $('.snake').css('top',snakeY)
-            },1000)
+                $('.snake1').css('top',snakeY)
+            },20)
         }
         function Down(){
             down = setInterval(function(){
-                oldsnake.push({snakeX,snakeY})
-                console.log(oldsnake);
-                snakeY = snakeY + 10
+                snakeBig()
+                snakeY = snakeY + 20
                 checkY()
                 // console.log(snakeX,snakeY);
-                $('.snake').css('top',snakeY)
-            },1000)
+                $('.snake1').css('top',snakeY)
+            },20)
         }
         function Left(){
-            left = setInterval(function(){
-                oldsnake.push({snakeX,snakeY})
-                console.log(oldsnake);
-                snakeX = snakeX - 10
+            left = setInterval(function(){  
+                snakeBig()
+                snakeX = snakeX - 20
                 checkX()
                 // console.log(snakeX,snakeY);
-                $('.snake').css('left',snakeX)
-            },1000)
+                $('.snake1').css('left',snakeX)
+            },20)
         }
         function stopRight(){
             clearInterval(right)
@@ -188,10 +206,28 @@
             }
         }
         function snakeBig(){
-            if(oldsnake.length > snake_big){
-                oldsnake.shift()
-            };
-            oldsnake.push({snakeX,snakeY})
+            oldsnake.unshift({snakeX,snakeY})
+                if(oldsnake.length == 4){
+                    console.log(oldsnake);
+                    oldsnake.pop()
+                }
+            $('.snake2').css({
+                left:oldsnake[0].snakeX,
+                top:oldsnake[0].snakeY
+            })
+            $('.snake3').css({
+                left:oldsnake[1].snakeX,
+                top:oldsnake[1].snakeY
+            })
+            $('.snake4').css({
+                left:oldsnake[2].snakeX,
+                top:oldsnake[2].snakeY
+            })
+            // $('.snake3').css({
+            //     left:oldsnake[1].snakeX,
+            //     top:oldsnake[1].snakeY
+            // })
+            // console.log(oldsnake[0]);
         }
 
     </script>
