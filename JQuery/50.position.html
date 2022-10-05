@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>50.position</title>
+    <style>
+        body {
+            margin: 20px;
+        }
+
+        .wrap {
+            width: 800px;
+            height: 800px;
+            background-color: #ccc;
+            /* padding: 50px; */
+            position: relative;
+            padding-top: 1px;
+        }
+
+        .box1 {
+            width: 400px;
+            height: 400px;
+            background-color: teal;
+            margin: 50px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="box1">
+            <div class="box2"></div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script>
+        console.log('box1 position', $('.box1').position());
+    </script>
+
+</body>
+
+</html>

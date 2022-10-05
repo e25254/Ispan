@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>offset</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        section {
+            height: 100vh;
+            font-size: 10rem;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="section1 autobg">section1</section>
+    <section class="section2 autobg">section2</section>
+    <section class="section3 autobg">section3</section>
+    <section class="section4 autobg">section4</section>
+    <section class="section5 autobg">section5</section>
+    <section class="section6 autobg">section6</section>
+    <section class="section7 autobg">section7</section>
+    <section class="section8 autobg">section8</section>
+    <section class="section9 autobg">section9</section>
+    <section class="section10 autobg">section10</section>
+    <section class="section11 autobg">section11</section>
+    <section class="section12 autobg">section12</section>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script>
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max - 50) + 100);
+        }
+
+        function getRBGA() {
+            return `linear-gradient(135deg, rgba(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)},.5), rgba(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)},.8)`
+        }
+
+        const elements = document.querySelectorAll('.autobg');
+
+        Array.from(elements).forEach((element, index) => {
+            element.style.backgroundImage = getRBGA();
+        });
+
+    // $('.autobg').each(function (index, currentElement) {
+    //     currentElement.style.backgroundImage = getRBGA();
+    // });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script>
+
+        console.log('section2 offset:', $('.section2').offset().top);
+
+        $(window).scroll(function () {
+            const nowScroll = $(window).scrollTop();
+
+            if (nowScroll >= $('.section2').offset().top) {
+                $('.section2').css('background', 'orange')
+            }
+            else {
+                $('.section2').css('background', 'pink')
+            }
+        })
+    </script>
+
+</body>
+
+</html>
