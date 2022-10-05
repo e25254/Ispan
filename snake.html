@@ -26,6 +26,13 @@
             left: 200px;
             top: 200px;
         }
+        .apple{
+            background-color: rgb(255, 0, 0);
+            width: 20px;
+            height: 20px;
+            position:absolute;
+            border-radius: 50px;
+        }
         /* .snake2{
             left: 380px;
             top: 200px;
@@ -52,12 +59,6 @@
     <!-- <button class="click">click</button> -->
     <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
     <script>
-
-        let x ;
-        let y ;
-
-        let diretion = 'y'
-
         let ballX = $('.snake1').width()
 
         let ballY = $('.snake1').height()
@@ -74,15 +75,22 @@
         let down = null;
         let left = null;
         let score = 0
-        let oldsnake = [
-            // {snakeX: 400, snakeY: 200},
-            // {snakeX: 380, snakeY: 200},
-            // {snakeX: 360, snakeY: 200},
-            // {snakeX: 340, snakeY: 200}
-        ]
-
-
+        let oldsnake = []
+        let totalapple = []
         let snake_big = 1
+
+        // let howmanyApple = (Math.floor((snake_big - 1) / 5)) + 1
+        // let randomX = (Math.floor(Math.random()*((max_X / 20)+1)))*20
+        // let randomY = (Math.floor(Math.random()*((max_Y / 20)+1)))*20
+
+        
+
+
+
+
+        
+
+        
 
         $(document).on('keydown',function(i){
             let k = i.keyCode
@@ -131,6 +139,7 @@
             }
             if(k == 78){
                 snake_big = snake_big + 1
+                apple()
                 $('.gamebackground').append(`<div class="snake snake${snake_big}"></div>`)
                 $(`.snake${snake_big}`).css({
                     left:oldsnake[(snake_big - 2)].snakeX,
@@ -214,12 +223,12 @@
         }
         function snakeBig(){
             oldsnake.unshift({snakeX,snakeY})
-            
-                if(oldsnake.length > snake_big){
-                    
-                    // console.log(oldsnake[0],oldsnake[1],oldsnake[2],oldsnake[3],oldsnake[4]);
-                    oldsnake.pop()
-                }
+            // console.log(snake_big);
+            if(oldsnake.length > snake_big){
+                
+                // console.log(oldsnake[0],oldsnake[1],oldsnake[2],oldsnake[3],oldsnake[4]);
+                oldsnake.pop()
+            }
             for(let i = 1 ; i <= (oldsnake.length) ; i++){
                 $(`.snake${i}`).css({
                     left:oldsnake[(i - 1)].snakeX,
@@ -235,11 +244,15 @@
                     }
                 }
             }
+
+        
             if(score > 0){
                 console.log(score);
                 gameOver()
             }
         }
+        
+
 
         function gameOver(){
             stopRight()
@@ -248,6 +261,30 @@
             stopLeft()
             console.log('GameOver');
         }
+
+
+
+        
+        function apple(){
+            let howmanyApple = (Math.floor((snake_big - 1) / 5)) + 1
+            let randomX = (Math.floor(Math.random()*((max_X / 20)+1)))*20
+            let randomY = (Math.floor(Math.random()*((max_Y / 20)+1)))*20
+            
+            for(let a = 1 ; a <= howmanyApple ; a++){
+                randomX = (Math.floor(Math.random()*((max_X / 20)+1)))*20
+                randomY = (Math.floor(Math.random()*((max_Y / 20)+1)))*20
+                $('.gamebackground').append(`<div class="apple apple${a}"></div>`)
+                $(`.apple${a}`).css({
+                    left:randomX,
+                    top:randomY
+                })
+                totalapple.unshift({randomX,randomY})
+                console.log(totalapple);
+            }
+        }
+        
+
+
 
     </script>
 

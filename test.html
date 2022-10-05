@@ -25,18 +25,17 @@
             {snakeX: 180, snakeY: 200},
             {snakeX: 360, snakeY: 200}
         ]
-        let same = snake.filter(function(value,index,array){
-            return (value.snakeX == snakeX) && (value.snakeY == snakeY)
-        })
+        // snake.remove({snakeX: 360, snakeY: 200})
 
-
-        if(same.length > 0 ){
-            console.log('GameOver');
-        }
-
-        console.log(same);
-        
-       
+        let result = snake.filter(function(value) {
+            if(value.snakeX === 360 && value.snakeY === 200) {
+                return false
+            }
+            else {
+                return true
+            }
+        });
+        console.log(result);
 
 
 
