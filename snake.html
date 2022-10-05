@@ -45,21 +45,20 @@
         let ballY = $('.snake').height()
 
         let max_X = ($('.gamebackground').width()) - ballX
-        console.log('畫面總長',max_X);
+        // console.log('畫面總長',max_X);
         let max_Y = ($('.gamebackground').height()) - ballY
-        console.log('畫面總寬',max_Y);
-
+        // console.log('畫面總寬',max_Y);
         let snakeX = $('.snake').position().left
-        console.log('snakeX',snakeX);
         let snakeY = $('.snake').position().top
-        console.log('snakeY',snakeY);
+        console.log(snakeX,snakeY);
         let right = null;
         let up = null;
         let down = null;
         let left = null;
+        let oldsnake = []
 
 
-        let snake_big = 1
+        let snake_big = 2
 
         $('.click').click(function(){
             
@@ -70,6 +69,7 @@
 
         $(document).on('keydown',function(i){
             let k = i.keyCode
+            // console.log(k);
             if(k === 38 || k === 87){
                 i.preventDefault()
                 // console.log('w');
@@ -86,8 +86,7 @@
                 stopDown()
                 stopUp()
                 stopRight()
-                Left()
-                
+                Left()        
             }
             if(k === 40 || k === 83){
                 i.preventDefault()
@@ -107,6 +106,12 @@
                 stopLeft()
                 Right()
             }
+            if(k ==32){
+                stopRight()
+                stopDown()
+                stopUp()
+                stopLeft()
+            }
         })
 
 
@@ -114,33 +119,44 @@
 
         function Right(){
             right = setInterval(function(){
+                oldsnake.unshift({snakeX,snakeY})
+                if(oldsnake.length > snake_big){
+                    oldsnake.pop()
+                }
+                console.log(oldsnake[0],oldsnake[1]);
                 snakeX = snakeX + 10
                 checkX()
-                console.log(snakeX);
+                // console.log(snakeX,snakeY);
                 $('.snake').css('left',snakeX)
             },1000)
         }
         function Up(){
             up = setInterval(function(){
+                oldsnake.push({snakeX,snakeY})
+                console.log(oldsnake);
                 snakeY = snakeY - 10
                 checkY()
-                console.log(snakeY);
+                // console.log(snakeX,snakeY);
                 $('.snake').css('top',snakeY)
             },1000)
         }
         function Down(){
             down = setInterval(function(){
+                oldsnake.push({snakeX,snakeY})
+                console.log(oldsnake);
                 snakeY = snakeY + 10
                 checkY()
-                console.log(snakeY);
+                // console.log(snakeX,snakeY);
                 $('.snake').css('top',snakeY)
             },1000)
         }
         function Left(){
             left = setInterval(function(){
+                oldsnake.push({snakeX,snakeY})
+                console.log(oldsnake);
                 snakeX = snakeX - 10
                 checkX()
-                console.log(snakeX);
+                // console.log(snakeX,snakeY);
                 $('.snake').css('left',snakeX)
             },1000)
         }
@@ -171,7 +187,12 @@
                 snakeY = max_Y
             }
         }
-
+        function snakeBig(){
+            if(oldsnake.length > snake_big){
+                oldsnake.shift()
+            };
+            oldsnake.push({snakeX,snakeY})
+        }
 
     </script>
 
