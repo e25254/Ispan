@@ -45,6 +45,20 @@
             left: 340px;
             top:200px
         } */
+        .scoreboard{
+            display: flex;
+            width: 100%;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            padding-top: 10px;
+        }
+        .score{
+            width: 20px;
+            padding-right: 10px;
+            
+        }
     </style>
 </head>
 
@@ -56,6 +70,9 @@
         <div class="snake snake3"></div>
         <div class="snake snake4"></div> -->
     </div>
+    <div class="scoreboard">score:
+        
+    </div>
     <!-- <button class="click">click</button> -->
     <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
     <script>
@@ -66,9 +83,9 @@
         let ballY = $('.snake1').height()
 
         let max_X = ($('.gamebackground').width()) - ballX
-        console.log('畫面總長',max_X);
+        // console.log('畫面總長',max_X);
         let max_Y = ($('.gamebackground').height()) - ballY
-        console.log('畫面總寬',max_Y);
+        // console.log('畫面總寬',max_Y);
         let snakeX = $('.snake1').position().left
         let snakeY = $('.snake1').position().top
         // console.log(snakeX,snakeY);
@@ -80,6 +97,10 @@
         let oldsnake = []
         let totalapple = []
         let snake_big = 1
+        let htmlscore = snake_big - 1
+        
+        $('.scoreboard').append(`<div class="score">${htmlscore}</div>`)
+        
         apple()
         // let howmanyApple = (Math.floor((snake_big - 1) / 5)) + 1
         // let randomX = (Math.floor(Math.random()*((max_X / 20)+1)))*20
@@ -151,15 +172,15 @@
                 stopUp()
                 stopLeft()
             }
-            if(k == 78){
-                snake_big = snake_big + 1
-                apple()
-                $('.gamebackground').append(`<div class="snake snake${snake_big}"></div>`)
-                $(`.snake${snake_big}`).css({
-                    left:oldsnake[(snake_big - 2)].snakeX,
-                    top:oldsnake[(snake_big - 2)].snakeY
-                })
-            }
+            // if(k == 78){
+            //     snake_big = snake_big + 1
+            //     apple()
+            //     $('.gamebackground').append(`<div class="snake snake${snake_big}"></div>`)
+            //     $(`.snake${snake_big}`).css({
+            //         left:oldsnake[(snake_big - 2)].snakeX,
+            //         top:oldsnake[(snake_big - 2)].snakeY
+            //     })
+            // }
         })
 
 
@@ -248,7 +269,7 @@
                     left:oldsnake[(i - 1)].snakeX,
                     top:oldsnake[(i - 1)].snakeY
                 })
-
+                //撞到的情況
                 if( i > 1 ){
                     let same = oldsnake.filter(function(value,index,array){
                         return (value.snakeX == snakeX) && (value.snakeY == snakeY)
@@ -260,7 +281,19 @@
             }
 
             totalapple = totalapple.filter(function(value) {
+                // 得分的時候
                 if(value.randomX === snakeX && value.randomY === snakeY) {
+                    snake_big = snake_big + 1
+                    htmlscore = snake_big - 1
+        
+                    $('.score').remove()
+                    $('.scoreboard').append(`<div class="score">${htmlscore}</div>`)
+
+                    $('.gamebackground').append(`<div class="snake snake${snake_big}"></div>`)
+                    $(`.snake${snake_big}`).css({
+                        left:oldsnake[(snake_big - 2)].snakeX,
+                        top:oldsnake[(snake_big - 2)].snakeY
+                    })
                     $(`.apple${snakeX}_${snakeY}`).remove()
                     return false
                 }
@@ -270,7 +303,6 @@
             });
             
             if(totalapple.length == 0){
-                snake_big = snake_big + 1
                 apple()
                 $('.gamebackground').append(`<div class="snake snake${snake_big}"></div>`)
                 $(`.snake${snake_big}`).css({
@@ -303,6 +335,7 @@
             let howmanyApple = (Math.floor((snake_big - 1) / 5)) + 1
             let randomX = (Math.floor(Math.random()*((max_X / 20)+1)))*20
             let randomY = (Math.floor(Math.random()*((max_Y / 20)+1)))*20
+
             
             for(let a = 1 ; a <= howmanyApple ; a++){
                 randomX = (Math.floor(Math.random()*((max_X / 20)+1)))*20
