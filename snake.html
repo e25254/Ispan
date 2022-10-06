@@ -27,7 +27,7 @@
             top: 200px;
         }
         .apple{
-            background-color: rgb(255, 0, 0);
+            background-color: rgba(245, 73, 73, 0.959);
             width: 20px;
             height: 20px;
             position:absolute;
@@ -59,6 +59,8 @@
     <!-- <button class="click">click</button> -->
     <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
     <script>
+
+        let diretion = 0
         let ballX = $('.snake1').width()
 
         let ballY = $('.snake1').height()
@@ -97,39 +99,51 @@
             // console.log(k);
             if(k === 38 || k === 87){
                 i.preventDefault()
-                // console.log('w');
-                stopUp()
-                stopDown()
-                stopRight()
-                stopLeft()
-                Up()
+                if(diretion !==3 && diretion !== 1){
+                    diretion = 1
+                    // console.log('w');
+                    stopUp()
+                    stopDown()
+                    stopRight()
+                    stopLeft()
+                    Up()
+                }
             }
             if(k === 37 || k === 65){
                 i.preventDefault()
-                // console.log('a');
-                stopLeft()
-                stopDown()
-                stopUp()
-                stopRight()
-                Left()        
+                if(diretion !==2 && diretion !== 4){
+                    diretion = 2
+                    // console.log('a');
+                    stopLeft()
+                    stopDown()
+                    stopUp()
+                    stopRight()
+                    Left()
+                }
             }
             if(k === 40 || k === 83){
                 i.preventDefault()
-                // console.log('s');
-                stopDown()
-                stopRight()
-                stopUp()
-                stopLeft()
-                Down()
+                if(diretion !==1 && diretion !== 3){
+                    diretion = 3
+                    // console.log('s');
+                    stopDown()
+                    stopRight()
+                    stopUp()
+                    stopLeft()
+                    Down()
+                }
             }
             if(k === 39 || k === 68){
                 i.preventDefault()
-                // console.log('d');
-                stopRight()
-                stopDown()
-                stopUp()
-                stopLeft()
-                Right()
+                if(diretion !==2 && diretion !== 4){
+                    diretion = 4
+                    // console.log('d');
+                    stopRight()
+                    stopDown()
+                    stopUp()
+                    stopLeft()
+                    Right()
+                }   
             }
             if(k ==32){
                 stopRight()
