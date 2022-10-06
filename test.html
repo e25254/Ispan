@@ -5,9 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+         .apple{
+            background-color: rgb(255, 0, 0);
+            width: 20px;
+            height: 20px;
+            position:absolute;
+            border-radius: 50px;
+        }
+    </style>
 </head>
 <body>
 
+    <div class="apple apple1" style="left: 180px; top: 10px;"></div>
+    <div class="apple apple2" style="left: 100px; top: 20px;"></div>
     <script>
         let snakeX = 360
         let snakeY = 200
@@ -28,14 +39,15 @@
         // snake.remove({snakeX: 360, snakeY: 200})
 
         let result = snake.filter(function(value) {
-            if(value.snakeX === 360 && value.snakeY === 200) {
+            if(value.snakeX === 100 && value.snakeY === 20) {
+                $('')
                 return false
             }
             else {
                 return true
             }
         });
-        console.log(result);
+        console.log(snake);
 
 
 

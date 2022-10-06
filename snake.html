@@ -15,14 +15,14 @@
             position: relative;
         }
         .snake{
-            background-color: #fff;
+            background-color: rgba(8, 184, 125, 0.664);
             width: 20px;
             height: 20px;
             position:absolute;
             border-radius: 50px;
         }
         .snake1{
-            background-color: yellow;
+            background-color: rgb(0, 155, 26);
             left: 200px;
             top: 200px;
         }
@@ -78,7 +78,7 @@
         let oldsnake = []
         let totalapple = []
         let snake_big = 1
-
+        apple()
         // let howmanyApple = (Math.floor((snake_big - 1) / 5)) + 1
         // let randomX = (Math.floor(Math.random()*((max_X / 20)+1)))*20
         // let randomY = (Math.floor(Math.random()*((max_Y / 20)+1)))*20
@@ -245,6 +245,25 @@
                 }
             }
 
+            totalapple = totalapple.filter(function(value) {
+                if(value.randomX === snakeX && value.randomY === snakeY) {
+                    $(`.apple${snakeX}_${snakeY}`).remove()
+                    return false
+                }
+                else {
+                    return true
+                }
+            });
+            
+            if(totalapple.length == 0){
+                snake_big = snake_big + 1
+                apple()
+                $('.gamebackground').append(`<div class="snake snake${snake_big}"></div>`)
+                $(`.snake${snake_big}`).css({
+                    left:oldsnake[(snake_big - 2)].snakeX,
+                    top:oldsnake[(snake_big - 2)].snakeY
+                })
+            }
         
             if(score > 0){
                 console.log(score);
@@ -266,6 +285,7 @@
 
         
         function apple(){
+            // 新增蘋果
             let howmanyApple = (Math.floor((snake_big - 1) / 5)) + 1
             let randomX = (Math.floor(Math.random()*((max_X / 20)+1)))*20
             let randomY = (Math.floor(Math.random()*((max_Y / 20)+1)))*20
@@ -273,13 +293,13 @@
             for(let a = 1 ; a <= howmanyApple ; a++){
                 randomX = (Math.floor(Math.random()*((max_X / 20)+1)))*20
                 randomY = (Math.floor(Math.random()*((max_Y / 20)+1)))*20
-                $('.gamebackground').append(`<div class="apple apple${a}"></div>`)
-                $(`.apple${a}`).css({
+                $('.gamebackground').append(`<div class="apple apple${randomX}_${randomY}"></div>`)
+                $(`.apple${randomX}_${randomY}`).css({
                     left:randomX,
                     top:randomY
                 })
                 totalapple.unshift({randomX,randomY})
-                console.log(totalapple);
+                // console.log(totalapple);
             }
         }
         
