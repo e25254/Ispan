@@ -6,10 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake</title>
-    <link rel="stylesheet" href="/JQuery/reset.css">
+    <!-- <link rel="stylesheet" href="/JQuery/reset.css"> -->
     <style>
+        body{
+            margin: 0px;
+        }
+        .all{
+            margin: 0px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
         .gamebackground{
-            width: 100%;
+            margin: 0px auto;
+            width: 600px;
             height: 400px;
             background-color: #ccc;
             position: relative;
@@ -64,14 +74,16 @@
 
 <body>
 
-    <div class="gamebackground">    
-        <div class="snake snake1"></div>
-        <!-- <div class="snake snake2"></div>
-        <div class="snake snake3"></div>
-        <div class="snake snake4"></div> -->
-    </div>
-    <div class="scoreboard">score:
-        
+    <div class="all">
+        <div class="gamebackground">    
+            <div class="snake snake1"></div>
+            <!-- <div class="snake snake2"></div>
+            <div class="snake snake3"></div>
+            <div class="snake snake4"></div> -->
+        </div>
+        <div class="scoreboard">score:
+            
+        </div>
     </div>
     <!-- <button class="click">click</button> -->
     <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
@@ -325,6 +337,7 @@
             stopUp()
             stopLeft()
             alert(`結束了 分數 ${score} 分`)
+            location.reload()
 
         }
 
