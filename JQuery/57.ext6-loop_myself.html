@@ -127,46 +127,54 @@
 		<script>
 			let page = 1
 			let moveX = 0
-			let myinterval = null
-			// startInterval()
-			// $(window).mousedown(function () {
-			// 	console.log("stop")
-			// 	stopInterval()
-			// })
-			// $(window).mouseup(function () {
-			// 	console.log("start")
-			// 	startInterval()
-			// })
+			let my_interval = null
+			startInterval()
+			$(window).mousedown(function () {
+				console.log("stop")
+				stopInterval()
+			})
+			$(window).mouseup(function () {
+				console.log("start")
+				startInterval()
+			})
 
-			// function startInterval() {
-			// 	return (myinterval = setInterval(function () {
-			// 		page = page + 1
-			// 		if (page > 7) {
-			// 			page = 1
-			// 		} else if (page < 1) {
-			// 			page = 7
-			// 		}
-			// 		moveX = (page - 1) * -800
-			// 		$(".train").css({
-			// 			transform: `translateX(${moveX}px)`,
-			// 		})
-			// 		checkDot()
-			// 		console.log(page)
-			// 	}, 3000))
-			// }
+			function startInterval() {
+				return (my_interval = setInterval(function () {
+					page = page + 1
+					moveX = page * -800
+					$(".train").css({
+						transform: `translateX(${moveX}px)`,
+					})
+					if (page === 6) {
+						setTimeout(() => {
+							$(".train").css({
+								transition: "none",
+								transform: `translateX(-800px)`,
+							})
+							page = 1
+						}, 500)
+						setTimeout(() => {
+							$(".train").css("transition", "0.5s")
+						}, 600)
+					} else if (page !== 6) {
+						$(".train").css("transition", "0.5s")
+					}
+					console.log(page)
+					checkDot()
+				}, 1500))
+			}
 
-			// function stopInterval() {
-			// 	clearInterval(myinterval)
-			// }
+			function stopInterval() {
+				clearInterval(my_interval)
+			}
 
-			// $('.arrow-left').css('display','none')
 			$(".slider-dots li").click(function (e) {
 				page = $(e.currentTarget).index() + 1
 				moveX = page * -800
 				$(".train").css({
 					transform: `translateX(${moveX}px)`,
 				})
-				// console.log(page)
+
 				checkDot()
 			})
 
@@ -185,28 +193,15 @@
 							transform: `translateX(-800px)`,
 						})
 						page = 1
-						// console.log("page變成1")
-						// console.log($(".train").css("transform"))
-						// console.log(page)
 					}, 500)
-					// console.log('應該要執行這段');
-					// $(".train").css("transition", "0.5s")
+					setTimeout(() => {
+						$(".train").css("transition", "0.5s")
+					}, 600)
 				} else if (page !== 6) {
 					$(".train").css("transition", "0.5s")
 				}
 				console.log(page)
 				checkDot()
-				// setTimeout(() => {
-				// 	if (page === 6) {
-				// 		$(".train").css({
-				// 			transition: "none",
-				// 			transform: `translateX(-800px)`,
-				// 		})
-				// 		page = 1
-				// 		console.log("page變成1")
-				// 		console.log($(".train").css('transform'))
-				// 	}
-				// },500)
 			})
 			$(".arrow-left").click(function () {
 				//  點下去的時候要發生：
@@ -223,28 +218,15 @@
 							transform: `translateX(-4000px)`,
 						})
 						page = 5
-						// console.log("page變成1")
-						// console.log($(".train").css("transform"))
-						// console.log(page)
 					}, 500)
-					// console.log('應該要執行這段');
-					// $(".train").css("transition", "0.5s")
+					setTimeout(() => {
+						$(".train").css("transition", "0.5s")
+					}, 600)
 				} else if (page !== 0) {
 					$(".train").css("transition", "0.5s")
 				}
 				console.log(page)
 				checkDot()
-				// setTimeout(() => {
-				// 	if (page === 6) {
-				// 		$(".train").css({
-				// 			transition: "none",
-				// 			transform: `translateX(-800px)`,
-				// 		})
-				// 		page = 1
-				// 		console.log("page變成1")
-				// 		console.log($(".train").css('transform'))
-				// 	}
-				// },500)
 			})
 
 			function checkDot() {
@@ -268,7 +250,6 @@
 					.siblings()
 					.css("background", "transparent")
 			}
-			function checkNoPage() {}
 		</script>
 	</body>
 </html>
