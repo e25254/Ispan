@@ -34,7 +34,7 @@
 				display: flex;
 				width: 700%;
 				transform: translateX(0px);
-				transition: 0.5s;
+				transition: .5s;
 				margin: 0;
 			}
 
@@ -97,27 +97,13 @@
 	<body>
 		<div class="wrap">
 			<ul class="train">
-				<li>
-					<img src="./images/slide5.jpg" alt="" />
-				</li>
-				<li>
-					<img src="./images/slide1.jpg" alt="" />
-				</li>
-				<li>
-					<img src="./images/slide2.jpg" alt="" />
-				</li>
-				<li>
-					<img src="./images/slide3.jpg" alt="" />
-				</li>
-				<li>
-					<img src="./images/slide4.jpg" alt="" />
-				</li>
-				<li>
-					<img src="./images/slide5.jpg" alt="" />
-				</li>
-				<li>
-					<img src="./images/slide1.jpg" alt="" />
-				</li>
+				<li><img src="./images/slide5.jpg" alt="" /></li>
+				<li><img src="./images/slide1.jpg" alt="" /></li>
+				<li><img src="./images/slide2.jpg" alt="" /></li>
+				<li><img src="./images/slide3.jpg" alt="" /></li>
+				<li><img src="./images/slide4.jpg" alt="" /></li>
+				<li><img src="./images/slide5.jpg" alt="" /></li>
+				<li><img src="./images/slide1.jpg" alt="" /></li>
 			</ul>
 
 			<ul class="slider-dots">
@@ -147,11 +133,12 @@
 		></script>
 		<script>
 			let nowPage = 1
+			pageMovement(nowPage)
 
 			$(".slider-dots li").click(function () {
 				// console.log('li clicked', $(this).index());
 
-				nowPage = $(this).index()
+				nowPage = $(this).index() + 1
 				pageMovement(nowPage)
 
 				// const moveX = index * -800;
@@ -179,21 +166,60 @@
 
 			$(".page-right-area").click(function () {
 				nowPage++
-				if (nowPage >= 5) nowPage = 0
-
+				// if (nowPage >= 6) nowPage = 1;
 				pageMovement(nowPage)
 			})
 
 			function pageMovement(nowPage) {
-				const moveX = nowPage * -800
+				if (nowPage >= 6) {
+					// 先偷偷移到假5，再移動到真1(需要有非同步的概念)
+					nowPage = 0
+					let moveX = nowPage * -800
+					$(".train").css({
+						transition: "none",
+						transform: `translateX(${moveX}px)`,
+					})
 
-				$(".train")
-					.css("transform", `translateX(${moveX}px)`)
-					.eq(nowPage - 1)
-					.css("background", "#fff")
-					.siblings()
-					.css("background", "transparent")
+					setTimeout(() => {
+						nowPage = 1
+						moveX = nowPage * -800
+						$(".train")
+							.css("transition", "1s")
+							.css("transform", `translateX(${moveX}px)`)
+
+						$(".slider-dots li")
+							.eq(nowPage - 1)
+							.css("background", "#fff")
+							.siblings()
+							.css("background", "transparent")
+					}, 0)
+				} else {
+					console.log("nowPage", nowPage)
+					const moveX = nowPage * -800
+
+					$(".train")
+						.css("transition", "1s")
+						.css("transform", `translateX(${moveX}px)`)
+
+					$(".slider-dots li")
+						.eq(nowPage >= 6 ? 0 : nowPage - 1)
+						.css("background", "#fff")
+						.siblings()
+						.css("background", "transparent")
+				}
 			}
+
+			// 先到假1，再偷偷移動到真1(需要監聽 transitionend 事件)
+			$(".train").on("transitionend", function () {
+				console.log("transitionend", nowPage)
+				if (nowPage >= 6) {
+					nowPage = 1
+					const moveX = nowPage * -800
+					$(".train")
+						.css("transition", "none")
+						.css("transform", `translateX(${moveX}px)`)
+				}
+			})
 		</script>
 	</body>
 </html>
