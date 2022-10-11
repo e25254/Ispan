@@ -1,49 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake</title>
-    <!-- <link rel="stylesheet" href="/JQuery/reset.css"> -->
-    <style>
-        body{
-            margin: 0px;
-        }
-        .all{
-            margin: 0px auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .gamebackground{
-            margin: 0px auto;
-            width: 600px;
-            height: 400px;
-            background-color: #ccc;
-            position: relative;
-        }
-        .snake{
-            background-color: rgba(8, 184, 125, 0.664);
-            width: 20px;
-            height: 20px;
-            position:absolute;
-            border-radius: 50px;
-        }
-        .snake1{
-            background-color: rgb(0, 155, 26);
-            left: 200px;
-            top: 200px;
-        }
-        .apple{
-            background-color: rgba(245, 73, 73, 0.959);
-            width: 20px;
-            height: 20px;
-            position:absolute;
-            border-radius: 50px;
-        }
-        /* .snake2{
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Snake</title>
+		<!-- <link rel="stylesheet" href="/JQuery/reset.css"> -->
+		<style>
+			body {
+				margin: 0px;
+			}
+			.all {
+				margin: 0px auto;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+			.gamebackground {
+				margin: 0px auto;
+				width: 600px;
+				height: 400px;
+				background-color: #ccc;
+				position: relative;
+			}
+			.snake {
+				background-color: rgba(8, 184, 125, 0.664);
+				width: 20px;
+				height: 20px;
+				position: absolute;
+				border-radius: 50px;
+			}
+			.snake1 {
+				background-color: rgb(0, 155, 26);
+				left: 200px;
+				top: 200px;
+			}
+			.apple {
+				background-color: rgba(245, 73, 73, 0.959);
+				width: 20px;
+				height: 20px;
+				position: absolute;
+				border-radius: 50px;
+			}
+			/* .snake2{
             left: 380px;
             top: 200px;
         }
@@ -55,320 +54,285 @@
             left: 340px;
             top:200px
         } */
-        .scoreboard{
-            display: flex;
-            width: 100%;
-            text-align: center;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            padding-top: 10px;
-        }
-        .score{
-            width: 20px;
-            padding-right: 10px;
-            
-        }
-    </style>
-</head>
+			.scoreboard {
+				display: flex;
+				width: 100%;
+				text-align: center;
+				align-items: center;
+				justify-content: center;
+				font-size: 2rem;
+				padding-top: 10px;
+			}
+			.score {
+				width: 20px;
+				padding-right: 10px;
+			}
+		</style>
+	</head>
 
-<body>
-
-    <div class="all">
-        <div class="gamebackground">    
-            <div class="snake snake1"></div>
-            <!-- <div class="snake snake2"></div>
+	<body>
+		<div class="all">
+			<div class="gamebackground">
+				<div class="snake snake1"></div>
+				<!-- <div class="snake snake2"></div>
             <div class="snake snake3"></div>
             <div class="snake snake4"></div> -->
-        </div>
-        <div class="scoreboard">score:
-            
-        </div>
-    </div>
-    <!-- <button class="click">click</button> -->
-    <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
-    <script>
+			</div>
+			<div class="scoreboard">score:</div>
+		</div>
+		<!-- <button class="click">click</button> -->
+		<script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
+		<script>
+			let diretion = 0
+			let ballX = $(".snake1").width()
 
-        let diretion = 0
-        let ballX = $('.snake1').width()
+			let ballY = $(".snake1").height()
 
-        let ballY = $('.snake1').height()
+			let max_X = $(".gamebackground").width() - ballX
+			// console.log('畫面總長',max_X);
+			let max_Y = $(".gamebackground").height() - ballY
+			// console.log('畫面總寬',max_Y);
+			let snakeX = $(".snake1").position().left
+			let snakeY = $(".snake1").position().top
+			// console.log(snakeX,snakeY);
+			let right = null
+			let up = null
+			let down = null
+			let left = null
+			let score = 0
+			let oldsnake = []
+			let totalapple = []
+			let snake_big = 1
+			let htmlscore = snake_big - 1
 
-        let max_X = ($('.gamebackground').width()) - ballX
-        // console.log('畫面總長',max_X);
-        let max_Y = ($('.gamebackground').height()) - ballY
-        // console.log('畫面總寬',max_Y);
-        let snakeX = $('.snake1').position().left
-        let snakeY = $('.snake1').position().top
-        // console.log(snakeX,snakeY);
-        let right = null;
-        let up = null;
-        let down = null;
-        let left = null;
-        let score = 0
-        let oldsnake = []
-        let totalapple = []
-        let snake_big = 1
-        let htmlscore = snake_big - 1
-        
-        $('.scoreboard').append(`<div class="score">${htmlscore}</div>`)
-        
-        apple()
-        // let howmanyApple = (Math.floor((snake_big - 1) / 5)) + 1
-        // let randomX = (Math.floor(Math.random()*((max_X / 20)+1)))*20
-        // let randomY = (Math.floor(Math.random()*((max_Y / 20)+1)))*20
+			$(".scoreboard").append(`<div class="score">${htmlscore}</div>`)
 
-        
+			apple()
+			// let howmanyApple = (Math.floor((snake_big - 1) / 5)) + 1
+			// let randomX = (Math.floor(Math.random()*((max_X / 20)+1)))*20
+			// let randomY = (Math.floor(Math.random()*((max_Y / 20)+1)))*20
 
+			$(document).on("keydown", function (i) {
+				let k = i.keyCode
+				// console.log(k);
+				if (k === 38 || k === 87) {
+					i.preventDefault()
+					if (diretion !== 3 && diretion !== 1) {
+						diretion = 1
+						// console.log('w');
+						stopUp()
+						stopDown()
+						stopRight()
+						stopLeft()
+						Up()
+					}
+				}
+				if (k === 37 || k === 65) {
+					i.preventDefault()
+					if (diretion !== 2 && diretion !== 4) {
+						diretion = 2
+						// console.log('a');
+						stopLeft()
+						stopDown()
+						stopUp()
+						stopRight()
+						Left()
+					}
+				}
+				if (k === 40 || k === 83) {
+					i.preventDefault()
+					if (diretion !== 1 && diretion !== 3) {
+						diretion = 3
+						// console.log('s');
+						stopDown()
+						stopRight()
+						stopUp()
+						stopLeft()
+						Down()
+					}
+				}
+				if (k === 39 || k === 68) {
+					i.preventDefault()
+					if (diretion !== 2 && diretion !== 4) {
+						diretion = 4
+						// console.log('d');
+						stopRight()
+						stopDown()
+						stopUp()
+						stopLeft()
+						Right()
+					}
+				}
+				if (k == 32) {
+					stopRight()
+					stopDown()
+					stopUp()
+					stopLeft()
+				}
+				// if(k == 78){
+				//     snake_big = snake_big + 1
+				//     apple()
+				//     $('.gamebackground').append(`<div class="snake snake${snake_big}"></div>`)
+				//     $(`.snake${snake_big}`).css({
+				//         left:oldsnake[(snake_big - 2)].snakeX,
+				//         top:oldsnake[(snake_big - 2)].snakeY
+				//     })
+				// }
+			})
 
+			function Right() {
+				right = setInterval(function () {
+					snakeX = snakeX + 20
+					checkX()
+					snakeBig()
 
+					// console.log(snakeX,snakeY);
+					$(".snake1").css("left", snakeX)
+				}, 50)
+			}
+			function Up() {
+				up = setInterval(function () {
+					snakeY = snakeY - 20
+					checkY()
+					snakeBig()
 
-        
+					// console.log(snakeX,snakeY);
+					$(".snake1").css("top", snakeY)
+				}, 50)
+			}
+			function Down() {
+				down = setInterval(function () {
+					snakeY = snakeY + 20
+					checkY()
+					snakeBig()
 
-        
+					// console.log(snakeX,snakeY);
+					$(".snake1").css("top", snakeY)
+				}, 50)
+			}
+			function Left() {
+				left = setInterval(function () {
+					snakeX = snakeX - 20
+					checkX()
+					snakeBig()
 
-        $(document).on('keydown',function(i){
-            let k = i.keyCode
-            // console.log(k);
-            if(k === 38 || k === 87){
-                i.preventDefault()
-                if(diretion !==3 && diretion !== 1){
-                    diretion = 1
-                    // console.log('w');
-                    stopUp()
-                    stopDown()
-                    stopRight()
-                    stopLeft()
-                    Up()
-                }
-            }
-            if(k === 37 || k === 65){
-                i.preventDefault()
-                if(diretion !==2 && diretion !== 4){
-                    diretion = 2
-                    // console.log('a');
-                    stopLeft()
-                    stopDown()
-                    stopUp()
-                    stopRight()
-                    Left()
-                }
-            }
-            if(k === 40 || k === 83){
-                i.preventDefault()
-                if(diretion !==1 && diretion !== 3){
-                    diretion = 3
-                    // console.log('s');
-                    stopDown()
-                    stopRight()
-                    stopUp()
-                    stopLeft()
-                    Down()
-                }
-            }
-            if(k === 39 || k === 68){
-                i.preventDefault()
-                if(diretion !==2 && diretion !== 4){
-                    diretion = 4
-                    // console.log('d');
-                    stopRight()
-                    stopDown()
-                    stopUp()
-                    stopLeft()
-                    Right()
-                }   
-            }
-            if(k ==32){
-                stopRight()
-                stopDown()
-                stopUp()
-                stopLeft()
-            }
-            // if(k == 78){
-            //     snake_big = snake_big + 1
-            //     apple()
-            //     $('.gamebackground').append(`<div class="snake snake${snake_big}"></div>`)
-            //     $(`.snake${snake_big}`).css({
-            //         left:oldsnake[(snake_big - 2)].snakeX,
-            //         top:oldsnake[(snake_big - 2)].snakeY
-            //     })
-            // }
-        })
+					// console.log(snakeX,snakeY);
+					$(".snake1").css("left", snakeX)
+				}, 50)
+			}
+			function stopRight() {
+				clearInterval(right)
+			}
+			function stopUp() {
+				clearInterval(up)
+			}
+			function stopDown() {
+				clearInterval(down)
+			}
+			function stopLeft() {
+				clearInterval(left)
+			}
 
+			function checkX() {
+				if (snakeX > max_X) {
+					snakeX = 0
+				} else if (snakeX < 0) {
+					snakeX = max_X
+				}
+			}
+			function checkY() {
+				if (snakeY > max_Y) {
+					snakeY = 0
+				} else if (snakeY < 0) {
+					snakeY = max_Y
+				}
+			}
+			function snakeBig() {
+				oldsnake.unshift({ snakeX, snakeY })
+				// console.log(snake_big);
+				if (oldsnake.length > snake_big) {
+					// console.log(oldsnake[0],oldsnake[1],oldsnake[2],oldsnake[3],oldsnake[4]);
+					oldsnake.pop()
+				}
+				for (let i = 1; i <= oldsnake.length; i++) {
+					$(`.snake${i}`).css({
+						left: oldsnake[i - 1].snakeX,
+						top: oldsnake[i - 1].snakeY,
+					})
+					//撞到的情況
+					if (i > 1) {
+						let same = oldsnake.filter(function (value, index, array) {
+							return value.snakeX == snakeX && value.snakeY == snakeY
+						})
+						if (same.length > 1) {
+							score = score + 1
+						}
+					}
+				}
 
+				totalapple = totalapple.filter(function (value) {
+					// 得分的時候
+					if (value.randomX === snakeX && value.randomY === snakeY) {
+						snake_big = snake_big + 1
+						htmlscore = snake_big - 1
 
+						$(".score").remove()
+						$(".scoreboard").append(`<div class="score">${htmlscore}</div>`)
 
-        function Right(){
-            right = setInterval(function(){
-                snakeX = snakeX + 20
-                checkX()
-                snakeBig()
-                
-                
-                // console.log(snakeX,snakeY);
-                $('.snake1').css('left',snakeX)
-            },50)
-        }
-        function Up(){
-            up = setInterval(function(){
-                snakeY = snakeY - 20
-                checkY()
-                snakeBig()
-                
- 
-                // console.log(snakeX,snakeY);
-                $('.snake1').css('top',snakeY)
-            },50)
-        }
-        function Down(){
-            down = setInterval(function(){
-                snakeY = snakeY + 20
-                checkY()
-                snakeBig()
-                
-                // console.log(snakeX,snakeY);
-                $('.snake1').css('top',snakeY)
-            },50)
-        }
-        function Left(){
-            left = setInterval(function(){  
-                
-                snakeX = snakeX - 20
-                checkX()
-                snakeBig()
-                
-                // console.log(snakeX,snakeY);
-                $('.snake1').css('left',snakeX)
-            },50)
-        }
-        function stopRight(){
-            clearInterval(right)
-        }
-        function stopUp(){
-            clearInterval(up)
-        }
-        function stopDown(){
-            clearInterval(down)
-        }
-        function stopLeft(){
-            clearInterval(left)
-        }
+						$(".gamebackground").append(`<div class="snake snake${snake_big}"></div>`)
+						$(`.snake${snake_big}`).css({
+							left: oldsnake[snake_big - 2].snakeX,
+							top: oldsnake[snake_big - 2].snakeY,
+						})
+						$(`.apple${snakeX}_${snakeY}`).remove()
+						return false
+					} else {
+						return true
+					}
+				})
 
-        function checkX(){
-            if( snakeX > max_X){
-                snakeX = 0
-            }else if (snakeX < 0){
-                snakeX = max_X
-            }
-        }
-        function checkY(){
-            if( snakeY > max_Y){
-                snakeY = 0
-            }else if (snakeY < 0){
-                snakeY = max_Y
-            }
-        }
-        function snakeBig(){
-            oldsnake.unshift({snakeX,snakeY})
-            // console.log(snake_big);
-            if(oldsnake.length > snake_big){
-                
-                // console.log(oldsnake[0],oldsnake[1],oldsnake[2],oldsnake[3],oldsnake[4]);
-                oldsnake.pop()
-            }
-            for(let i = 1 ; i <= (oldsnake.length) ; i++){
-                $(`.snake${i}`).css({
-                    left:oldsnake[(i - 1)].snakeX,
-                    top:oldsnake[(i - 1)].snakeY
-                })
-                //撞到的情況
-                if( i > 1 ){
-                    let same = oldsnake.filter(function(value,index,array){
-                        return (value.snakeX == snakeX) && (value.snakeY == snakeY)
-                    })
-                    if(same.length > 1 ){
-                        score = score + 1
-                    }
-                }
-            }
+				if (totalapple.length == 0) {
+					apple()
+					$(".gamebackground").append(`<div class="snake snake${snake_big}"></div>`)
+					$(`.snake${snake_big}`).css({
+						left: oldsnake[snake_big - 2].snakeX,
+						top: oldsnake[snake_big - 2].snakeY,
+					})
+				}
 
-            totalapple = totalapple.filter(function(value) {
-                // 得分的時候
-                if(value.randomX === snakeX && value.randomY === snakeY) {
-                    snake_big = snake_big + 1
-                    htmlscore = snake_big - 1
-        
-                    $('.score').remove()
-                    $('.scoreboard').append(`<div class="score">${htmlscore}</div>`)
+				if (score > 0) {
+					console.log(score)
+					gameOver()
+				}
+			}
 
-                    $('.gamebackground').append(`<div class="snake snake${snake_big}"></div>`)
-                    $(`.snake${snake_big}`).css({
-                        left:oldsnake[(snake_big - 2)].snakeX,
-                        top:oldsnake[(snake_big - 2)].snakeY
-                    })
-                    $(`.apple${snakeX}_${snakeY}`).remove()
-                    return false
-                }
-                else {
-                    return true
-                }
-            });
-            
-            if(totalapple.length == 0){
-                apple()
-                $('.gamebackground').append(`<div class="snake snake${snake_big}"></div>`)
-                $(`.snake${snake_big}`).css({
-                    left:oldsnake[(snake_big - 2)].snakeX,
-                    top:oldsnake[(snake_big - 2)].snakeY
-                })
-            }
-        
-            if(score > 0){
-                console.log(score);
-                gameOver()
-            }
-        }
-        
+			function gameOver() {
+				stopRight()
+				stopDown()
+				stopUp()
+				stopLeft()
+				alert(`結束了 分數 ${score} 分`)
+				location.reload()
+			}
 
+			function apple() {
+				// 新增蘋果
+				let howmanyApple = Math.floor((snake_big - 1) / 5) + 1
+				let randomX = Math.floor(Math.random() * (max_X / 20 + 1)) * 20
+				let randomY = Math.floor(Math.random() * (max_Y / 20 + 1)) * 20
 
-        function gameOver(){
-            stopRight()
-            stopDown()
-            stopUp()
-            stopLeft()
-            alert(`結束了 分數 ${score} 分`)
-            location.reload()
-
-        }
-
-
-
-        
-        function apple(){
-            // 新增蘋果
-            let howmanyApple = (Math.floor((snake_big - 1) / 5)) + 1
-            let randomX = (Math.floor(Math.random()*((max_X / 20)+1)))*20
-            let randomY = (Math.floor(Math.random()*((max_Y / 20)+1)))*20
-
-            
-            for(let a = 1 ; a <= howmanyApple ; a++){
-                randomX = (Math.floor(Math.random()*((max_X / 20)+1)))*20
-                randomY = (Math.floor(Math.random()*((max_Y / 20)+1)))*20
-                $('.gamebackground').append(`<div class="apple apple${randomX}_${randomY}"></div>`)
-                $(`.apple${randomX}_${randomY}`).css({
-                    left:randomX,
-                    top:randomY
-                })
-                totalapple.unshift({randomX,randomY})
-                // console.log(totalapple);
-            }
-        }
-        
-
-
-
-    </script>
-
-</body>
-
+				for (let a = 1; a <= howmanyApple; a++) {
+					randomX = Math.floor(Math.random() * (max_X / 20 + 1)) * 20
+					randomY = Math.floor(Math.random() * (max_Y / 20 + 1)) * 20
+					$(".gamebackground").append(`<div class="apple apple${randomX}_${randomY}"></div>`)
+					$(`.apple${randomX}_${randomY}`).css({
+						left: randomX,
+						top: randomY,
+					})
+					totalapple.unshift({ randomX, randomY })
+					// console.log(totalapple);
+				}
+			}
+		</script>
+	</body>
 </html>

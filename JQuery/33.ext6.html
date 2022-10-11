@@ -1,223 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>33.ext6</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+			integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<link rel="stylesheet" href="reset.css" />
+		<style>
+			body {
+				height: 100vh;
+				margin-top: 20vh;
+			}
+			.wrap {
+				width: 800px;
+				height: 400px;
+				overflow: hidden;
+				margin: auto;
+				position: relative;
+			}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>33.ext6</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="reset.css">
-    <style>
-        body{
-            height: 100vh;
-            margin-top: 20vh;
-        }
-        .wrap{
-            width: 800px;
-            height: 400px;
-            overflow: hidden;
-            margin: auto;
-            position: relative;
-        }
+			.train {
+				padding-left: 0px;
+				list-style: none;
+				display: flex;
+				width: 500%;
+				transform: translateX(0px);
+				transition: 0.5s;
+			}
+			.train li img {
+				width: 100%;
+				object-fit: cover;
+			}
+			.slider-dots {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				padding-bottom: 20px;
+				list-style: none;
+				padding-left: 0px;
+				display: flex;
+				justify-content: center;
+			}
+			.slider-dots li {
+				width: 40px;
+				height: 10px;
+				border: 1px solid white;
+				margin: 0 6px;
+				cursor: pointer;
+			}
+			.slider-dots li:nth-child(1) {
+				background-color: #fff;
+			}
+			.fa-classic,
+			.fa-regular,
+			.fa-solid,
+			.far,
+			.fas {
+				color: rgba(255, 255, 255, 0.5);
+				font-size: 40px;
+			}
+			.arrow-left {
+				height: 100%;
+				position: absolute;
+				top: 0;
+				padding-left: 20px;
+				padding-right: 20px;
+				display: flex;
+				align-items: center;
+				cursor: pointer;
+			}
+			.arrow-left:hover {
+				background-color: rgba(145, 145, 145, 0.272);
+			}
+			.arrow-right {
+				height: 100%;
+				position: absolute;
+				top: 0;
+				right: 0;
+				padding-left: 20px;
+				padding-right: 20px;
+				display: flex;
+				align-items: center;
+				cursor: pointer;
+			}
+			.arrow-right:hover {
+				background-color: rgba(145, 145, 145, 0.272);
+			}
+		</style>
+	</head>
 
-        .train{
-            padding-left: 0px;
-            list-style: none;
-            display: flex;
-            width: 500%;
-            transform: translateX(0px);
-            transition: .5s;
-        }
-        .train li img {
-            width: 100%;
-            object-fit: cover;
-        }
-        .slider-dots{
-            position: absolute;
-            bottom:0;
-            left: 0;
-            right: 0;
-            padding-bottom: 20px;
-            list-style: none;
-            padding-left: 0px;
-            display: flex;
-            justify-content: center;
-        }
-        .slider-dots li{
-            width: 40px;
-            height: 10px;
-            border: 1px solid white;
-            margin: 0 6px;
-            cursor: pointer;
-        }
-        .slider-dots li:nth-child(1) {
-            background-color: #fff;
-        }
-        .fa-classic, .fa-regular, .fa-solid, .far, .fas {
-            color:rgba(255, 255, 255, 0.5);
-            font-size: 40px;
-        }
-        .arrow-left{
-            height: 100%;
-            position: absolute;
-            top: 0;
-            padding-left: 20px;
-            padding-right: 20px;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
-        .arrow-left:hover{
-            background-color: rgba(145, 145, 145, 0.272);
-        }
-        .arrow-right{
-            height: 100%;
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding-left: 20px;
-            padding-right: 20px;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
-        .arrow-right:hover{
-            background-color: rgba(145, 145, 145, 0.272);
-        }
-    </style>
-</head>
+	<body>
+		<div class="wrap">
+			<ul class="train">
+				<li><img src="./images/slide1.jpg" alt="" /></li>
+				<li><img src="./images/slide2.jpg" alt="" /></li>
+				<li><img src="./images/slide3.jpg" alt="" /></li>
+				<li><img src="./images/slide4.jpg" alt="" /></li>
+				<li><img src="./images/slide5.jpg" alt="" /></li>
+			</ul>
+			<ul class="slider-dots">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<div class="arrow-left">
+				<i class="fa-solid fa-chevron-left"></i>
+			</div>
+			<div class="arrow-right">
+				<i class="fa-solid fa-chevron-right"></i>
+			</div>
+		</div>
 
-<body>
-    <div class="wrap">
-        <ul class="train">
-            <li><img src="./images/slide1.jpg" alt=""></li>
-            <li><img src="./images/slide2.jpg" alt=""></li>
-            <li><img src="./images/slide3.jpg" alt=""></li>
-            <li><img src="./images/slide4.jpg" alt=""></li>
-            <li><img src="./images/slide5.jpg" alt=""></li>
-        </ul>
-        <ul class="slider-dots">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-        <div class="arrow-left">
-            <i class="fa-solid fa-chevron-left"></i>
-        </div>
-        <div class="arrow-right">
-            <i class="fa-solid fa-chevron-right"></i>
-        </div>
-    </div>
+		<script src="./js/jquery-3.6.1.min.js"></script>
+		<script>
+			let page = 1
+			let moveX = 0
+			let myinterval = null
 
+			if (page > 5) {
+				page = 1
+			} else if (page < 1) {
+				page = 5
+			}
 
-    <script src="./js/jquery-3.6.1.min.js"></script>
-    <script>
-        let page = 1
-        let moveX = 0
-        let myinterval = null
+			startInterval()
+			$(window).mousedown(function () {
+				console.log("stop")
+				stopInterval()
+			})
+			$(window).mouseup(function () {
+				console.log("start")
+				startInterval()
+			})
 
-        if(page>5){
-            page = 1
-        }else if (page < 1){
-            page = 5
-        }
+			function startInterval() {
+				return (myinterval = setInterval(function () {
+					page = page + 1
+					if (page > 5) {
+						page = 1
+					} else if (page < 1) {
+						page = 5
+					}
+					moveX = (page - 1) * -800
+					$(".train").css({
+						transform: `translateX(${moveX}px)`,
+					})
+					checkDot()
+					console.log(page)
+				}, 3000))
+			}
 
-        startInterval()
-        $(window).mousedown(function(){
-            console.log('stop');
-            stopInterval()
-        })
-        $(window).mouseup(function(){
-            console.log('start');
-            startInterval()
-        })
+			function stopInterval() {
+				clearInterval(myinterval)
+			}
 
-        function startInterval(){
-            return myinterval = setInterval(function(){
-                page = page + 1
-                if(page>5){
-                    page = 1
-                }else if (page < 1){
-                    page = 5
-                }
-                moveX = (page - 1) * (-800)
-                $('.train').css({
-                    'transform':`translateX(${moveX}px)`
-                })
-                checkDot()
-                console.log(page);
-            },3000)
-        }
+			// $('.arrow-left').css('display','none')
+			$(".slider-dots li").click(function (e) {
+				page = $(e.currentTarget).index() + 1
+				moveX = (page - 1) * -800
+				$(".train").css({
+					transform: `translateX(${moveX}px)`,
+				})
+				console.log(page)
+				checkDot()
+			})
 
-        function stopInterval() {
-            clearInterval(myinterval);
-        }
+			$(".arrow-right").click(function () {
+				//  點下去的時候要發生：
+				//  往右移動 => page+1
+				page = page + 1
+				checkNoPage()
+				moveX = (page - 1) * -800
+				$(".train").css({
+					transform: `translateX(${moveX}px)`,
+				})
+				console.log(page)
+				checkDot()
+			})
+			$(".arrow-left").click(function () {
+				//  點下去的時候要發生：
+				//  往右移動 => page+1
+				page = page - 1
+				checkNoPage()
+				moveX = (page - 1) * -800
+				$(".train").css({
+					transform: `translateX(${moveX}px)`,
+				})
+				console.log(page)
+				checkDot()
+			})
 
-        // $('.arrow-left').css('display','none')
-        $('.slider-dots li').click(function(e){
-            page = ($(e.currentTarget).index()) + 1           
-            moveX = (page-1) * (-800)
-            $('.train').css({
-                'transform':`translateX(${moveX}px)`
-            })
-            console.log(page);
-            checkDot()
-        })
-
-        $('.arrow-right').click(function(){
-            //  點下去的時候要發生：
-            //  往右移動 => page+1
-            page = page + 1
-            checkNoPage()
-            moveX = (page - 1) * (-800)
-            $('.train').css({
-                'transform':`translateX(${moveX}px)`
-            })
-            console.log(page);
-            checkDot()
-
-        })
-        $('.arrow-left').click(function(){
-            //  點下去的時候要發生：
-            //  往右移動 => page+1
-            page = page - 1
-            checkNoPage()
-            moveX = (page - 1) * (-800)
-            $('.train').css({
-                'transform':`translateX(${moveX}px)`
-            })
-            console.log(page);
-            checkDot()
-            
-        })
-
-        function checkPage(){
-            if(page == 5){
-                $('.arrow-right').css('display','none')
-                $('.arrow-left').css('display','')
-            }else if(page == 1){
-                $('.arrow-left').css('display','none')
-                $('.arrow-right').css('display','')
-            }else{
-                $('.arrow-left').css('display', '')
-                $('.arrow-right').css('display', '')
-            }
-        }
-        function checkDot(){
-            $('.slider-dots li').eq(page-1).css('background','#fff').siblings().css('background','transparent')
-        }
-        function checkNoPage(){
-            if(page>5){
-                page = 1
-            }else if (page < 1){
-                page = 5
-            }
-        }
-    </script>
-
-</body>
-
+			function checkPage() {
+				if (page == 5) {
+					$(".arrow-right").css("display", "none")
+					$(".arrow-left").css("display", "")
+				} else if (page == 1) {
+					$(".arrow-left").css("display", "none")
+					$(".arrow-right").css("display", "")
+				} else {
+					$(".arrow-left").css("display", "")
+					$(".arrow-right").css("display", "")
+				}
+			}
+			function checkDot() {
+				$(".slider-dots li")
+					.eq(page - 1)
+					.css("background", "#fff")
+					.siblings()
+					.css("background", "transparent")
+			}
+			function checkNoPage() {
+				if (page > 5) {
+					page = 1
+				} else if (page < 1) {
+					page = 5
+				}
+			}
+		</script>
+	</body>
 </html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ex6</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
+
+		<style>
+			.wrap {
+				width: 800px;
+				height: 400px;
+				overflow: hidden;
+				position: relative;
+			}
+
+			.train {
+				padding-left: 0;
+				list-style: none;
+				display: flex;
+				width: 700%;
+				transform: translateX(0px);
+				transition: 0.5s;
+				margin: 0;
+			}
+
+			.train li img {
+				width: 100%;
+				object-fit: cover;
+			}
+
+			.slider-dots {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				padding-left: 0;
+				list-style: none;
+				display: flex;
+				justify-content: center;
+			}
+
+			.slider-dots li {
+				width: 40px;
+				height: 10px;
+				border: 1px solid #fff;
+				margin: 0 4px;
+			}
+
+			.slider-dots li:nth-child(1) {
+				background-color: #fff;
+			}
+
+			.page-left-area,
+			.page-right-area {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				width: 10%;
+				cursor: pointer;
+
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				transition: 0.1s;
+			}
+
+			.page-left-area {
+				left: 0;
+			}
+
+			.page-right-area {
+				right: 0;
+			}
+
+			.page-left-area:hover,
+			.page-right-area:hover {
+				background-color: rgba(255, 255, 255, 0.355);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<ul class="train">
+				<li>
+					<img src="./images/slide5.jpg" alt="" />
+				</li>
+				<li>
+					<img src="./images/slide1.jpg" alt="" />
+				</li>
+				<li>
+					<img src="./images/slide2.jpg" alt="" />
+				</li>
+				<li>
+					<img src="./images/slide3.jpg" alt="" />
+				</li>
+				<li>
+					<img src="./images/slide4.jpg" alt="" />
+				</li>
+				<li>
+					<img src="./images/slide5.jpg" alt="" />
+				</li>
+				<li>
+					<img src="./images/slide1.jpg" alt="" />
+				</li>
+			</ul>
+
+			<ul class="slider-dots">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+
+			<div class="page-left-area">
+				<button class="btn">
+					<i class="fa-solid fa-chevron-left"></i>
+				</button>
+			</div>
+			<div class="page-right-area">
+				<button class="btn">
+					<i class="fa-solid fa-chevron-right"></i>
+				</button>
+			</div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+		<script>
+			let nowPage = 1
+
+			$(".slider-dots li").click(function () {
+				// console.log('li clicked', $(this).index());
+
+				nowPage = $(this).index()
+				pageMovement(nowPage)
+
+				// const moveX = index * -800;
+
+				// $('.train').css('transform', `translateX(${moveX}px)`);
+
+				// $(this).css('background', '#fff').siblings().css("background", "transparent");
+
+				// // 如果(index=0)
+				// if (index === 0) {
+				//     // 移動到第一頁
+				//     $('.train').css('transform', 'translateX(0px)')
+				// }
+				// else if (index === 1) {
+				//     // 移動到第二頁(index=1)
+				//     $('.train').css('transform', 'translateX(-800px)')
+				// }
+				// // 移動到第三頁
+				// $('.train').css('transform', 'translateX(-1600px)')
+				// // 移動到第四頁
+				// $('.train').css('transform', 'translateX(-2400px)')
+				// // 移動到第五頁
+				// $('.train').css('transform', 'translateX(-3200px)')
+			})
+
+			$(".page-right-area").click(function () {
+				nowPage++
+				if (nowPage >= 5) nowPage = 0
+
+				pageMovement(nowPage)
+			})
+
+			function pageMovement(nowPage) {
+				const moveX = nowPage * -800
+
+				$(".train")
+					.css("transform", `translateX(${moveX}px)`)
+					.eq(nowPage - 1)
+					.css("background", "#fff")
+					.siblings()
+					.css("background", "transparent")
+			}
+		</script>
+	</body>
+</html>
