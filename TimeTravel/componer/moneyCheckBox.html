@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>moneyCheckBox</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
+		<style>
+			body {
+				background-color: #ccc;
+				margin: 0;
+			}
+			.moneyCheckBox {
+				width: 280px;
+				height: 460px;
+				background-color: #fff;
+				padding: 20px;
+			}
+			/* .moneyCheckBox div{
+            outline: 1px red solid;
+        } */
+			.box {
+				margin: 15px 20px;
+				font-size: 1rem;
+			}
+			.box input {
+				margin: 0px 5px;
+			}
+			.price_txt {
+				font-weight: 800;
+			}
+			.box label {
+				margin-bottom: 20px;
+			}
+            input[type=checkbox]::after{
+                font-size: 200px;
+                color: yellow;
+                background-color: #59D8A1;
+            }
+		</style>
+	</head>
+	<body>
+		<div class="row justify-content-center mt-5">
+			<div class="moneyCheckBox">
+				<div class="mb-4 price_txt">價格</div>
+				<div class="box">
+					<input type="checkbox" name="price" id="0" class="checkboxclass" />
+					<label for="0">0~1000</label>
+					<br />
+
+					<input type="checkbox" name="price" id="1000" class="checkboxclass" />
+					<label for="1000">1000~3000</label>
+					<br />
+
+					<input type="checkbox" name="price" id="3000" class="checkboxclass" />
+					<label for="3000">3000~5000</label>
+					<br />
+
+					<input type="checkbox" name="price" id="5000" class="checkboxclass" />
+					<label for="5000">5000~8000</label>
+					<br />
+
+					<input type="checkbox" name="price" id="8000" class="checkboxclass" />
+					<label for="8000">8000~10000</label>
+					<br />
+
+					<input type="checkbox" name="price" id="10000" class="checkboxclass" />
+					<label for="10000">10000~15000</label>
+					<br />
+
+					<input type="checkbox" name="price" id="15000" class="checkboxclass" />
+					<label for="15000">15000~20000</label>
+					<br />
+
+					<input type="checkbox" name="price" id="20000" class="checkboxclass" />
+					<label for="20000">20000以上</label>
+					<br />
+				</div>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script>
+			$(".checkboxclass").click(function () {
+				let a = $(this).index()
+				// console.log(a)
+				$(this).siblings().prop("checked", false)
+			})
+		</script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+	</body>
+</html>
