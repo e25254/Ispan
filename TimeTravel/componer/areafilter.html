@@ -11,75 +11,40 @@
 				background-color: #ccc;
 				margin: 0;
 			}
-			.moneyCheckBox {
+			.area_filterBox {
 				width: 280px;
 				background-color: #fff;
 				padding: 20px;
 			}
-            .price_txt{
-                padding-bottom: 30px;
-            }
-			.moneyCheckBox_box {
+			.area_filterBox_title {
+				padding-bottom: 30px;
+				font-weight: 800;
+			}
+			.area_filterBox_box {
 				margin: 0px 20px;
 				font-size: 1rem;
 			}
-			.moneyCheckBox_box input {
-				margin: 0px 5px;
-			}
-			.price_txt {
-				font-weight: 800;
-			}
-			.moneyCheckBox_box label {
-				margin-bottom: 25px;
+			.area_filterBox_box div {
+				margin-bottom: 20px;
 			}
 		</style>
 	</head>
 	<body>
 		<div class="row justify-content-center mt-5">
-			<div class="moneyCheckBox">
-				<div class="price_txt">價格</div>
-				<div class="moneyCheckBox_box">
-					<input type="checkbox" name="price" id="0" class="checkboxclass" />
-					<label for="0">0~1000</label>
-					<br />
-
-					<input type="checkbox" name="price" id="1000" class="checkboxclass" />
-					<label for="1000">1000~3000</label>
-					<br />
-
-					<input type="checkbox" name="price" id="3000" class="checkboxclass" />
-					<label for="3000">3000~5000</label>
-					<br />
-
-					<input type="checkbox" name="price" id="5000" class="checkboxclass" />
-					<label for="5000">5000~8000</label>
-					<br />
-
-					<input type="checkbox" name="price" id="8000" class="checkboxclass" />
-					<label for="8000">8000~10000</label>
-					<br />
-
-					<input type="checkbox" name="price" id="10000" class="checkboxclass" />
-					<label for="10000">10000~15000</label>
-					<br />
-
-					<input type="checkbox" name="price" id="15000" class="checkboxclass" />
-					<label for="15000">15000~20000</label>
-					<br />
-
-					<input type="checkbox" name="price" id="20000" class="checkboxclass" />
-					<label for="20000">20000以上</label>
-					<br />
+			<div class="area_filterBox">
+				<div class="area_filterBox_title">篩選目的地</div>
+				<div class="area_filterBox_box">
+					<div class="area">台北市</div>
+					<div class="area">新北市</div>
+					<div class="area">基隆市</div>
 				</div>
 			</div>
 		</div>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<script>
-			$(".checkboxclass").click(function () {
-				let a = $(this).index()
-				// console.log(a)
-				$(this).siblings().prop("checked", false)
+			$(".area").click(function () {
+				$(this).css({ color: "#59D8A1", fontWeight: "900" }).siblings().css({ color: "", fontWeight: "" })
 			})
 		</script>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
