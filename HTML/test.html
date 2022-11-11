@@ -1,33 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        div{
-            outline: 1px solid red;
-        }
-        .page{
-            width: 100%;
-            height: 100vh;
-
-        }
-        .sliderbox{
-            width: 100%;
-            h
-        }
-    </style>
-</head>
-
-<body>
-    <div class="page">
-        <div class="sliderbox">
-            <div class="longbox">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+            *{
+                margin: 0px;
+            }
+			div {
+				outline: 1px solid red;
+			}
+			.page {
+				width: 100%;
+				height: 200px;
+                overflow: scroll;
+			}
+			.sliderbox {
+				width: auto;
+                height: 100%;
+                background-color: rgba(0, 128, 0, 0.306);
+                display: inline-flex;
+                align-items: center;
                 
-            </div>
-        </div>
-    </div>
-</body>
+			}
+            .box{
+                margin: 0px 50px;
+                width: 100px;
+                height: 100px;
+            }
+		</style>
+	</head>
+
+	<body>
+		<div class="page">
+			<div class="sliderbox">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+			</div>
+		</div>
+	</body>
 </html>
